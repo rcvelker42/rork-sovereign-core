@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { 
   View, 
   Text, 
@@ -6,6 +6,9 @@ import {
   Animated, 
   Dimensions,
   ImageBackground,
+  ScrollView,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -20,9 +23,22 @@ export default function AwakeningScreen() {
   const router = useRouter();
   const { hasOnboarded, completeOnboarding, isLoading } = useSovereign();
   
+  const [hasReadManifesto, setHasReadManifesto] = useState(false);
+  
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
   const buttonFade = useRef(new Animated.Value(0)).current;
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+    const paddingToBottom = 40;
+    const isCloseToBottom = layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
+    
+    if (isCloseToBottom && !hasReadManifesto) {
+      setHasReadManifesto(true);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  };
 
   useEffect(() => {
     if (!isLoading && hasOnboarded) {
@@ -114,19 +130,43 @@ export default function AwakeningScreen() {
           
           <Text style={styles.title}>SOVEREIGN</Text>
           <View style={styles.divider} />
-          <Text style={styles.subtitle}>The script ends here.</Text>
         </Animated.View>
 
         <Animated.View 
           style={[
-            styles.quoteSection,
+            styles.manifestoSection,
             { opacity: fadeAnim }
           ]}
         >
-          <Text style={styles.quote}>
-            "He who conquers himself is mightier than he who conquers a thousand men in battle."
-          </Text>
-          <Text style={styles.quoteAuthor}>— The Dhammapada</Text>
+          <ScrollView 
+            style={styles.manifestoScroll}
+            contentContainerStyle={styles.manifestoContent}
+            showsVerticalScrollIndicator={true}
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+          >
+            <Text style={styles.manifestoText}>
+              Most men are living a scripted life. You wake up, you follow the "rules" of a social contract you never signed, and you wonder why you feel like a background character in your own movie. You feel "stifled." You feel like you're waiting for permission to be powerful, to be attractive, to be real.
+            </Text>
+            
+            <Text style={styles.manifestoText}>
+              What if the "matrix" of social anxiety, "what will they think?" and "I'm not enough" is actually a hallucination?
+            </Text>
+            
+            <Text style={styles.manifestoText}>
+              We aren't here to give you lines. We are here to dismantle the ego that is keeping you small. We are here to help you find your Core Confidence—the kind that doesn't depend on a girl's reaction, a boss's praise, or a friend's approval. This is about becoming the "Source" of your own reality.
+            </Text>
+            
+            <Text style={styles.manifestoHighlight}>
+              Welcome to the Path of the Natural.
+            </Text>
+          </ScrollView>
+          
+          {!hasReadManifesto && (
+            <View style={styles.scrollIndicator}>
+              <Text style={styles.scrollIndicatorText}>Scroll to continue</Text>
+            </View>
+          )}
         </Animated.View>
 
         <Animated.View 
@@ -138,11 +178,14 @@ export default function AwakeningScreen() {
           <GoldButton 
             title="Enter the Arena" 
             onPress={handleEnter}
+            disabled={!hasReadManifesto}
           />
           
-          <Text style={styles.disclaimer}>
-            A journey of mastery begins with a single step
-          </Text>
+          {!hasReadManifesto && (
+            <Text style={styles.disclaimer}>
+              Read the manifesto above to continue
+            </Text>
+          )}
         </Animated.View>
       </View>
       
@@ -226,29 +269,53 @@ const styles = StyleSheet.create({
     width: 60,
     height: 1,
     backgroundColor: Colors.accent.gold,
-    marginVertical: 20,
+    marginVertical: 16,
   },
-  subtitle: {
-    fontSize: 18,
-    fontStyle: 'italic',
+  manifestoSection: {
+    flex: 1,
+    marginBottom: 20,
+    position: 'relative',
+  },
+  manifestoScroll: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  manifestoContent: {
+    padding: 20,
+  },
+  manifestoText: {
+    fontSize: 15,
     color: Colors.text.secondary,
-    letterSpacing: 1,
+    lineHeight: 26,
+    marginBottom: 20,
+    textAlign: 'left',
   },
-  quoteSection: {
-    paddingHorizontal: 8,
+  manifestoHighlight: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    fontStyle: 'italic',
+    color: Colors.accent.gold,
+    textAlign: 'center',
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  scrollIndicator: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(13, 15, 10, 0.95)',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
     alignItems: 'center',
   },
-  quote: {
-    fontSize: 14,
-    fontStyle: 'italic',
-    color: Colors.text.muted,
-    textAlign: 'center',
-    lineHeight: 24,
-  },
-  quoteAuthor: {
+  scrollIndicatorText: {
     fontSize: 12,
     color: Colors.accent.goldMuted,
-    marginTop: 12,
     letterSpacing: 1,
   },
   buttonContainer: {
