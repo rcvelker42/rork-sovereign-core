@@ -17,6 +17,7 @@ import { ProgressRing } from '@/components/ProgressRing';
 import { StatCard } from '@/components/StatCard';
 import { GoldButton } from '@/components/GoldButton';
 import { MissionModal } from '@/components/MissionModal';
+import { DoctrineModal } from '@/components/DoctrineModal';
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function DashboardScreen() {
   } = useSovereign();
   
   const [modalVisible, setModalVisible] = useState(false);
+  const [doctrineModalVisible, setDoctrineModalVisible] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(20)).current;
 
@@ -50,7 +52,7 @@ export default function DashboardScreen() {
   const handleStudyDoctrine = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (currentFocusPrinciple) {
-      router.push(`/(tabs)/(archive)/${currentFocusPrinciple.id}`);
+      setDoctrineModalVisible(true);
     } else {
       router.push('/(tabs)/(archive)');
     }
@@ -223,6 +225,12 @@ export default function DashboardScreen() {
         principle={currentFocusPrinciple}
         onClose={() => setModalVisible(false)}
         onComplete={handleMissionComplete}
+      />
+
+      <DoctrineModal
+        visible={doctrineModalVisible}
+        principle={currentFocusPrinciple}
+        onClose={() => setDoctrineModalVisible(false)}
       />
     </SafeAreaView>
   );
