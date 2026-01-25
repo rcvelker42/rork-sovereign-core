@@ -113,7 +113,7 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
 
               <View style={styles.section}>
                 <Text style={styles.sectionLabel}>
-                  What did you observe in reality today?
+                  What did you observe carrying out this mission today? What was the most striking thought that drifted in/out of your consciousness?
                 </Text>
                 <TextInput
                   style={styles.textInput}
@@ -128,7 +128,7 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
               </View>
 
               <View style={styles.section}>
-                <Text style={styles.sectionLabel}>Internal State Assessment</Text>
+                <Text style={styles.sectionLabel}>Internal State Assessment During Mission</Text>
                 <View style={styles.sliderContainer}>
                   <View style={styles.sliderLabels}>
                     <Text style={styles.sliderLabelLeft}>Reactive</Text>
@@ -151,7 +151,7 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
                     ))}
                   </View>
                   <Text style={styles.stateValueText}>
-                    {stateValue <= 3 ? 'Reactive' : stateValue <= 6 ? 'Calibrating' : 'Sovereign'}
+                    {stateValue <= 2 ? 'Reactive' : stateValue <= 4 ? 'Seeking' : stateValue <= 6 ? 'Grounded' : stateValue <= 8 ? 'Magnetic' : 'Sovereign'}
                   </Text>
                 </View>
               </View>
