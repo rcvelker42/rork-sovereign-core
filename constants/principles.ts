@@ -30,7 +30,7 @@ export const principles: Principle[] = [
     id: 'core-confidence',
     name: 'Core Confidence',
     tier: 1,
-    icon: 'Heart',
+    icon: 'Anchor',
     doctrine: 'Most people have "Situational Confidence." You feel good because you have money in the bank, your hair looks good, or people are laughing at your jokes. But what happens when the money is gone or you\'re the most awkward person in the room? Your confidence evaporates.\n\nCore Confidence is the "Source." It is the irrational belief that you are enough, simply because you exist. It is not based on what you do, but on who you are. It is the realization that your value is a constant, not a variable.',
     mission: {
       title: 'The Mirror Affirmation',
@@ -54,7 +54,7 @@ export const principles: Principle[] = [
     id: 'outcome-independence',
     name: 'Outcome Independence',
     tier: 1,
-    icon: 'Scale',
+    icon: 'Infinity',
     doctrine: 'The "vibe" of a man who needs something is repulsive. If you need a girl to like you, a crowd to cheer for you, or a stranger to be nice to you, you have given them all the power.\n\nOutcome Independence is the ability to walk into any situation and be "OK" regardless of what happens. You aren\'t "trying" to get a result; you are simply "offering" your presence. If they take it, great. If they don\'t, it doesn\'t change your internal state.',
     mission: {
       title: 'The Intentional Rejection',
@@ -78,7 +78,7 @@ export const principles: Principle[] = [
     id: 'state-transfer',
     name: 'State Transfer',
     tier: 1,
-    icon: 'Flame',
+    icon: 'Radio',
     doctrine: 'Humans are biological mirrors. If you are nervous, the person you are talking to will feel nervous. If you are having the time of your life, they will want to join your party. This is State Transfer.\n\nYou don\'t "wait" for the room to get fun to start having fun. You bring the fun. You are the thermostat, not the thermometer. You set the temperature; the room adjusts to you.',
     mission: {
       title: 'The 10% Lift',
@@ -90,7 +90,7 @@ export const principles: Principle[] = [
     id: 'social-pressure',
     name: 'Social Pressure is a Tool',
     tier: 2,
-    icon: 'Gauge',
+    icon: 'Dumbbell',
     doctrine: 'Most men run from social pressure. They feel a "stifling" sensation in their chest when the room goes quiet or when they stand out. The Master does the opposite: he leans into it.\n\nSocial pressure is like a physical weight in a gym. If you hide from it, you stay weak. If you embrace it, you develop a "heavy" presence that commands respect. When you can sit comfortably in high-pressure moments (like a long pause in conversation), you prove that your reality is stronger than the collective anxiety of the room.',
     mission: {
       title: 'The Intentional Pause',
@@ -126,7 +126,7 @@ export const principles: Principle[] = [
     id: 'assumed-familiarity',
     name: 'Assumed Familiarity',
     tier: 2,
-    icon: 'Users',
+    icon: 'Link',
     doctrine: 'Most men treat strangers with a "formal" barrier. They use polite, stiff language that screams "I don\'t know you." This creates distance and awkwardness.\n\nAssumed Familiarity is the "vibe" that you\'ve known this person for ten years. You skip the "interview" questions (What\'s your name? What do you do?) and jump straight into the middle of a "brother/sister" or "old friend" dynamic. This breaks through social masks instantly and creates an immediate bond.',
     mission: {
       title: 'The Mid-Conversation Jump',
@@ -138,7 +138,7 @@ export const principles: Principle[] = [
     id: 'polarization',
     name: 'Polarization',
     tier: 2,
-    icon: 'Zap',
+    icon: 'Magnet',
     doctrine: '"Nice guys" try to be liked by everyone, and as a result, they are loved by no one. They are "lukewarm." The goal of the RSD system is to be Polarizing.\n\nWhen you are unapologetically yourself, some people will hate you, but the people who like you will love you. Polarization is the filter that weeds out the people who don\'t vibe with your reality and attracts your "tribe." If you aren\'t occasionally offending the "wrong" people, you aren\'t being real enough.',
     mission: {
       title: 'The Unpopular Opinion',
@@ -174,7 +174,7 @@ export const principles: Principle[] = [
     id: 'relentless-persistence',
     name: 'Relentless Persistence',
     tier: 3,
-    icon: 'Target',
+    icon: 'Repeat',
     doctrine: 'Mastery isn\'t about never failing; it\'s about being Relentless. In the RSD system, a "rejection" isn\'t a wall—it\'s a data point. The master understands the law of large numbers.\n\nIf you are "Outcome Independent" (Phase 1), then "failing" doesn\'t hurt. It actually becomes fun. You become a scientist of your own life, constantly testing the boundaries of what\'s possible. You don\'t stop until you get what you want, and because you aren\'t "reactive," the world eventually gives in to your persistence.',
     mission: {
       title: 'The 10-Fail Sprint',
@@ -186,7 +186,7 @@ export const principles: Principle[] = [
     id: 'identity-shifting',
     name: 'Identity Shifting',
     tier: 3,
-    icon: 'RefreshCw',
+    icon: 'Crown',
     doctrine: 'Most men are trying to "act" confident. Mastery is about Identity Shifting. You stop being "a guy trying to be cool" and you become "The Man."\n\nThis is the "Self-Transformational" part of the system. You rewrite your internal narrative. You don\'t go to the party; you are the party. You don\'t seek success; success is an inevitable byproduct of who you have become. Your identity is now grounded in your "Core Confidence."',
     mission: {
       title: 'The Alter Ego Night',
@@ -198,7 +198,7 @@ export const principles: Principle[] = [
     id: 'presence-mastery',
     name: 'Presence: The Ultimate High Value',
     tier: 3,
-    icon: 'Sparkles',
+    icon: 'Focus',
     doctrine: 'The highest-level trait a human can possess is Total Presence. Most people are trapped in the past (regret) or the future (anxiety). A Master is 100% in the Now.\n\nWhen you are fully present, you are magnetic. You aren\'t "in your head" thinking of the next line; you are "in the body" experiencing the moment. Presence is the ultimate form of "Non-Reactivity" and "Outcome Independence." It is the peak of the pyramid.',
     mission: {
       title: 'The 5-Minute Presence Anchor',
