@@ -170,6 +170,7 @@ export default function DashboardScreen() {
                   strokeWidth={10}
                   value={stats.presenceScore}
                   label="Presence"
+                  shouldGlow={stats.presenceScore >= 100}
                 />
               </View>
               

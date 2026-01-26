@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import { Colors } from '@/constants/colors';
 
@@ -9,6 +9,7 @@ interface ProgressRingProps {
   strokeWidth?: number;
   label?: string;
   value?: string | number;
+  shouldGlow?: boolean;
 }
 
 export function ProgressRing({ 
@@ -17,13 +18,72 @@ export function ProgressRing({
   strokeWidth = 8,
   label,
   value,
+  shouldGlow = false,
 }: ProgressRingProps) {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
+  
+  const glowAnim = useRef(new Animated.Value(0)).current;
+  
+  useEffect(() => {
+    if (shouldGlow) {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(glowAnim, {
+            toValue: 1,
+            duration: 1500,
+            useNativeDriver: true,
+          }),
+          Animated.timing(glowAnim, {
+            toValue: 0,
+            duration: 1500,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+    } else {
+      glowAnim.setValue(0);
+    }
+  }, [shouldGlow, glowAnim]);
+  
+  const glowOpacity = glowAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.3, 0.8],
+  });
+  
+  const glowScale = glowAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.1],
+  });
 
   return (
     <View style={[styles.container, { width: size, height: size }]}>
+      {shouldGlow && (
+        <Animated.View
+          style={[
+            styles.glowContainer,
+            {
+              width: size,
+              height: size,
+              opacity: glowOpacity,
+              transform: [{ scale: glowScale }],
+            },
+          ]}
+        >
+          <Svg width={size} height={size} style={styles.glowSvg}>
+            <Circle
+              stroke={Colors.accent.gold}
+              fill="none"
+              cx={size / 2}
+              cy={size / 2}
+              r={radius + 2}
+              strokeWidth={strokeWidth + 4}
+              opacity={0.5}
+            />
+          </Svg>
+        </Animated.View>
+      )}
       <Svg width={size} height={size} style={styles.svg}>
         <Circle
           stroke={Colors.background.card}
@@ -63,6 +123,14 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  glowContainer: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  glowSvg: {
+    position: 'absolute',
   },
   svg: {
     position: 'absolute',

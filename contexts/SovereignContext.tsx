@@ -34,6 +34,7 @@ interface SovereignState {
   stats: UserStats;
   dailyFocus: DailyFocus;
   journalEntries: JournalEntry[];
+  lastPresenceDecay: string | null;
 }
 
 const STORAGE_KEY = 'sovereign_state';
@@ -53,6 +54,7 @@ const defaultState: SovereignState = {
     acceptedAt: null,
   },
   journalEntries: [],
+  lastPresenceDecay: null,
 };
 
 export const [SovereignProvider, useSovereign] = createContextHook(() => {
@@ -63,16 +65,42 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     queryKey: ['sovereign_state'],
     queryFn: async () => {
       const stored = await AsyncStorage.getItem(STORAGE_KEY);
+      const now = new Date();
+      
       if (stored) {
         const parsed = JSON.parse(stored) as SovereignState;
         const startDate = new Date(parsed.stats.startDate);
-        const now = new Date();
         const diffTime = Math.abs(now.getTime() - startDate.getTime());
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         parsed.stats.dayCount = Math.max(1, diffDays);
+        
+        // Handle presence decay every 6 hours
+        const SIX_HOURS_MS = 6 * 60 * 60 * 1000;
+        const lastDecay = parsed.lastPresenceDecay ? new Date(parsed.lastPresenceDecay) : new Date(parsed.stats.startDate);
+        const timeSinceLastDecay = now.getTime() - lastDecay.getTime();
+        
+        if (timeSinceLastDecay >= SIX_HOURS_MS) {
+          const decayCount = Math.floor(timeSinceLastDecay / SIX_HOURS_MS);
+          const newPresenceScore = Math.max(0, parsed.stats.presenceScore - (decayCount * 20));
+          
+          parsed.stats.presenceScore = newPresenceScore;
+          parsed.lastPresenceDecay = now.toISOString();
+          
+          // Save the updated state
+          await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+        } else if (!parsed.lastPresenceDecay) {
+          // Initialize lastPresenceDecay if it doesn't exist
+          parsed.lastPresenceDecay = now.toISOString();
+          await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+        }
+        
         return parsed;
       }
-      return defaultState;
+      
+      // For new state, initialize lastPresenceDecay
+      const newState = { ...defaultState, lastPresenceDecay: now.toISOString() };
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+      return newState;
     },
   });
 
