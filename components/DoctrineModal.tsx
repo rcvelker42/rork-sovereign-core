@@ -187,14 +187,6 @@ You purposefully do things that "damage" your cool image. You realize that "look
 Level 3: The "Void" (Presence)
 The voice stops. You are no longer thinking about "The Self." You are just a vessel for the vibe. You are 100% focused on the other person and the environment. This is where True Magnetic Power lives.
 
-Comparison: The "Heavy" Ego vs. The "Light" Master
-Feature | The Ego-Driven Man | The Ego-Less Master
-Social Focus | "How am I doing?" | "How is the vibe?"
-Reaction to 'No' | Personal insult / Pain | Data / Feedback
-Body Language | Rigid / Protective | Loose / Expansive
-Conversation | Interview-style / Qualifying | Playful / Assumed Familiarity
-Power Source | External Approval | Internal Presence
-
 The Philosophy of "The Ghost"
 If you are "nothing," you can be "anything." The Ego is a static image. "I am a punk rocker," or "I am a businessman." This prevents you from being fluid.
 The man who has "killed his Ego" can talk to a billionaire, a homeless person, a supermodel, and a child with the exact same level of comfort. He doesn't have a "status" to lose, so he can enter any reality.
