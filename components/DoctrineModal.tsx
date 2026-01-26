@@ -311,11 +311,6 @@ Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You
                     );
                   }
                   
-                  // Check if next paragraph is a table to adjust spacing
-                  const nextIsTable = index < doctrineParagraphs.length - 1 && 
-                    doctrineParagraphs[index + 1].trim().includes('|') && 
-                    doctrineParagraphs[index + 1].trim().split('|').length >= 3;
-                  
                   return (
                     <Text 
                       key={index} 
