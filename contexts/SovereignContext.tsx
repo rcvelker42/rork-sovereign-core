@@ -228,6 +228,10 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
       .filter((id): id is string => id !== undefined));
   }, [state.journalEntries]);
 
+  const isPrincipleCompleted = useCallback((principleId: string): boolean => {
+    return completedPrincipleIds.has(principleId);
+  }, [completedPrincipleIds]);
+
   const isGymMissionCompleted = useCallback((gymMissionId: string): boolean => {
     return completedGymMissionIds.has(gymMissionId);
   }, [completedGymMissionIds]);
@@ -258,10 +262,6 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
 
     return false;
   }, [isPrincipleCompleted, isGymMissionCompleted]);
-
-  const isPrincipleCompleted = useCallback((principleId: string): boolean => {
-    return completedPrincipleIds.has(principleId);
-  }, [completedPrincipleIds]);
 
   const isPrincipleUnlocked = useCallback((principleId: string): boolean => {
     const previousId = getPreviousPrincipleId(principleId);
