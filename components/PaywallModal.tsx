@@ -149,7 +149,7 @@ export function PaywallModal({ visible, onClose, onSuccess }: PaywallModalProps)
                 <View style={styles.featureText}>
                   <Text style={styles.featureTitle}>The Mastery Tier</Text>
                   <Text style={styles.featureDescription}>
-                    Access the final 3 principles of sovereignty
+                    Access the final 5 principles of sovereignty
                   </Text>
                 </View>
               </View>
