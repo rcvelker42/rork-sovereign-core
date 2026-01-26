@@ -16,6 +16,7 @@ import { X, Check } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
 import { Principle } from '@/constants/principles';
+import { GymMission } from '@/constants/gymMissions';
 import { GoldButton } from './GoldButton';
 
 const { width, height } = Dimensions.get('window');
@@ -23,11 +24,12 @@ const { width, height } = Dimensions.get('window');
 interface MissionModalProps {
   visible: boolean;
   principle: Principle | null;
+  gymMission?: GymMission;
   onClose: () => void;
   onComplete: (reflection: string, stateValue: number) => void;
 }
 
-export function MissionModal({ visible, principle, onClose, onComplete }: MissionModalProps) {
+export function MissionModal({ visible, principle, gymMission, onClose, onComplete }: MissionModalProps) {
   const [reflection, setReflection] = useState('');
   const [stateValue, setStateValue] = useState(5);
   const [showValidationModal, setShowValidationModal] = useState(false);
@@ -112,6 +114,9 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
   };
 
   if (!principle) return null;
+  
+  const missionTitle = gymMission ? gymMission.title : principle.mission.title;
+  const missionXp = gymMission?.xpReward || principle.mission.xpReward;
 
   return (
     <Modal transparent visible={visible} animationType="none">
@@ -136,10 +141,12 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
             <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
               <View style={styles.missionInfo}>
                 <Text style={styles.missionLabel}>MISSION COMPLETED</Text>
-                <Text style={styles.missionTitle}>{principle.mission.title}</Text>
-                <View style={styles.xpBadge}>
-                  <Text style={styles.xpText}>+{principle.mission.xpReward} XP</Text>
-                </View>
+                <Text style={styles.missionTitle}>{missionTitle}</Text>
+                {missionXp > 0 && (
+                  <View style={styles.xpBadge}>
+                    <Text style={styles.xpText}>+{missionXp} XP</Text>
+                  </View>
+                )}
               </View>
 
               <View style={styles.section}>

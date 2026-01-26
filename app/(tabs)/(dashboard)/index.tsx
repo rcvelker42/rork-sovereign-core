@@ -24,7 +24,8 @@ export default function DashboardScreen() {
   const { 
     stats, 
     socialState, 
-    currentFocusPrinciple, 
+    currentFocusPrinciple,
+    currentFocusGymMission,
     completeMission,
     isLoading 
   } = useSovereign();
@@ -64,7 +65,11 @@ export default function DashboardScreen() {
   };
 
   const handleMissionComplete = (reflection: string, stateValue: number) => {
-    if (currentFocusPrinciple) {
+    if (currentFocusGymMission) {
+      // Handle gym mission completion
+      const principleId = currentFocusGymMission.principleId;
+      completeMission(principleId, reflection, stateValue, currentFocusGymMission.id);
+    } else if (currentFocusPrinciple) {
       completeMission(currentFocusPrinciple.id, reflection, stateValue);
     }
     setModalVisible(false);
@@ -111,31 +116,36 @@ export default function DashboardScreen() {
           <View style={styles.focusCard}>
             <View style={styles.focusHeader}>
               <Text style={styles.focusLabel}>DAILY FOCUS</Text>
-              {currentFocusPrinciple && (
+              {(currentFocusPrinciple || currentFocusGymMission) && (
                 <View style={styles.activeBadge}>
                   <Text style={styles.activeBadgeText}>ACTIVE</Text>
                 </View>
               )}
             </View>
             
-            {currentFocusPrinciple ? (
+            {(currentFocusPrinciple || currentFocusGymMission) ? (
               <>
-                <Text style={styles.focusTitle}>{currentFocusPrinciple.name}</Text>
+                <Text style={styles.focusTitle}>
+                  {currentFocusPrinciple.name}
+                  {currentFocusGymMission && ` - Mission ${currentFocusGymMission.missionNumber}`}
+                </Text>
                 <Text style={styles.focusMission} numberOfLines={2}>
-                  {currentFocusPrinciple.mission.title}
+                  {currentFocusGymMission?.title || currentFocusPrinciple.mission.title}
                 </Text>
                 
                 <View style={styles.focusActions}>
-                  <TouchableOpacity 
-                    style={styles.focusButton}
-                    onPress={handleStudyDoctrine}
-                  >
-                    <BookOpen size={18} color={Colors.accent.gold} />
-                    <Text style={styles.focusButtonText}>Study Doctrine</Text>
-                  </TouchableOpacity>
+                  {!currentFocusGymMission && (
+                    <TouchableOpacity 
+                      style={styles.focusButton}
+                      onPress={handleStudyDoctrine}
+                    >
+                      <BookOpen size={18} color={Colors.accent.gold} />
+                      <Text style={styles.focusButtonText}>Study Doctrine</Text>
+                    </TouchableOpacity>
+                  )}
                   
                   <TouchableOpacity 
-                    style={[styles.focusButton, styles.focusButtonPrimary]}
+                    style={[styles.focusButton, styles.focusButtonPrimary, currentFocusGymMission && styles.focusButtonFullWidth]}
                     onPress={handleLogExecution}
                   >
                     <PenLine size={18} color={Colors.background.primary} />
@@ -221,12 +231,13 @@ export default function DashboardScreen() {
         </Animated.View>
       </ScrollView>
 
-      <MissionModal
-        visible={modalVisible}
-        principle={currentFocusPrinciple}
-        onClose={() => setModalVisible(false)}
-        onComplete={handleMissionComplete}
-      />
+        <MissionModal
+          visible={modalVisible}
+          principle={currentFocusPrinciple}
+          gymMission={currentFocusGymMission || undefined}
+          onClose={() => setModalVisible(false)}
+          onComplete={handleMissionComplete}
+        />
 
       <DoctrineModal
         visible={doctrineModalVisible}
@@ -360,6 +371,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600' as const,
     color: Colors.background.primary,
+  },
+  focusButtonFullWidth: {
+    flex: 1,
   },
   noFocusText: {
     fontSize: 18,

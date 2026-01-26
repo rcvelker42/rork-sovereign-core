@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import createContextHook from '@nkzw/create-context-hook';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { getPrincipleById, Principle, TIER_UNLOCK_REQUIREMENTS, PrincipleTier, getPreviousPrincipleId, PRINCIPLE_ORDER } from '@/constants/principles';
+import { getGymMissionsForPrinciple } from '@/constants/gymMissions';
 import { getStateByXP, SocialState } from '@/constants/states';
 
 export interface JournalEntry {
@@ -26,6 +27,7 @@ export interface UserStats {
 
 export interface DailyFocus {
   principleId: string | null;
+  gymMissionId: string | null;
   acceptedAt: string | null;
 }
 
@@ -51,6 +53,7 @@ const defaultState: SovereignState = {
   },
   dailyFocus: {
     principleId: null,
+    gymMissionId: null,
     acceptedAt: null,
   },
   journalEntries: [],
@@ -134,16 +137,35 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     updateState({
       dailyFocus: {
         principleId,
+        gymMissionId: null,
         acceptedAt: new Date().toISOString(),
       },
     });
   }, [updateState]);
 
-  const completeMission = useCallback((principleId: string, reflection: string, stateValue: number) => {
+  const setGymMissionFocus = useCallback((gymMissionId: string, principleId: string) => {
+    updateState({
+      dailyFocus: {
+        principleId: null,
+        gymMissionId,
+        acceptedAt: new Date().toISOString(),
+      },
+    });
+  }, [updateState]);
+
+  const completeMission = useCallback((principleId: string, reflection: string, stateValue: number, gymMissionId?: string) => {
     const principle = getPrincipleById(principleId);
     if (!principle) return;
 
-    const xpEarned = principle.mission.xpReward;
+    // Get XP from gym mission if provided, otherwise use principle's mission XP
+    let xpEarned = principle.mission.xpReward;
+    if (gymMissionId) {
+      const gymMissions = getGymMissionsForPrinciple(principleId);
+      const gymMission = gymMissions.find(m => m.id === gymMissionId);
+      if (gymMission && gymMission.xpReward > 0) {
+        xpEarned = gymMission.xpReward;
+      }
+    }
     const newEntry: JournalEntry = {
       id: Date.now().toString(),
       date: new Date().toISOString(),
@@ -176,6 +198,7 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
       },
       dailyFocus: {
         principleId: null,
+        gymMissionId: null,
         acceptedAt: null,
       },
       journalEntries: [newEntry, ...state.journalEntries],
@@ -218,17 +241,33 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
   }, [isPrincipleCompleted]);
 
   const currentFocusPrinciple: Principle | null = useMemo(() => {
-    if (!state.dailyFocus.principleId) return null;
-    return getPrincipleById(state.dailyFocus.principleId) ?? null;
-  }, [state.dailyFocus.principleId]);
+    if (state.dailyFocus.principleId) {
+      return getPrincipleById(state.dailyFocus.principleId) ?? null;
+    }
+    if (state.dailyFocus.gymMissionId) {
+      // Extract principleId from gymMissionId (format: principleId-gym-2)
+      const principleId = state.dailyFocus.gymMissionId.split('-gym-')[0];
+      return getPrincipleById(principleId) ?? null;
+    }
+    return null;
+  }, [state.dailyFocus.principleId, state.dailyFocus.gymMissionId]);
+
+  const currentFocusGymMission = useMemo(() => {
+    if (!state.dailyFocus.gymMissionId) return null;
+    const principleId = state.dailyFocus.gymMissionId.split('-gym-')[0];
+    const missions = getGymMissionsForPrinciple(principleId);
+    return missions.find(m => m.id === state.dailyFocus.gymMissionId) ?? null;
+  }, [state.dailyFocus.gymMissionId]);
 
   return {
     ...state,
     isLoading: stateQuery.isLoading,
     socialState,
     currentFocusPrinciple,
+    currentFocusGymMission,
     completeOnboarding,
     setDailyFocus,
+    setGymMissionFocus,
     completeMission,
     isTierUnlocked,
     isPrincipleCompleted,

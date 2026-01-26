@@ -25,9 +25,10 @@ interface GymMissionModalProps {
   mission: GymMission | null;
   principle: Principle | undefined;
   onClose: () => void;
+  onAccept?: (mission: GymMission) => void;
 }
 
-export function GymMissionModal({ visible, mission, principle, onClose }: GymMissionModalProps) {
+export function GymMissionModal({ visible, mission, principle, onClose, onAccept }: GymMissionModalProps) {
   const slideAnim = useRef(new Animated.Value(height)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -63,9 +64,11 @@ export function GymMissionModal({ visible, mission, principle, onClose }: GymMis
   }, [visible]);
 
   const handleAccept = () => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    // TODO: Handle accepting gym mission
-    onClose();
+    if (mission && onAccept) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      onAccept(mission);
+      onClose();
+    }
   };
 
   if (!mission || !principle) return null;

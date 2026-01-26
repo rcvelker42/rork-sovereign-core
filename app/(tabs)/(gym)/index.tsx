@@ -7,6 +7,7 @@ import {
   Animated,
   TouchableOpacity,
 } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Dumbbell, ChevronRight } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
@@ -22,7 +23,8 @@ import { getGymMissionsForPrinciple, GymMission } from '@/constants/gymMissions'
 import { GymMissionModal } from '@/components/GymMissionModal';
 
 export default function GymScreen() {
-  const { isPrincipleUnlocked, isPrincipleCompleted } = useSovereign();
+  const { isPrincipleUnlocked, isPrincipleCompleted, setGymMissionFocus } = useSovereign();
+  const router = useRouter();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const orderedPrinciples = getPrinciplesInOrder();
   const [selectedMission, setSelectedMission] = useState<GymMission | null>(null);
@@ -49,6 +51,11 @@ export default function GymScreen() {
   const handleCloseModal = () => {
     setMissionModalVisible(false);
     setSelectedMission(null);
+  };
+
+  const handleAcceptMission = (mission: GymMission) => {
+    setGymMissionFocus(mission.id, mission.principleId);
+    router.push('/(tabs)/(dashboard)');
   };
 
   const renderGymMission = (mission: GymMission, principle: any) => {
@@ -153,6 +160,7 @@ export default function GymScreen() {
             mission={selectedMission}
             principle={getPrincipleById(selectedMission.principleId)}
             onClose={handleCloseModal}
+            onAccept={handleAcceptMission}
           />
         )}
       </Animated.View>
