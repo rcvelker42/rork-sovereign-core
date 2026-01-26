@@ -5,10 +5,7 @@ import {
   StyleSheet, 
   Animated, 
   Dimensions,
-  ImageBackground,
-  ScrollView,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
+  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -19,26 +16,25 @@ import { Colors } from '@/constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
+type OnboardingStep = 
+  | 'intro'
+  | 'prompt1' | 'prompt2' | 'prompt3'
+  | 'stakes'
+  | 'prompt4' | 'prompt5'
+  | 'solution'
+  | 'pact'
+  | 'complete';
+
 export default function AwakeningScreen() {
   const router = useRouter();
   const { hasOnboarded, completeOnboarding, isLoading } = useSovereign();
   
-  const [hasReadManifesto, setHasReadManifesto] = useState(false);
+  const [currentStep, setCurrentStep] = useState<OnboardingStep>('intro');
+  const [responses, setResponses] = useState<Record<string, string>>({});
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
-  const buttonFade = useRef(new Animated.Value(0)).current;
-
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    const paddingToBottom = 40;
-    const isCloseToBottom = layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
-    
-    if (isCloseToBottom && !hasReadManifesto) {
-      setHasReadManifesto(true);
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-  };
+  const textureAnim = useRef(new Animated.Value(0)).current; // 0 = paper, 1 = leather
 
   useEffect(() => {
     if (!isLoading && hasOnboarded) {
@@ -46,8 +42,7 @@ export default function AwakeningScreen() {
       return;
     }
 
-    Animated.sequence([
-      Animated.delay(300),
+    if (currentStep === 'intro') {
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
@@ -59,18 +54,73 @@ export default function AwakeningScreen() {
           duration: 1200,
           useNativeDriver: true,
         }),
-      ]),
-      Animated.delay(400),
-      Animated.timing(buttonFade, {
-        toValue: 1,
-        duration: 800,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [isLoading, hasOnboarded]);
+      ]).start();
+    } else {
+      // Fade in new content
+      fadeAnim.setValue(0);
+      slideAnim.setValue(30);
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+  }, [currentStep, isLoading, hasOnboarded]);
 
-  const handleEnter = () => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  // Animate texture as user progresses
+  useEffect(() => {
+    const stepValue = getStepValue(currentStep);
+    Animated.timing(textureAnim, {
+      toValue: stepValue,
+      duration: 1000,
+      useNativeDriver: true, // opacity can use native driver
+    }).start();
+  }, [currentStep]);
+
+  const getStepValue = (step: OnboardingStep): number => {
+    const stepOrder: OnboardingStep[] = [
+      'intro', 'prompt1', 'prompt2', 'prompt3', 'stakes', 
+      'prompt4', 'prompt5', 'solution', 'pact', 'complete'
+    ];
+    return stepOrder.indexOf(step) / (stepOrder.length - 1);
+  };
+
+  const handleResponse = (promptKey: string, response: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setResponses({ ...responses, [promptKey]: response });
+    
+    // Move to next step
+    const nextStep = getNextStep(currentStep);
+    if (nextStep) {
+      setCurrentStep(nextStep);
+    }
+  };
+
+  const getNextStep = (step: OnboardingStep): OnboardingStep | null => {
+    const flow: Record<OnboardingStep, OnboardingStep> = {
+      'intro': 'prompt1',
+      'prompt1': 'prompt2',
+      'prompt2': 'prompt3',
+      'prompt3': 'stakes',
+      'stakes': 'prompt4',
+      'prompt4': 'prompt5',
+      'prompt5': 'solution',
+      'solution': 'pact',
+      'pact': 'complete',
+      'complete': 'complete',
+    };
+    return flow[step] || null;
+  };
+
+  const handleAcceptWeight = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     
     Animated.parallel([
       Animated.timing(fadeAnim, {
@@ -78,15 +128,238 @@ export default function AwakeningScreen() {
         duration: 600,
         useNativeDriver: true,
       }),
-      Animated.timing(buttonFade, {
-        toValue: 0,
+      Animated.timing(textureAnim, {
+        toValue: 1,
         duration: 400,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
     ]).start(() => {
       completeOnboarding();
       router.replace('/(tabs)');
     });
+  };
+
+  const renderContent = () => {
+    switch (currentStep) {
+      case 'intro':
+        return (
+          <View style={styles.contentContainer}>
+            <View style={styles.emblemContainer}>
+              <View style={styles.emblem}>
+                <View style={styles.emblemInner}>
+                  <Text style={styles.emblemText}>S</Text>
+                </View>
+              </View>
+            </View>
+            <Text style={styles.title}>SOVEREIGN</Text>
+            <View style={styles.divider} />
+            <Text style={styles.subtitle}>🏛️ The Awakening: A Cross-Examination</Text>
+            <Text style={styles.introText}>
+              "The first step to sovereignty is admitting you are currently a subject."
+            </Text>
+            <View style={styles.buttonContainer}>
+              <GoldButton 
+                title="Begin the Cross-Examination" 
+                onPress={() => setCurrentStep('prompt1')}
+              />
+            </View>
+          </View>
+        );
+
+      case 'prompt1':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>I. The Diagnosis</Text>
+            <Text style={styles.promptText}>
+              When you enter a room of strangers, do you feel like the Architect of the energy, or are you a Chameleon desperately trying to blend in?
+            </Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt1', 'architect')}
+              >
+                <Text style={styles.optionText}>I am the Architect</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt1', 'chameleon')}
+              >
+                <Text style={styles.optionText}>I am the Chameleon</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      case 'prompt2':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>I. The Diagnosis</Text>
+            <Text style={styles.promptText}>
+              Be honest with yourself: If you lost your job, your current social status, and your favorite "props" tomorrow, would your confidence remain a Constant, or would it evaporate into Nothing?
+            </Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt2', 'constant')}
+              >
+                <Text style={styles.optionText}>It is a Constant</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt2', 'disappear')}
+              >
+                <Text style={styles.optionText}>It would disappear</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      case 'prompt3':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>I. The Diagnosis</Text>
+            <Text style={styles.promptText}>
+              How many times this week have you "filtered" your true thoughts or suppressed an impulse because you were afraid of looking stupid?
+            </Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt3', 'never')}
+              >
+                <Text style={styles.optionText}>Never</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt3', 'occasionally')}
+              >
+                <Text style={styles.optionText}>Occasionally</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt3', 'constantly')}
+              >
+                <Text style={styles.optionText}>Constantly</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      case 'stakes':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>II. The Stakes</Text>
+            <Text style={styles.quoteText}>
+              "A man who fears the 'No' is a man who has already rejected himself."
+            </Text>
+            <View style={styles.buttonContainer}>
+              <GoldButton 
+                title="Continue" 
+                onPress={() => setCurrentStep('prompt4')}
+              />
+            </View>
+          </View>
+        );
+
+      case 'prompt4':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>II. The Stakes</Text>
+            <Text style={styles.promptText}>
+              Imagine yourself five years from now if you change nothing. If you continue to seek permission, wait for the "right time," and hide in your comfort zone... does that man's life look like a Masterpiece or a Tragedy?
+            </Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt4', 'masterpiece')}
+              >
+                <Text style={styles.optionText}>A Masterpiece</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt4', 'tragedy')}
+              >
+                <Text style={styles.optionText}>A Tragedy</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      case 'prompt5':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>II. The Stakes</Text>
+            <Text style={styles.promptText}>
+              Are you ready to kill the Ego that is currently "protecting" you from growth, even if it means feeling the weight of social pressure, judgment, and rejection?
+            </Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt5', 'not-ready')}
+              >
+                <Text style={styles.optionText}>No, I'm not ready</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.optionButton}
+                onPress={() => handleResponse('prompt5', 'incinerate')}
+              >
+                <Text style={styles.optionText}>Yes, incinerate it</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      case 'solution':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>III. The Sovereign Solution</Text>
+            <Text style={styles.quoteText}>
+              "This is not an app. This is a forge."
+            </Text>
+            <View style={styles.solutionContent}>
+              <Text style={styles.solutionText}>
+                <Text style={styles.boldText}>The Revelation:</Text> "You have spent your life following a script written by others. Sovereign is the tool to help you tear up that script. We do not provide 'lines' or 'hacks.' We provide a 15-Principle Architecture designed to dismantle your social conditioning and rebuild you from the core upward."
+              </Text>
+              <Text style={styles.solutionSubtitle}>How to Use This Engine:</Text>
+              <View style={styles.listContainer}>
+                <Text style={styles.listItem}>• <Text style={styles.boldText}>Study the Doctrine:</Text> Each principle contains the raw logic of social power.</Text>
+                <Text style={styles.listItem}>• <Text style={styles.boldText}>Accept the Weight:</Text> You will be assigned Missions. These are not digital tasks; they are real-world confrontations with your own fear.</Text>
+                <Text style={styles.listItem}>• <Text style={styles.boldText}>Log the Proof:</Text> Growth only happens when it is witnessed. You will log your execution and rate your Sovereignty Scale.</Text>
+                <Text style={styles.listItem}>• <Text style={styles.boldText}>Ascend the Tiers:</Text> Complete three levels of missions for each principle to unlock the next stage of your evolution.</Text>
+              </View>
+            </View>
+            <View style={styles.buttonContainer}>
+              <GoldButton 
+                title="Continue" 
+                onPress={() => setCurrentStep('pact')}
+              />
+            </View>
+          </View>
+        );
+
+      case 'pact':
+        return (
+          <View style={styles.contentContainer}>
+            <Text style={styles.sectionTitle}>IV. The Pact</Text>
+            <Text style={styles.quoteText}>
+              "Words are cheap. Presence is everything."
+            </Text>
+            <Text style={styles.pactText}>
+              Do you commit to prioritizing Action over Theory, and will you vow to never "lie" to your Ledger, knowing that the only person you truly cheat is the man you are meant to become?
+            </Text>
+            <View style={styles.acceptButtonContainer}>
+              <TouchableOpacity
+                style={styles.acceptButton}
+                onPress={handleAcceptWeight}
+              >
+                <Text style={styles.acceptButtonText}>I ACCEPT THE WEIGHT</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+
+      default:
+        return null;
+    }
   };
 
   if (isLoading) {
@@ -100,6 +373,16 @@ export default function AwakeningScreen() {
     );
   }
 
+  // Interpolate texture from paper (light) to leather (dark/embossed)
+  const paperOpacity = textureAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+  const leatherOpacity = textureAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1],
+  });
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -107,87 +390,35 @@ export default function AwakeningScreen() {
         style={StyleSheet.absoluteFill}
       />
       
-      <View style={styles.textureOverlay} />
+      {/* Paper texture overlay */}
+      <Animated.View 
+        style={[
+          styles.textureOverlay,
+          styles.paperTexture,
+          { opacity: paperOpacity }
+        ]} 
+      />
       
-      <View style={styles.content}>
-        <Animated.View 
-          style={[
-            styles.heroSection,
-            {
-              opacity: fadeAnim,
-              transform: [{ translateY: slideAnim }],
-            }
-          ]}
-        >
-          <View style={styles.emblemContainer}>
-            <View style={styles.emblem}>
-              <View style={styles.emblemInner}>
-                <Text style={styles.emblemText}>S</Text>
-              </View>
-            </View>
-            <View style={styles.emblemGlow} />
-          </View>
-          
-          <Text style={styles.title}>SOVEREIGN</Text>
-          <View style={styles.divider} />
-        </Animated.View>
-
-        <Animated.View 
-          style={[
-            styles.manifestoSection,
-            { opacity: fadeAnim }
-          ]}
-        >
-          <ScrollView 
-            style={styles.manifestoScroll}
-            contentContainerStyle={styles.manifestoContent}
-            showsVerticalScrollIndicator={true}
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-          >
-            <Text style={styles.manifestoText}>
-              Most men are living a scripted life. You wake up, you follow the "rules" of a social contract you never signed, and you wonder why you feel like a background character in your own movie. You feel "stifled." You feel like you're waiting for permission to be powerful, to be attractive, to be real.
-            </Text>
-            
-            <Text style={styles.manifestoText}>
-              What if the "matrix" of social anxiety, "what will they think?" and "I'm not enough" is actually a hallucination?
-            </Text>
-            
-            <Text style={styles.manifestoText}>
-              We aren't here to give you lines. We are here to dismantle the ego that is keeping you small. We are here to help you find your Core Confidence—the kind that doesn't depend on a girl's reaction, a boss's praise, or a friend's approval. This is about becoming the "Source" of your own reality.
-            </Text>
-            
-            <Text style={styles.manifestoHighlight}>
-              Welcome to the Path of the Natural.
-            </Text>
-          </ScrollView>
-          
-          {!hasReadManifesto && (
-            <View style={styles.scrollIndicator}>
-              <Text style={styles.scrollIndicatorText}>Scroll to continue</Text>
-            </View>
-          )}
-        </Animated.View>
-
-        <Animated.View 
-          style={[
-            styles.buttonContainer,
-            { opacity: buttonFade }
-          ]}
-        >
-          <GoldButton 
-            title="Enter the Arena" 
-            onPress={handleEnter}
-            disabled={!hasReadManifesto}
-          />
-          
-          {!hasReadManifesto && (
-            <Text style={styles.disclaimer}>
-              Read the manifesto above to continue
-            </Text>
-          )}
-        </Animated.View>
-      </View>
+      {/* Leather texture overlay */}
+      <Animated.View 
+        style={[
+          styles.textureOverlay,
+          styles.leatherTexture,
+          { opacity: leatherOpacity }
+        ]} 
+      />
+      
+      <Animated.View 
+        style={[
+          styles.content,
+          {
+            opacity: fadeAnim,
+            transform: [{ translateY: slideAnim }],
+          }
+        ]}
+      >
+        {renderContent()}
+      </Animated.View>
       
       <View style={styles.cornerDecor} />
       <View style={[styles.cornerDecor, styles.cornerDecorBottomRight]} />
@@ -206,21 +437,26 @@ const styles = StyleSheet.create({
   },
   textureOverlay: {
     ...StyleSheet.absoluteFillObject,
+  },
+  paperTexture: {
     backgroundColor: 'rgba(245, 245, 220, 0.02)',
+  },
+  leatherTexture: {
+    backgroundColor: 'rgba(101, 67, 33, 0.15)',
   },
   content: {
     flex: 1,
-    justifyContent: 'space-between',
     paddingHorizontal: 32,
-    paddingTop: height * 0.15,
+    paddingTop: height * 0.12,
     paddingBottom: 60,
   },
-  heroSection: {
-    alignItems: 'center',
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
   emblemContainer: {
+    alignItems: 'center',
     marginBottom: 32,
-    position: 'relative',
   },
   emblem: {
     width: 100,
@@ -247,85 +483,137 @@ const styles = StyleSheet.create({
     color: Colors.accent.gold,
     fontStyle: 'italic',
   },
-  emblemGlow: {
-    position: 'absolute',
-    top: -10,
-    left: -10,
-    right: -10,
-    bottom: -10,
-    borderRadius: 60,
-    backgroundColor: Colors.accent.goldDim,
-    opacity: 0.3,
-    zIndex: -1,
-  },
   title: {
     fontSize: 32,
     fontWeight: '300' as const,
     color: Colors.text.primary,
     letterSpacing: 12,
     textTransform: 'uppercase',
+    textAlign: 'center',
+    marginBottom: 16,
   },
   divider: {
     width: 60,
     height: 1,
     backgroundColor: Colors.accent.gold,
-    marginVertical: 16,
+    alignSelf: 'center',
+    marginBottom: 24,
   },
-  manifestoSection: {
-    flex: 1,
-    marginBottom: 20,
-    position: 'relative',
-  },
-  manifestoScroll: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  manifestoContent: {
-    padding: 20,
-  },
-  manifestoText: {
-    fontSize: 15,
-    color: Colors.text.secondary,
-    lineHeight: 26,
-    marginBottom: 20,
-    textAlign: 'left',
-  },
-  manifestoHighlight: {
+  subtitle: {
     fontSize: 18,
     fontWeight: '600' as const,
-    fontStyle: 'italic',
     color: Colors.accent.gold,
     textAlign: 'center',
-    marginTop: 8,
-    marginBottom: 8,
+    marginBottom: 16,
   },
-  scrollIndicator: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingVertical: 12,
-    backgroundColor: 'rgba(13, 15, 10, 0.95)',
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
+  introText: {
+    fontSize: 16,
+    color: Colors.text.secondary,
+    lineHeight: 26,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: 40,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '600' as const,
+    color: Colors.accent.gold,
+    textAlign: 'center',
+    marginBottom: 32,
+    letterSpacing: 1,
+  },
+  promptText: {
+    fontSize: 17,
+    color: Colors.text.primary,
+    lineHeight: 28,
+    textAlign: 'center',
+    marginBottom: 40,
+  },
+  quoteText: {
+    fontSize: 16,
+    color: Colors.text.secondary,
+    lineHeight: 26,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: 40,
+  },
+  optionsContainer: {
+    gap: 16,
+    marginTop: 20,
+  },
+  optionButton: {
+    backgroundColor: Colors.background.card,
+    borderRadius: 8,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: Colors.border,
     alignItems: 'center',
   },
-  scrollIndicatorText: {
-    fontSize: 12,
-    color: Colors.accent.goldMuted,
-    letterSpacing: 1,
+  optionText: {
+    fontSize: 16,
+    color: Colors.text.primary,
+    fontWeight: '500' as const,
+  },
+  solutionContent: {
+    marginBottom: 40,
+  },
+  solutionText: {
+    fontSize: 15,
+    color: Colors.text.secondary,
+    lineHeight: 24,
+    marginBottom: 24,
+  },
+  solutionSubtitle: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: Colors.accent.gold,
+    marginBottom: 16,
+    marginTop: 8,
+  },
+  listContainer: {
+    gap: 12,
+  },
+  listItem: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    lineHeight: 22,
+    marginBottom: 12,
+  },
+  boldText: {
+    fontWeight: '600' as const,
+    color: Colors.text.primary,
+  },
+  pactText: {
+    fontSize: 17,
+    color: Colors.text.primary,
+    lineHeight: 28,
+    textAlign: 'center',
+    marginBottom: 40,
   },
   buttonContainer: {
     alignItems: 'center',
+    marginTop: 40,
   },
-  disclaimer: {
-    fontSize: 11,
-    color: Colors.text.muted,
-    marginTop: 20,
-    letterSpacing: 0.5,
+  acceptButtonContainer: {
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  acceptButton: {
+    backgroundColor: Colors.background.card,
+    borderRadius: 8,
+    paddingVertical: 18,
+    paddingHorizontal: 40,
+    borderWidth: 2,
+    borderColor: Colors.accent.gold,
+    alignItems: 'center',
+    minWidth: 280,
+  },
+  acceptButtonText: {
+    fontSize: 16,
+    fontWeight: '700' as const,
+    color: Colors.accent.gold,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
   },
   cornerDecor: {
     position: 'absolute',
