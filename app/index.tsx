@@ -312,7 +312,7 @@ export default function AwakeningScreen() {
         return (
           <View style={styles.contentContainer}>
             <Text style={styles.sectionTitle}>III. The Sovereign Solution</Text>
-            <Text style={styles.quoteText}>
+            <Text style={[styles.quoteText, styles.solutionQuote]}>
               "This is not an app. This is a forge."
             </Text>
             <View style={styles.solutionContent}>
@@ -327,7 +327,7 @@ export default function AwakeningScreen() {
                 <Text style={styles.listItem}>• <Text style={styles.boldText}>Ascend the Tiers:</Text> Complete three levels of missions for each principle to unlock the next stage of your evolution.</Text>
               </View>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={styles.solutionButtonContainer}>
               <GoldButton 
                 title="Continue" 
                 onPress={() => setCurrentStep('pact')}
@@ -537,6 +537,9 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginBottom: 40,
   },
+  solutionQuote: {
+    marginBottom: 16,
+  },
   optionsContainer: {
     gap: 16,
     marginTop: 20,
@@ -555,20 +558,20 @@ const styles = StyleSheet.create({
     fontWeight: '500' as const,
   },
   solutionContent: {
-    marginBottom: 40,
+    marginBottom: 20,
   },
   solutionText: {
     fontSize: 15,
     color: Colors.text.secondary,
-    lineHeight: 24,
-    marginBottom: 24,
+    lineHeight: 22,
+    marginBottom: 16,
   },
   solutionSubtitle: {
     fontSize: 16,
     fontWeight: '600' as const,
     color: Colors.accent.gold,
-    marginBottom: 16,
-    marginTop: 8,
+    marginBottom: 12,
+    marginTop: 4,
   },
   listContainer: {
     gap: 12,
@@ -593,6 +596,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: 'center',
     marginTop: 40,
+  },
+  solutionButtonContainer: {
+    alignItems: 'center',
+    marginTop: 20,
   },
   acceptButtonContainer: {
     alignItems: 'center',
