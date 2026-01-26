@@ -107,6 +107,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isOutcomeIndependence = principle.id === 'outcome-independence';
   const isNonReactivity = principle.id === 'non-reactivity-foundation';
   const isStateTransfer = principle.id === 'state-transfer';
+  const isSocialPressure = principle.id === 'social-pressure';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -351,6 +352,50 @@ The Mastery Insight: "The Source of the Vibe"
 
 Sovereign Thought: "I don't go to the party to find the fun. I am the fun. Wherever I go, the party follows."`;
 
+  // Custom detailed text for Social Pressure is a Tool
+  const socialPressureText = `Principle 06: Social Pressure is a Tool is the point where most men stop. They can be confident in their bedroom or with their friends, but the moment "Social Pressure" hits—the weight of being watched, judged, or challenged—they "stifle." In the self transformation framework, we don't avoid this weight; we bench-press it.
+
+The Philosophy of "The Heavy Presence"
+Most men view social pressure as a negative force. It's that tightness in your chest when you're about to approach a stranger, or the awkward itch you feel when a conversation goes silent. You've been conditioned since birth to "diffuse" this pressure—to make a joke, look away, or apologize to make the discomfort go away.
+The Master does the exact opposite. He realizes that social pressure is actually Social Value in its rawest form. The person who can sit comfortably in the highest amount of pressure without cracking is, by definition, the highest-value person in the room.
+
+The "Stifle" vs. The "Flow"
+• The Stifle: This is the biological "shut down" of your personality. Your voice gets higher, your movements get jerky, and you stop saying what you actually think. You are trying to be "safe."
+• The Flow: This occurs when you lean into the pressure until it "pops." Once you realize the pressure can't actually hurt you, you become "Heavy." Your presence takes up more space, and others begin to feel a "magnetic" pull toward your certainty.
+
+Real-Life Conversational Examples: Using the Weight
+To master this, you must learn to hold the tension rather than diffusing it.
+
+Scenario 1: The "Pregnant Pause"
+You are talking to someone, and the natural "thread" of the conversation dies.
+• The Reactive Man: He panics. He feels the silence like a physical weight. He quickly blabs out a boring question just to stop the "awkwardness."
+    * Him: "So, uh... do you live around here? Or... I mean, it's a nice place, right?"
+    * The Result: He has signaled that he is uncomfortable. He has "lost" to the pressure.
+• The Master: He leans back, maintains relaxed eye contact, and lets the silence hang for 5, 10, even 15 seconds. He might even smirk slightly as if he's enjoying a private joke.
+    * The Result: The other person begins to feel the pressure. They will eventually speak just to diffuse it, often revealing more about themselves or trying to impress the Master. By doing nothing, the Master has gained the lead.
+
+Scenario 2: The "Testing" Question
+Someone asks you a challenging or slightly rude question, like: "Why are you talking to us?" or "You think you're pretty smooth, don't you?"
+• The Stifled Man: He tries to answer logically or apologize.
+    * Him: "Oh, I just thought you guys looked cool, I'm not trying to be smooth, sorry..."
+    * The Result: He has been crushed by the social pressure of the "confrontation."
+• The Master: He uses the pressure. He repeats the question back slowly, or just looks at them with an amused, "Is that the best you've got?" expression.
+    * Him: (Slowly, calmly) "Smooth? No. I'm actually quite rough around the edges. But you... you're very suspicious. I like that. It's like talking to a tiny, angry detective."
+    * The Result: He took their "pressure" and turned it into a playful "frame."
+
+How to Turn Pressure into Power
+1. The "Lock-In"
+When you feel the urge to look away or "diffuse" a moment, double down. If you're in a conversation that feels awkward, tell yourself: "I'm going to stay in this awkwardness until THEY break first." This is how you build the muscle of Presence.
+2. Slow Down Everything
+Social pressure makes you move and talk faster. To counter this, consciously move at 50% of your normal speed. Slow your speech. Slow your walk. Slow your blinking. This signals to everyone's lizard brain that you are not a prey animal—you are the one in control.
+3. Lean into the "Cringe"
+"Cringe" is just the Ego's way of saying "I'm afraid of being judged." When you feel that "cringe" sensation, it's a compass. Go toward it. The more you do the things that make you feel socially exposed, the more "Heavy" and unshakeable your reality becomes.
+
+The Mastery Insight: "The Eye of the Storm"
+Social pressure is like a hurricane. Most men are being blown around by the winds of other people's opinions. The Master lives in the Eye of the Storm. Everything around him might be chaotic, high-pressure, or intense, but he is the calm center. Because he is the only one not moving, everyone else eventually gravitates toward him for stability.
+
+Sovereign Thought: "Pressure is a privilege. It is the universe's way of asking you if you are who you say you are. Every time you don't crack, you become more real."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -362,6 +407,8 @@ Sovereign Thought: "I don't go to the party to find the fun. I am the fun. Where
     ? nonReactivityText.split('\n\n')
     : isStateTransfer
     ? stateTransferText.split('\n\n')
+    : isSocialPressure
+    ? socialPressureText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -485,7 +532,7 @@ Sovereign Thought: "I don't go to the party to find the fun. I am the fun. Where
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
