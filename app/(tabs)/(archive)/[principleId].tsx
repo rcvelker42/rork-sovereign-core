@@ -22,6 +22,16 @@ import {
   Sparkles, 
   Compass,
   ArrowLeft,
+  Anchor,
+  Skull,
+  Radio,
+  Dumbbell,
+  Sun,
+  Feather,
+  Link,
+  Magnet,
+  Repeat,
+  Focus,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
@@ -42,6 +52,16 @@ const iconMap: Record<string, React.ComponentType<{ size: number; color: string 
   Crown,
   Sparkles,
   Compass,
+  Anchor,
+  Skull,
+  Radio,
+  Dumbbell,
+  Sun,
+  Feather,
+  Link,
+  Magnet,
+  Repeat,
+  Focus,
 };
 
 export default function PrincipleDetailScreen() {
