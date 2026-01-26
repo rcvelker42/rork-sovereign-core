@@ -114,6 +114,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isPolarization = principle.id === 'polarization';
   const isSocialIntuition = principle.id === 'social-intuition';
   const isVibeVsWords = principle.id === 'vibe-vs-words';
+  const isRelentlessPersistence = principle.id === 'relentless-persistence';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -681,6 +682,45 @@ A Master is a master of the Silent Movie. He knows that if the visual story (bod
 
 Sovereign Thought: "Speak only if it improves upon the silence, but project your vibe until the silence itself begins to speak for you."`;
 
+  // Custom detailed text for Relentless Persistence
+  const relentlessPersistenceText = `Welcome to the "grindstone" of the system. If the previous principles were about the "art" of the interaction, Principle 13: Relentless Persistence is about the Mathematics of Success.
+
+In the self-transformation framework, we don't view "rejection" as a stop sign; we view it as a filter. Most men quit at the first sign of friction. The Master knows that the "gold" is usually buried just past the point where everyone else gives up. This isn't about being "creepy" or "pushy"—it's about having such a powerful Outcome Independence(Principle 03) that a "No" doesn't even register as a reason to stop having a good time.
+
+The Philosophy of "The Infinite Game"
+Most men play a Finite Game. They have a specific amount of "social energy," and every "No" drains their battery. When the battery hits zero, they go home, feeling defeated.
+The Master plays an Infinite Game. He realizes that as long as he is still in the room and still in a "High State," he hasn't lost. Persistence is simply the refusal to accept a low-value reality. If someone is being cold or "testing" you, they are offering you a low-value reality. Relentless Persistence is the act of staying in your high-value reality until theirs eventually collapses and merges with yours.
+
+Real-Life Conversational Examples: The "Non-Reactive" Push
+Persistence in this system is "Soft." It's not about arguing; it's about re-engaging with a smile.
+Scenario 1: The "I have a boyfriend" or "I'm busy"
+You approach a group or an individual, and within 30 seconds, they give you a standard "blow-off" line.
+• The Reactive Man: He takes the "No" as a command. He says, "Oh, sorry," and walks away with his head down. His state is crushed.
+• The Relentless Master: He treats the "No" like a weather report—it's just information, not an ending.
+    * The Interaction: * Her: "I actually have a boyfriend."
+        * Him: (Unphased, grinning) "Of course you do. A girl like you? If you didn't have a boyfriend, I'd assume there was something deeply wrong with the world. Does he know you're out here looking this suspicious, or is he the trusting type?"
+    * The Result: He didn't "accept" the rejection. He bypassed the logic and stayed in the Vibe (Principle 12). Often, the "No" was just a test of his Core Confidence (Principle 01).
+
+Scenario 2: The "Social Wall" (The Cold Group)
+You walk into a group that is huddled together, and they don't open up to let you in.
+• The Stifled Man: He stands on the outside for 5 seconds, feels the "Social Pressure" (Principle 06), and leaves.
+• The Relentless Master: He stays. He doesn't need them to "invite" him. He talks to the person closest to him, then turns to the next. If they give him one-word answers, he tells a story to himself (Self-Entertainment).
+    * The Result: Eventually, the group realizes he isn't going anywhere and he isn't "seeking" anything. Their defenses drop because his Non-Reactivity is higher than their "Exclusivity."
+
+The Three Pillars of Relentless Persistence
+1. The "Three-Strike" Rule
+Never walk away after the first friction point. Most "rejections" are just "reflexes." People are conditioned to say "No" to strangers. Give the interaction at least three "re-hooks"—changing the subject or using a new Polarization (Principle 10)—before you decide to move on.
+2. Micro-Persistence
+This is persistence in the "moment." If someone looks away, don't look away. If the conversation dips, don't panic. Stay in the pocket. Your ability to Endure the Silence (Principle 06) is a form of persistence that communicates massive value.
+3. The "Law of Large Numbers"
+The Master knows that if he approaches 100 people, 80 might be "meh," 10 might be "No," but 10 will be "Life-Changing." Persistence is the fuel that gets you through the 90 to get to the 10. You don't take the 90 personally because you're focused on the Statistical Certainty of Success.
+
+The Mastery Insight: "Water vs. Rock"
+Think of Persistence like water hitting a rock. The water doesn't "fight" the rock. It doesn't get angry that the rock is there. It just keeps flowing. Eventually, the water finds a crack, or it simply flows around it.
+When you are Relentless, you are the Water. You are fluid. You are constant. A "No" is just a rock in your stream. You don't stop; you just find a different way to flow.
+
+Sovereign Thought: "The world belongs to the man who can be rejected a thousand times and still walk into the next room with the same fire in his eyes."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -706,6 +746,8 @@ Sovereign Thought: "Speak only if it improves upon the silence, but project your
     ? socialIntuitionText.split('\n\n')
     : isVibeVsWords
     ? vibeVsWordsText.split('\n\n')
+    : isRelentlessPersistence
+    ? relentlessPersistenceText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -829,7 +871,7 @@ Sovereign Thought: "Speak only if it improves upon the silence, but project your
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && !isRelentlessPersistence && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
