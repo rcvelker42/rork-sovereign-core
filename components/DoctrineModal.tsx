@@ -104,6 +104,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const IconComponent = iconMap[principle.icon] || Scale;
   const isCoreConfidence = principle.id === 'core-confidence';
   const isDeathOfEgo = principle.id === 'death-of-ego';
+  const isOutcomeIndependence = principle.id === 'outcome-independence';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -193,11 +194,62 @@ The man who has "killed his Ego" can talk to a billionaire, a homeless person, a
 
 Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You cannot be both at the same time.`;
 
+  // Custom detailed text for Outcome Independence
+  const outcomeIndependenceText = `Outcome Independence is the "Invisibility Cloak" of the social world. This is the stage where you transition from being a "prowler" to being a "king."
+If Core Confidence is your engine and Ego Death is removing the brakes, Outcome Independence (OI) is the fuel that allows you to drive anywhere without worrying about the destination. It is the refusal to let a specific result dictate your emotional state.
+
+The Philosophy of "The Detached Master"
+Most men enter a social interaction with a "Goal."
+• "I want her to like me."
+• "I want to get this job."
+• "I want to be the funniest guy in this group."
+The moment you have a goal that requires someone else's permission, you have created Neediness. Neediness is a high-frequency "buzz" that people can detect instantly. It makes you stifled, reactive, and manipulative.
+Outcome Independence is the radical shift where the "Process" becomes the "Reward." You aren't talking to someone to get something; you are talking to them to express something. You are playing the game for the sake of the game, not the scoreboard.
+
+Real-Life Conversational Examples: The Power of "Detachment"
+Scenario 1: The "Direct" Approach
+You see someone you find attractive and walk over.
+• The Outcome-Dependent Man: He is terrified. He thinks, "If she says 'no,' I've failed." He approaches tentatively.
+    * The Interaction: * Him: "Hey, I thought you looked nice..." (Watching her face like a hawk for a smile).
+        * Her: "Thanks, but I'm actually waiting for someone."
+        * Him: (Visible slump in posture) "Oh, okay. Sorry to bother you."
+    * The Reality: He let her "No" kill his "State."
+• The Outcome-Independent Master: He thinks, "I'm going to go share my energy with her. If she's cool, we'll vibe. If not, I'm still the same man."
+    * The Interaction: * Him: "I had to come over because your energy is hilarious. You look like you're plotting a heist."
+        * Her: "I'm actually waiting for my boyfriend."
+        * Him: (Grinning, totally unphased) "Excellent. Does he know about the heist, or is he the getaway driver? Because you definitely need a getaway driver."
+    * The Result: Because he didn't "flee" when the result wasn't perfect, he often breaks through the initial shield. He is "Gaming the Moment," not the "Goal."
+
+The Three Pillars of OI
+1. The "Take It or Leave It" Vibe
+This is the sub-perceptual message you send in every interaction. It says: "I am offering you a chance to enter my world. If you want in, it's going to be a blast. If you don't, I'm going to keep having a blast without you." This makes you the Prize.
+2. The "Next" Mentality
+OI is built on the foundation of Abundance. If you think there is only one girl, one job, or one chance to be cool, you will be outcome-dependent. When you realize the world is an infinite stream of opportunities, a single "No" is as insignificant as a single raincloud in a sunny month.
+3. Entertainment Value
+The Master is his own primary audience. He tells jokes because he thinks they are funny. He dances because he likes the song. If other people join in, it's just a "bonus."
+
+Scenario 2: The "High-Stakes" Negotiation
+You are asking for a raise or pitching a project.
+• The Outcome-Dependent Professional: He is rehearsed and stiff. He is "pleading" with his eyes. He needs the "Yes" to pay his rent or feel successful. If the boss says "Maybe," he gets defensive or desperate.
+• The Outcome-Independent Professional: He knows his value. He presents the data clearly.
+    * The Vibe: "Here is what I bring to the table. This is the value. If you want it, here is the price. If not, I know three other firms that will jump at this." * The Result: Ironically, this "willingness to walk away" is the most powerful negotiating tool in existence.
+
+OI vs. Apathy (The Critical Distinction)
+A common mistake young men make is thinking Outcome Independence means "acting like you don't care" or being "bored." That is Apathy, and it's low-value.
+
+The Mastery Insight: "The Poker Game"
+Think of OI like a world-class poker player. He can play a hand perfectly—mathematically and psychologically—and still lose the pot because of a bad river card.
+• The Outcome-Dependent player gets "tilted" (angry and emotional) because he lost the money.
+• The Outcome-Independent player smiles because he played the hand correctly. He knows that if he keeps playing correctly, he will win in the long run.
+Sovereign Thought: "I am the captain of my effort, but I am merely a spectator of the result."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
     : isDeathOfEgo
     ? deathOfEgoText.split('\n\n')
+    : isOutcomeIndependence
+    ? outcomeIndependenceText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -321,7 +373,7 @@ Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
