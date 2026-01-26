@@ -106,6 +106,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isDeathOfEgo = principle.id === 'death-of-ego';
   const isOutcomeIndependence = principle.id === 'outcome-independence';
   const isNonReactivity = principle.id === 'non-reactivity-foundation';
+  const isStateTransfer = principle.id === 'state-transfer';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -302,6 +303,54 @@ Think of yourself as the Ocean. A "reaction" is a wave on the surface. People ca
 
 Sovereign Thought: "You cannot control the storm, but you can control the ship. And if the ship is heavy enough, the storm doesn't even matter."`;
 
+  // Custom detailed text for State Transfer
+  const stateTransferText = `State Transfer is the "Infection" principle. In the self-transformation system, this is the point where you move from being a defensive player to an offensive one. If Non-Reactivity is about not letting the world change you, State Transfer is about you changing the world.
+This is the biological reality of human interaction: we are social mirrors. Neurons in our brains called "mirror neurons" are designed to pick up on the emotional frequency of those around us. The person with the most certain, grounded state will always win the interaction.
+
+The Philosophy of "The Thermostat"
+Most people are Social Thermometers. They walk into a room, measure the temperature (the "vibe"), and then adjust their own state to fit in. If the room is awkward, they become awkward. If the room is professional, they become stiff.
+The Master is a Social Thermostat. He sets the temperature. He decides, "I am having a 10/10 time right now," and he holds that state so purely and with such certainty that the people around him have no choice but to adjust to him.
+
+Real-Life Conversational Examples: Leading the Vibe
+Scenario 1: The "Cold" Group at a Party
+You walk into a kitchen where three people are standing around in silence, looking at their phones. The "vibe" is a 2/10.
+• The Situational Man: He feels the awkwardness and "catches" it. He walks in quietly, gets a drink, and says in a low, hesitant voice: "Hey guys... busy night, huh?" He has just reflected their 2/10 state.
+• The State Transfer Master: He walks in with a 9/10 energy. He's already smiling because he was just laughing at a thought in his head.
+    * Him: (Big energy, warm smile) "Okay, stop. This kitchen is way too serious for a Friday. Who's the leader of this secret meeting? I need to know who to talk to about the music."
+    * The Result: Because his energy is higher and more certain than their boredom, they "wake up." They start to smile. He has transferred his "fun" state into them.
+
+Scenario 2: The "High-Pressure" Sales or Date
+You are asking for a commitment, whether it's a "yes" on a contract or a "yes" to a second date.
+• The Reactive Man: He is nervous. His hands might shake slightly, his voice is thin. He is projecting uncertainty.
+    * The State Transfer: The other person picks up on his anxiety and starts to feel anxious themselves. They think, "I feel uneasy about this," and they say "No" because of the feeling, not the facts.
+• The State Transfer Master: He feels total conviction. He is relaxed, leaning back, and speaking with a deep, resonant tone.
+    * The State Transfer: The other person feels his certainty. They feel "safe" in his reality. They catch his "relaxed confidence" and say "Yes" because it feels like the natural thing to do.
+
+The Three Mechanics of State Transfer
+1. Conviction (The Root)
+You cannot transfer a state you don't actually feel. If you are "faking" confidence, people pick up on the "dissonance" (the gap between your words and your energy). State Transfer starts with Self-Talk. You must genuinely convince yourself that you are having a blast.
+2. Physicality (The Conduit)
+Your state travels through your voice and your body.
+• Voice: Resonance, slow tempo, and "downward inflections" (ending sentences like a statement, not a question).
+• Body: Expansive movements and a "genuine" smile (the kind that crinkles the eyes).
+3. Eye Contact (The Bridge)
+Eye contact is the "fiber-optic cable" of state transfer. When you look someone in the eye while holding a high state, you are directly "downloading" your reality into their brain.
+
+Scenario 3: Dealing with a Negative Coworker
+A colleague comes to your desk to complain about a project. They are stressed and "vibrating" at a low frequency.
+• The Reactive Man: He listens, nods, and starts to feel stressed too. He says, "Yeah, you're right, this is a mess. I'm worried too." Now they are both in a low state.
+• The State Transfer Master: He remains "Non-Reactive" but then projects optimism. He laughs slightly at the absurdity of the problem.
+    * Him: "Man, they really threw us a curveball today. It's almost impressive how much they messed this up. Let's grab a coffee, figure out the first move, and crush it. We've handled worse."
+    * The Result: The coworker feels a "weight" lift. They have caught his "problem-solver" state.
+
+State Transfer vs. "Being Loud and Annoying"
+A common mistake is thinking State Transfer means being the loudest person in the room. True state transfer is about depth, not volume.
+
+The Mastery Insight: "The Source of the Vibe"
+"He who has the most fun, wins." Why? Because fun is the highest social value. Everyone wants to feel good. If you are the man who is consistently feeling the best, you become the Sun. Everyone else becomes the Planets orbiting around you, trying to catch some of your light.
+
+Sovereign Thought: "I don't go to the party to find the fun. I am the fun. Wherever I go, the party follows."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -311,6 +360,8 @@ Sovereign Thought: "You cannot control the storm, but you can control the ship. 
     ? outcomeIndependenceText.split('\n\n')
     : isNonReactivity
     ? nonReactivityText.split('\n\n')
+    : isStateTransfer
+    ? stateTransferText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -434,7 +485,7 @@ Sovereign Thought: "You cannot control the storm, but you can control the ship. 
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
