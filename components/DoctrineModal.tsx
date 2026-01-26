@@ -111,6 +111,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isValueProjection = principle.id === 'value-projection';
   const isLawOfLeastEffort = principle.id === 'law-of-least-effort';
   const isAssumedFamiliarity = principle.id === 'assumed-familiarity';
+  const isPolarization = principle.id === 'polarization';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -538,6 +539,49 @@ Once they feel that "familiarity," they stop judging your words and start feelin
 
 Sovereign Thought: "A stranger is just a friend you haven't teased yet."`;
 
+  // Custom detailed text for Polarization
+  const polarizationText = `Principle 10: Polarization is the "Great Filter" of social dynamics. If Phase 2 has been about building a bridge to the world, Polarization is about deciding who is worthy of crossing it.
+In the self-transformation system, the biggest mistake a young man can make is trying to be "liked by everyone." When you try to be everything to everyone, you become nothing to anyone. You become "beige"—boring, safe, and invisible. Polarization is the act of being so unapologetically yourself that you force the world to take a side: they either love you or they leave you.
+
+The Philosophy of "The Magnet"
+Think of a magnet. A magnet doesn't just attract; it also repels. If it didn't have a repulsive pole, it wouldn't have an attractive one. It would just be a piece of inert metal.
+Social Polarization works the same way. When you express a strong opinion, a "bold" vibe, or a unique personality, you create a "Social Shockwave."
+• The Repulsion: People who don't share your values or vibe will feel uncomfortable and move away. This is a victory. It saves you time and keeps your "tribe" pure.
+• The Attraction: People who do vibe with you will feel an intense, immediate pull. Because you were brave enough to be "real," they feel safe being real with you.
+
+Real-Life Conversational Examples: The Courage to be Disliked
+Scenario 1: The "Polite" vs. The "Polarizing" Opinion
+You're in a group talking about a popular movie or a local trend.
+• The Beige Approach (Neutral):
+    * Him: "Yeah, it was okay. I mean, some parts were good, some were slow. What did you guys think?" (Seeking the group's consensus before committing to a feeling).
+    * The Result: He is "safe." No one disagrees with him, but no one remembers him either. He has zero "edge."
+• The Polarizing Approach (The Stake in the Ground):
+    * Him: "I'm going to be honest—I hated it. It felt like it was written by an AI trying to satisfy a focus group. I actually almost walked out to go get a taco instead. Tacos have more soul than that film."
+    * The Result: He has polarized the room. Some will say, "Finally, someone said it!" (High Attraction). Others will argue with him. Even the argument provides Social Pressure (Principle 06), which he can use to show his "Non-Reactivity."
+
+Scenario 2: The "Naughty/Nice" Dynamic
+You are talking to someone you find attractive, and they mention something they are proud of, like being a "perfectionist" or a "straight-A student."
+• The Beige Approach (Validating):
+    * Him: "That's really impressive. You must work very hard. I admire that."
+    * The Result: He is "qualifying" her. He is the "nice guy." There is no tension, no spark, and no polarization.
+• The Polarizing Approach (Playful Conflict):
+    * Him: (Smirking) "Oh no. You're one of those. A high-achiever. I bet your color-coded planners are terrifying. We are definitely going to be enemies. I'm the guy who loses his keys twice a day—you'd find me exhausting."
+    * The Result: He has "polarized" the interaction. He isn't just another fan; he is a Challenge. He is "Non-Reactive" to her status and "Assumes Familiarity" by teasing her.
+
+The Three Pillars of Polarization
+1. Honest Expression
+Stop filtering your thoughts through the "Will they like this?" lens. Start filtering them through the "Is this true to me?" lens. If you think a song is terrible, say it. If you love a nerdy hobby, own it. The more specific you are, the more magnetic you become.
+2. The "Willingness to Lose"
+Polarization requires Outcome Independence (Principle 03). You must be genuinely okay with someone walking away from the conversation. The Master knows that if he loses 5 people who don't "get" him, he's making space for the 1 person who will truly "get" him.
+3. Leading the Frame
+When you polarize, you are setting the "Frame" (the context) of the interaction. You aren't asking for permission to be yourself; you are presenting yourself as a finished product. People respect a man who has boundaries and a defined "flavor."
+
+The Mastery Insight: "The Lighthouse Effect"
+A lighthouse doesn't run around the shore looking for boats to save. It just stays in one spot and shines as brightly as it can. The boats that need the light find it; the boats that don't, stay away.
+When you are polarizing, you are a lighthouse. You aren't "chasing" social success; you are broadcasting your unique frequency and letting the world organize itself around you.
+
+Sovereign Thought: "If you aren't being rejected by the people who don't fit your life, you aren't being loud enough for the people who do."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -557,6 +601,8 @@ Sovereign Thought: "A stranger is just a friend you haven't teased yet."`;
     ? lawOfLeastEffortText.split('\n\n')
     : isAssumedFamiliarity
     ? assumedFamiliarityText.split('\n\n')
+    : isPolarization
+    ? polarizationText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -680,7 +726,7 @@ Sovereign Thought: "A stranger is just a friend you haven't teased yet."`;
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
