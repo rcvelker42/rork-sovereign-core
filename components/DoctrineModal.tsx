@@ -110,6 +110,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isSocialPressure = principle.id === 'social-pressure';
   const isValueProjection = principle.id === 'value-projection';
   const isLawOfLeastEffort = principle.id === 'law-of-least-effort';
+  const isAssumedFamiliarity = principle.id === 'assumed-familiarity';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -491,6 +492,52 @@ When you embody the Law of Least Effort, you stop being the hunter and start bei
 
 Sovereign Thought: "Power is the ability to walk away from any situation and be completely fine. The man who is willing to walk away is the only one who truly has power in the room."`;
 
+  // Custom detailed text for Assumed Familiarity
+  const assumedFamiliarityText = `Assumed Familiarity is the "Fast-Forward" button of human relationships. In the self-transformation framework, this principle allows you to bypass the awkward "stranger phase" and jump directly into the deep, comfortable, and playful dynamic of old friends.
+Most men approach strangers with a "Formal Barrier." They use polite, cautious, and "interview-style" language. This signals that they are outsiders looking for permission to enter. The Master operates from the reality that everyone is already his friend; they just haven't met yet.
+
+The Philosophy of "The Inner Circle"
+When you talk to your best friend, you don't ask, "Excuse me, how is your afternoon going? Is it okay if I share a story?"You just start talking. You tease them, you interrupt them, you use "inside jokes," and you assume they understand your vibe.
+Assumed Familiarity is the act of taking that "Inner Circle" energy and projecting it onto a stranger.
+The "Permission" Trap
+• The Stranger Frame: You are waiting for them to show you they like you before you act like yourself. This is "Value Seeking."
+• The Familiar Frame: You act like yourself immediately, assuming they will like it. This is "Value Providing" and "Outcome Independence."
+
+Real-Life Conversational Examples: Breaking the Formal Barrier
+Scenario 1: The "Cold" Opening
+You see someone standing at a coffee shop or a bookstore.
+• The Formal Approach (Stranger Frame):
+    * Him: "Hi, excuse me. I'm sorry to bother you, but I just wanted to say I like your shoes. Where did you get them?"
+    * The Result: This creates a "Buyer/Seller" dynamic. She is now forced to be a "polite stranger." The wall stays up.
+• The Assumed Familiarity Approach (Friend Frame):
+    * Him: (Walking up as if continuing a conversation) "Okay, you have to be honest with me. Are those shoes part of a secret plan to be the most noticeable person in the building, or did you just wake up feeling particularly heroic today?"
+    * The Result: He has skipped the "Hi, how are you?" and jumped straight into a playful, "teasing" dynamic. Because he sounds like an old friend, her brain subconsciously lowers its defenses.
+
+Scenario 2: Skipping the "Interview"
+You've been talking for 2 minutes and want to know what they do.
+• The Stranger Frame:
+    * Him: "So, what do you do for a living?"
+    * Her: "I'm a teacher."
+    * Him: "Oh, that's nice. What grade do you teach?"
+    * The Result: Boring. It feels like a job interview.
+• The Familiar Frame (Cold Reading):
+    * Him: "Wait, don't tell me. Let me guess. You have this very 'I can control a room of chaotic children' energy. You're definitely a teacher, but like... the cool one that let us eat candy in class."
+    * The Result: Even if he's wrong, he's created a "vibe." He is "assuming" he knows her, which creates instant intimacy and allows for much deeper "State Transfer."
+
+The Three Pillars of Assumed Familiarity
+1. The "Mid-Sentence" Entry
+Start your interactions as if the conversation has been going on for hours. Use words like "Anyway," "So," or "I was just thinking." This signals that you aren't an "intruder" starting something new; you are a "regular" in their life.
+2. Playful Polarization (The "Bratty" Dynamic)
+Old friends tease each other. They "push buttons." They don't walk on eggshells. By playfully challenging a stranger—"I don't think we can be friends if you actually like that drink"—you prove that you are not afraid of losing their approval.
+3. Physical Proximity and "Micro-Touches"
+(Use with high calibration). A friend might give a light "high-five," a "fist bump," or a playful nudge on the shoulder. When you incorporate these "micro-touches" early, you bypass the "don't touch me" stranger barrier and trigger a physiological sense of trust.
+
+The Mastery Insight: "The Tribal Connection"
+Evolutionarily, humans lived in small tribes where everyone was "familiar." The "Stranger" is a modern, urban invention. When you use Assumed Familiarity, you are tapping into a primal social code. You are telling the other person's lizard brain: "I am part of your tribe. I am safe. I am known."
+Once they feel that "familiarity," they stop judging your words and start feeling your State.
+
+Sovereign Thought: "A stranger is just a friend you haven't teased yet."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -508,6 +555,8 @@ Sovereign Thought: "Power is the ability to walk away from any situation and be 
     ? valueProjectionText.split('\n\n')
     : isLawOfLeastEffort
     ? lawOfLeastEffortText.split('\n\n')
+    : isAssumedFamiliarity
+    ? assumedFamiliarityText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -631,7 +680,7 @@ Sovereign Thought: "Power is the ability to walk away from any situation and be 
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
