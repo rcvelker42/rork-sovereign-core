@@ -1006,6 +1006,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background.primary,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
+    height: height * 0.92,
     maxHeight: height * 0.92,
     borderTopWidth: 1,
     borderColor: Colors.accent.gold,
@@ -1036,6 +1037,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    minHeight: 0, // Important for ScrollView to work properly in flex container
   },
   scrollContent: {
     padding: 24,
