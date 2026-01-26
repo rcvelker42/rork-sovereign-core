@@ -112,6 +112,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isLawOfLeastEffort = principle.id === 'law-of-least-effort';
   const isAssumedFamiliarity = principle.id === 'assumed-familiarity';
   const isPolarization = principle.id === 'polarization';
+  const isSocialIntuition = principle.id === 'social-intuition';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -582,6 +583,49 @@ When you are polarizing, you are a lighthouse. You aren't "chasing" social succe
 
 Sovereign Thought: "If you aren't being rejected by the people who don't fit your life, you aren't being loud enough for the people who do."`;
 
+  // Custom detailed text for Social Intuition
+  const socialIntuitionText = `Welcome to Phase 3: The Mastery. You have built the internal engine and mastered the external mechanics. Now, we stop "doing" and start "being."
+
+Principle 11: Social Intuition is the transition from Technical Competence to Unconscious Flow. In the self-transformation framework, this is where you stop following a "map" and start feeling the "terrain." It is the ability to read the invisible energy of a room, detect the subtext behind words, and calibrate your actions with surgical precision.
+
+The Philosophy of "The Social X-Ray"
+Most men are "Socially Blind." They only hear the words being spoken. If someone says, "I'm fine," they believe them. If a room is quiet, they assume everyone is bored. They are trapped in the "Literal."
+Social Intuition is about seeing the "Matrix." You realize that human communication is 90% sub-perceptual. You begin to see:
+• The Power Dynamics: Who is the "Alpha" in the group? Who is looking to whom for approval?
+• The Emotional Undercurrents: Is this person actually enjoying the conversation, or are they just being polite?
+• The Window of Opportunity: When is the exact right moment to escalate the energy, and when should you pull back to create a "vacuum"?
+From "Rules" to "Vibrations"
+Earlier, you learned rules like "Lean back" or "Don't fidget." With Social Intuition, you don't need the rules because you can feel the Social Pressure (Principle 06). You know exactly how much pressure to apply because you can feel when the other person is "leaning in" or "pulling away."
+
+Real-Life Conversational Examples: The Power of Calibration
+Calibration is the "knob" on your social intuition. It's the difference between being "bold" and being "creepy," or being "funny" and being "annoying."
+Scenario 1: Reading the "Hard No" vs. the "Playful No"
+You use Polarization (Principle 10) by teasing someone about their drink. They roll their eyes and say, "You're so annoying."
+• Low Intuition: He takes it literally. He gets defensive or apologizes, killing the vibe. Or, he ignores it and keeps teasing even harder, becoming actually annoying.
+• High Intuition (The Master): He reads the micro-expressions. He sees the slight smirk, the "twinkle" in the eye, and the fact that they haven't moved away.
+    * The Response: He leans in and whispers, "You love it. You've been waiting all night for someone to call you out on that terrible cocktail."
+    * The Result: He calibrated his response to the energy, not the words.
+
+Scenario 2: Entering a "High-Status" Group
+You walk into a VIP area or a private party where the energy is exclusive and guarded.
+• Low Intuition: He enters with "High Energy" (Principle 05) because he thinks he needs to "bring the party." He ends up looking like a clown who doesn't belong. He "clashes" with the environment.
+• High Intuition (The Master): He enters and observes. He matches the "Base Frequency" of the room first. He speaks at their volume. He mirrors their posture. Once he is "in sync," he then slowly starts to lead the state upward.
+    * The Result: Because he calibrated to the room's starting point, the group accepts him as "one of them" almost instantly.
+
+The Three Pillars of Social Intuition
+1. The Observational "Pause"
+Masters spend more time looking and feeling than they do talking. When you enter a new environment, don't rush to "do" anything. Take 30 seconds to breathe and scan. Who is leaning in? Who is looking at their phone? Where is the "hot" energy in the room?
+2. Empathic Accuracy
+This is the ability to put yourself in the other person's shoes and feel their current reality. If they just had a long day at work, your "High Energy" might be draining. If they are bored out of their minds, your "High Energy" will be a gift. Intuition is knowing which version of yourself to provide.
+3. Trusting the "Gut"
+Your subconscious mind processes social data 10,000x faster than your conscious mind. If you feel a sudden urge to change the subject, or a feeling that "it's time to go," listen to it. Your "Intuition" is just your brain recognizing patterns that your Ego is too busy to notice.
+
+The Mastery Insight: "The Jazz Player"
+Think of a beginner piano player. They are focused on the notes (C,D,E). They are stiff. They are "Technical." Now think of a Jazz Master. He isn't thinking about notes; he is thinking about the feeling. He can play "off-key" on purpose because he knows it will create a beautiful tension that he can then resolve.
+When you have Social Intuition, you are playing "Social Jazz." You can break all the "rules" of social dynamics because you understand the principles behind them. You can be "low energy," you can "qualify yourself," you can even "be reactive"—but you do it consciously to create a specific effect.
+
+Sovereign Thought: "The map is not the territory. To lead the tribe, you must first feel the heartbeat of the tribe."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -603,6 +647,8 @@ Sovereign Thought: "If you aren't being rejected by the people who don't fit you
     ? assumedFamiliarityText.split('\n\n')
     : isPolarization
     ? polarizationText.split('\n\n')
+    : isSocialIntuition
+    ? socialIntuitionText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -726,7 +772,7 @@ Sovereign Thought: "If you aren't being rejected by the people who don't fit you
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
