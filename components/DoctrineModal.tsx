@@ -105,6 +105,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isCoreConfidence = principle.id === 'core-confidence';
   const isDeathOfEgo = principle.id === 'death-of-ego';
   const isOutcomeIndependence = principle.id === 'outcome-independence';
+  const isNonReactivity = principle.id === 'non-reactivity-foundation';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -243,6 +244,64 @@ Think of OI like a world-class poker player. He can play a hand perfectly—math
 • The Outcome-Independent player smiles because he played the hand correctly. He knows that if he keeps playing correctly, he will win in the long run.
 Sovereign Thought: "I am the captain of my effort, but I am merely a spectator of the result."`;
 
+  // Custom detailed text for Non-Reactivity
+  const nonReactivityText = `Non-Reactivity is the "Iron Shield" of the self-transformation system. If Phase 1 was building the engine and Phase 3 was detaching from the destination, Phase 4 is about becoming The Unshakable Rock while the storm of reality rages around you.
+The world is constantly "testing" you. People, environments, and even your own mind will try to pull you out of your "Core" and into a state of "Reaction." The man who reacts is the man who is controlled. The man who remains non-reactive is the man who leads.
+
+The Philosophy of the "Unshakable Rock"
+Most men are "Reactive." They are like a billiard ball—when something hits them, they move in the direction they were pushed.
+• If someone insults them, they get angry (Reaction).
+• If a girl is cold to them, they get stifled (Reaction).
+• If a situation gets chaotic, they get frantic (Reaction).
+Non-Reactivity is not about being a robot or being "numb." It is about having a buffer zone between a stimulus and your response. It is the ability to perceive a "threat" or a "test" and choose to remain in your own reality.
+
+Real-Life Conversational Examples: Passing the "Shit Test"
+In social dynamics, people (especially high-value women and competitive men) will "test" your reality to see if it's real or just a mask. We call these "Shit Tests."
+
+Scenario 1: The "Status" Test
+You are talking to a girl, and she says something designed to knock you off balance, like: "You're kind of a dork, aren't you?"
+• The Reactive Response: He tries to defend himself or "qualify" his value.
+    * Him: "No, I'm not! I actually have a really cool job and I go to the gym..."
+    * The Result: He has "reacted" to her frame. He is now beneath her, begging for her to take back the "dork" label.
+• The Non-Reactive Master: He doesn't even acknowledge the "insult" as a threat. He absorbs it and stays in his vibe.
+    * Him: (Smirking, leaning in) "Total dork. Actually, I'm the king of the dorks. You should see my spreadsheet collection, it's remarkably erotic."
+    * The Result: By not being "hurt" or "defensive," he proves his reality is stronger than her words. He is the Source.
+
+Scenario 2: The "Heckler" or Aggressive Male
+You're in a group, and another guy tries to "alpha" you by making a joke at your expense: "Nice shirt, man. Did your mom pick that out for you?"
+• The Reactive Response: He gets aggressive or awkward.
+    * Him: "What's that supposed to mean? Your shirt is ugly too."
+    * The Result: He has been pulled into a low-value "dog fight." He looks insecure.
+• The Non-Reactive Master: He uses "The Pause." He looks at the guy for a second, lets the silence hang (Social Pressure), and then gives a dry, amused chuckle.
+    * Him: "Wow. 1995 called, they want their comeback back. You're doing great, man. Keep it up." (Then he turns back to the original conversation as if the guy is invisible).
+    * The Result: He has signaled that the guy's "attack" didn't even register as a threat. He remains Sovereign.
+
+The Three Levels of Non-Reactivity
+
+Level 1: Physical Stillness
+The first sign of "Reaction" is fidgeting. When you feel social pressure, your body wants to "leak" that energy by touching your face, shifting your weight, or blinking rapidly.
+• The Master's Tool: "The Statue." When tension rises, you become more still. You breathe deeper. You own the space.
+
+Level 2: The 3-Second Gap
+Never respond instantly to a challenge. A "Reactive" man snaps back. A "Sovereign" man takes a beat. That 3-second pause proves that you are processing the information, not being triggered by it.
+
+Level 3: Reframing
+This is the ultimate mastery. You don't just "ignore" the stimulus; you re-purpose it. If someone is mean to you, you treat it like they are just being "cute" or "feisty." You decide what their behavior means in your reality.
+
+Scenario 3: The "Crisis" at Work
+A major project fails, and everyone is panicking in the meeting.
+• The Reactive Employee: He starts pointing fingers, talking fast, and sweating. He is "vibrating" at the same frequency as the problem.
+• The Non-Reactive Leader: He is the calmest person in the room. He listens to the chaos, waits for the "noise" to die down, and then speaks slowly: "Okay. The data changed. Here is the new path. Let's move."
+* The Result: Because he didn't "react" to the panic, the group naturally looks to him for leadership.
+
+Non-Reactivity vs. "Being a Doormat"
+A common misconception is that Non-Reactivity means letting people walk all over you. It is the exact opposite.
+
+The Mastery Insight: "The Ocean and the Waves"
+Think of yourself as the Ocean. A "reaction" is a wave on the surface. People can throw rocks into the ocean, and it might make a splash, but the depths of the ocean remain cold, dark, and still. The "Situational Man" is a puddle—you step in it, and the whole thing is disturbed. The "Core Man" is the Pacific—he absorbs everything and remains himself.
+
+Sovereign Thought: "You cannot control the storm, but you can control the ship. And if the ship is heavy enough, the storm doesn't even matter."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -250,6 +309,8 @@ Sovereign Thought: "I am the captain of my effort, but I am merely a spectator o
     ? deathOfEgoText.split('\n\n')
     : isOutcomeIndependence
     ? outcomeIndependenceText.split('\n\n')
+    : isNonReactivity
+    ? nonReactivityText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -373,7 +434,7 @@ Sovereign Thought: "I am the captain of my effort, but I am merely a spectator o
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
