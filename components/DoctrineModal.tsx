@@ -143,14 +143,6 @@ To the Situational Man, failure is an identity. "I failed, therefore I am a fail
 3. Radical Self-Acceptance
 You must reach a point where you accept your "flaws" so deeply that they can't be used against you. If you're short, own it. If you're broke, own it. When you stop "hiding" the things that make you feel low-value, the world loses its leverage over your ego.
 
-Comparison Table: The Two Identities
-Feature | Situational Confidence | Core Confidence
-Origin | External (Results, Praise) | Internal (Self-Decision)
-Stability | Fragile / Volatile | Unshakable / Constant
-Social Role | The Consumer / The Reactor | The Provider / The Source
-Fear Level | High (Fear of losing status) | Low (Nothing to lose)
-Vibe | "Try-hard" / Anxious | Relaxed / Present
-
 The Final Philosophy
 Core Confidence is the realization that the universe is a playground. Most people are playing a high-stakes game of "Don't Look Stupid." The man with Core Confidence is the only one actually playing the game. He realizes that "Dying" socially isn't real. You can't actually "lose" value because your value was never tied to the scoreboard in the first place.`;
 
