@@ -20,10 +20,17 @@ import {
   getPrincipleById,
 } from '@/constants/principles';
 import { getGymMissionsForPrinciple, GymMission } from '@/constants/gymMissions';
+import { Lock } from 'lucide-react-native';
 import { GymMissionModal } from '@/components/GymMissionModal';
 
 export default function GymScreen() {
-  const { isPrincipleUnlocked, isPrincipleCompleted, setGymMissionFocus } = useSovereign();
+  const { 
+    isPrincipleUnlocked, 
+    isPrincipleCompleted, 
+    isGymMissionUnlocked,
+    isGymMissionCompleted,
+    setGymMissionFocus 
+  } = useSovereign();
   const router = useRouter();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const orderedPrinciples = getPrinciplesInOrder();
@@ -43,7 +50,12 @@ export default function GymScreen() {
   };
 
   const handleMissionPress = (mission: GymMission) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    const isUnlocked = isGymMissionUnlocked(mission.id, mission.principleId);
+    if (!isUnlocked) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
     setSelectedMission(mission);
     setMissionModalVisible(true);
   };
@@ -59,37 +71,69 @@ export default function GymScreen() {
   };
 
   const renderGymMission = (mission: GymMission, principle: any) => {
-    const isUnlocked = isPrincipleUnlocked(principle.id);
-    const isCompleted = isPrincipleCompleted(principle.id);
+    const isMissionUnlocked = isGymMissionUnlocked(mission.id, principle.id);
+    const isMissionCompleted = isGymMissionCompleted(mission.id);
+    const isPrincipleDone = isPrincipleCompleted(principle.id);
+
+    // Determine lock reason for display
+    let lockReason = '';
+    if (mission.missionNumber === 2 && !isPrincipleDone) {
+      lockReason = 'Complete principle in Archive first';
+    } else if (mission.missionNumber === 3) {
+      const gymMissions = getGymMissionsForPrinciple(principle.id);
+      const mission2 = gymMissions.find(m => m.missionNumber === 2);
+      if (mission2 && !isGymMissionCompleted(mission2.id)) {
+        lockReason = 'Complete Mission 2 first';
+      }
+    } else if (mission.missionNumber === 4) {
+      const gymMissions = getGymMissionsForPrinciple(principle.id);
+      const mission3 = gymMissions.find(m => m.missionNumber === 3);
+      if (mission3 && !isGymMissionCompleted(mission3.id)) {
+        lockReason = 'Complete Mission 3 first';
+      }
+    }
 
     return (
       <TouchableOpacity
         key={mission.id}
         onPress={() => handleMissionPress(mission)}
-        disabled={!isUnlocked}
+        disabled={!isMissionUnlocked}
         style={[
           styles.missionCard,
-          !isUnlocked && styles.missionCardLocked,
+          !isMissionUnlocked && styles.missionCardLocked,
         ]}
         activeOpacity={0.7}
       >
         <View style={styles.missionCardHeader}>
-          <View style={styles.missionNumberBadge}>
-            <Text style={styles.missionNumberText}>{mission.missionNumber}</Text>
+          <View style={[
+            styles.missionNumberBadge,
+            !isMissionUnlocked && styles.missionNumberBadgeLocked,
+            isMissionCompleted && styles.missionNumberBadgeCompleted,
+          ]}>
+            <Text style={[
+              styles.missionNumberText,
+              !isMissionUnlocked && styles.missionNumberTextLocked,
+              isMissionCompleted && styles.missionNumberTextCompleted,
+            ]}>
+              {mission.missionNumber}
+            </Text>
           </View>
           <View style={styles.missionCardContent}>
-            <Text style={[styles.missionCardTitle, !isUnlocked && styles.missionCardTitleLocked]}>
-              {principle.name} Mission {mission.missionNumber}
+            <Text style={[styles.missionCardTitle, !isMissionUnlocked && styles.missionCardTitleLocked]}>
+              {mission.title}
             </Text>
-            {isCompleted && (
+            {isMissionCompleted && (
               <View style={styles.completedBadge}>
-                <Text style={styles.completedText}>Principle Completed</Text>
+                <Text style={styles.completedText}>Completed</Text>
               </View>
+            )}
+            {!isMissionUnlocked && lockReason && (
+              <Text style={styles.lockReason}>{lockReason}</Text>
             )}
           </View>
           <ChevronRight 
             size={20} 
-            color={isUnlocked ? Colors.text.muted : Colors.tier.locked} 
+            color={isMissionUnlocked ? Colors.text.muted : Colors.tier.locked} 
           />
         </View>
       </TouchableOpacity>
@@ -161,6 +205,24 @@ export default function GymScreen() {
             principle={getPrincipleById(selectedMission.principleId)}
             onClose={handleCloseModal}
             onAccept={handleAcceptMission}
+            isUnlocked={isGymMissionUnlocked(selectedMission.id, selectedMission.principleId)}
+            lockReason={
+              selectedMission.missionNumber === 2 && !isPrincipleCompleted(selectedMission.principleId)
+                ? 'Complete the principle in Archive first'
+                : selectedMission.missionNumber === 3
+                ? (() => {
+                    const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
+                    const mission2 = gymMissions.find(m => m.missionNumber === 2);
+                    return mission2 && !isGymMissionCompleted(mission2.id) ? 'Complete Mission 2 first' : undefined;
+                  })()
+                : selectedMission.missionNumber === 4
+                ? (() => {
+                    const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
+                    const mission3 = gymMissions.find(m => m.missionNumber === 3);
+                    return mission3 && !isGymMissionCompleted(mission3.id) ? 'Complete Mission 3 first' : undefined;
+                  })()
+                : undefined
+            }
           />
         )}
       </Animated.View>
@@ -273,10 +335,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  missionNumberBadgeLocked: {
+    backgroundColor: Colors.background.secondary,
+    borderColor: Colors.tier.locked,
+  },
+  missionNumberBadgeCompleted: {
+    backgroundColor: Colors.accent.gold,
+    borderColor: Colors.accent.gold,
+  },
   missionNumberText: {
     fontSize: 14,
     fontWeight: '700' as const,
     color: Colors.accent.gold,
+  },
+  missionNumberTextLocked: {
+    color: Colors.tier.locked,
+  },
+  missionNumberTextCompleted: {
+    color: Colors.background.primary,
   },
   missionCardContent: {
     flex: 1,
@@ -304,5 +380,11 @@ const styles = StyleSheet.create({
     fontWeight: '600' as const,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
+  },
+  lockReason: {
+    fontSize: 10,
+    color: Colors.text.muted,
+    fontStyle: 'italic',
+    marginTop: 4,
   },
 });

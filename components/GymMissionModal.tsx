@@ -26,9 +26,11 @@ interface GymMissionModalProps {
   principle: Principle | undefined;
   onClose: () => void;
   onAccept?: (mission: GymMission) => void;
+  isUnlocked?: boolean;
+  lockReason?: string;
 }
 
-export function GymMissionModal({ visible, mission, principle, onClose, onAccept }: GymMissionModalProps) {
+export function GymMissionModal({ visible, mission, principle, onClose, onAccept, isUnlocked = true, lockReason }: GymMissionModalProps) {
   const slideAnim = useRef(new Animated.Value(height)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -64,6 +66,10 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
   }, [visible]);
 
   const handleAccept = () => {
+    if (!isUnlocked) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      return;
+    }
     if (mission && onAccept) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       onAccept(mission);
@@ -117,18 +123,33 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
                 </View>
               </View>
 
-              <View style={styles.noteSection}>
-                <Text style={styles.noteText}>
-                  Complete this mission and log your execution in the Command center to earn XP and track your progress.
-                </Text>
-              </View>
+              {!isUnlocked && lockReason && (
+                <View style={styles.lockedSection}>
+                  <Text style={styles.lockedTitle}>Mission Locked</Text>
+                  <Text style={styles.lockedReason}>{lockReason}</Text>
+                </View>
+              )}
+
+              {isUnlocked && (
+                <View style={styles.noteSection}>
+                  <Text style={styles.noteText}>
+                    Complete this mission and log your execution in the Command center to earn XP and track your progress.
+                  </Text>
+                </View>
+              )}
             </ScrollView>
 
             <View style={styles.footer}>
-              <GoldButton
-                title="Accept Mission"
-                onPress={handleAccept}
-              />
+              {isUnlocked ? (
+                <GoldButton
+                  title="Accept Mission"
+                  onPress={handleAccept}
+                />
+              ) : (
+                <View style={styles.lockedButton}>
+                  <Text style={styles.lockedButtonText}>Mission Locked</Text>
+                </View>
+              )}
             </View>
           </Animated.View>
         </KeyboardAvoidingView>
@@ -270,5 +291,39 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
+  },
+  lockedSection: {
+    backgroundColor: Colors.background.card,
+    borderRadius: 8,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: Colors.tier.locked,
+    marginTop: 8,
+  },
+  lockedTitle: {
+    fontSize: 14,
+    fontWeight: '600' as const,
+    color: Colors.text.primary,
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  lockedReason: {
+    fontSize: 12,
+    color: Colors.text.muted,
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  lockedButton: {
+    backgroundColor: Colors.background.secondary,
+    borderRadius: 8,
+    padding: 16,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.tier.locked,
+  },
+  lockedButtonText: {
+    fontSize: 14,
+    fontWeight: '600' as const,
+    color: Colors.tier.locked,
   },
 });

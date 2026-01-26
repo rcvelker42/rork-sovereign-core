@@ -14,6 +14,7 @@ export interface JournalEntry {
   reflection: string;
   stateValue: number;
   xpEarned: number;
+  gymMissionId?: string; // Optional field to track gym mission completions
 }
 
 export interface UserStats {
@@ -174,6 +175,7 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
       reflection,
       stateValue,
       xpEarned,
+      gymMissionId: gymMissionId || undefined,
     };
 
     const newCompletedMissions = state.stats.completedMissions + 1;
@@ -214,8 +216,48 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
   }, [state.stats.completedMissions]);
 
   const completedPrincipleIds = useMemo(() => {
-    return new Set(state.journalEntries.map(entry => entry.principleId));
+    return new Set(state.journalEntries
+      .filter(entry => !entry.gymMissionId) // Only count non-gym missions
+      .map(entry => entry.principleId));
   }, [state.journalEntries]);
+
+  const completedGymMissionIds = useMemo(() => {
+    return new Set(state.journalEntries
+      .filter(entry => entry.gymMissionId)
+      .map(entry => entry.gymMissionId!)
+      .filter((id): id is string => id !== undefined));
+  }, [state.journalEntries]);
+
+  const isGymMissionCompleted = useCallback((gymMissionId: string): boolean => {
+    return completedGymMissionIds.has(gymMissionId);
+  }, [completedGymMissionIds]);
+
+  const isGymMissionUnlocked = useCallback((gymMissionId: string, principleId: string): boolean => {
+    const gymMissions = getGymMissionsForPrinciple(principleId);
+    const mission = gymMissions.find(m => m.id === gymMissionId);
+    if (!mission) return false;
+
+    // Mission 2 requires the principle to be completed (Mission 1)
+    if (mission.missionNumber === 2) {
+      return isPrincipleCompleted(principleId);
+    }
+
+    // Mission 3 requires Mission 2 to be completed
+    if (mission.missionNumber === 3) {
+      const mission2 = gymMissions.find(m => m.missionNumber === 2);
+      if (!mission2) return false;
+      return isGymMissionCompleted(mission2.id);
+    }
+
+    // Mission 4 requires Mission 3 to be completed
+    if (mission.missionNumber === 4) {
+      const mission3 = gymMissions.find(m => m.missionNumber === 3);
+      if (!mission3) return false;
+      return isGymMissionCompleted(mission3.id);
+    }
+
+    return false;
+  }, [isPrincipleCompleted, isGymMissionCompleted]);
 
   const isPrincipleCompleted = useCallback((principleId: string): boolean => {
     return completedPrincipleIds.has(principleId);
@@ -274,5 +316,8 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     isPrincipleUnlocked,
     getNextUnlockedPrincipleId,
     completedPrincipleIds: Array.from(completedPrincipleIds),
+    isGymMissionCompleted,
+    isGymMissionUnlocked,
+    completedGymMissionIds: Array.from(completedGymMissionIds),
   };
 });
