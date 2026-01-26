@@ -30,8 +30,10 @@ interface MissionModalProps {
 export function MissionModal({ visible, principle, onClose, onComplete }: MissionModalProps) {
   const [reflection, setReflection] = useState('');
   const [stateValue, setStateValue] = useState(5);
+  const [showValidationModal, setShowValidationModal] = useState(false);
   const slideAnim = useRef(new Animated.Value(height)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const validationFadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (visible) {
@@ -63,16 +65,45 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
       ]).start();
       setReflection('');
       setStateValue(5);
+      setShowValidationModal(false);
+      validationFadeAnim.setValue(0);
     }
   }, [visible]);
+
+  const countWords = (text: string): number => {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  };
 
   const handleComplete = () => {
     if (!reflection.trim()) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
       return;
     }
+    
+    const wordCount = countWords(reflection);
+    if (wordCount < 20) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      setShowValidationModal(true);
+      Animated.timing(validationFadeAnim, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+      return;
+    }
+    
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     onComplete(reflection, stateValue);
+  };
+
+  const handleCloseValidation = () => {
+    Animated.timing(validationFadeAnim, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => {
+      setShowValidationModal(false);
+    });
   };
 
   const handleSliderChange = (value: number) => {
@@ -167,6 +198,43 @@ export function MissionModal({ visible, principle, onClose, onComplete }: Missio
           </Animated.View>
         </KeyboardAvoidingView>
       </Animated.View>
+
+      {/* Validation Modal */}
+      {showValidationModal && (
+        <Modal transparent visible={showValidationModal} animationType="none">
+          <Animated.View style={[styles.validationOverlay, { opacity: validationFadeAnim }]}>
+            <Animated.View 
+              style={[
+                styles.validationModal,
+                { opacity: validationFadeAnim }
+              ]}
+            >
+              <View style={styles.validationHeader}>
+                <Text style={styles.validationTitle}>Dig Deeper</Text>
+              </View>
+              
+              <View style={styles.validationContent}>
+                <Text style={styles.validationMessage}>
+                  True transformation requires deep reflection. Take a moment to really explore your consciousness and the thoughts that surfaced during this mission.
+                </Text>
+                <Text style={styles.validationMessage}>
+                  What patterns did you notice? What resistance came up? How did your internal state shift? These insights are the foundation of lasting change.
+                </Text>
+                <Text style={styles.validationHint}>
+                  Aim for 30+ words to capture the depth of your experience
+                </Text>
+              </View>
+
+              <View style={styles.validationFooter}>
+                <GoldButton
+                  title="Continue Reflection"
+                  onPress={handleCloseValidation}
+                />
+              </View>
+            </Animated.View>
+          </Animated.View>
+        </Modal>
+      )}
     </Modal>
   );
 }
@@ -320,6 +388,57 @@ const styles = StyleSheet.create({
   footer: {
     padding: 24,
     paddingBottom: 40,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+  },
+  validationOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  validationModal: {
+    backgroundColor: Colors.background.secondary,
+    borderRadius: 16,
+    width: '100%',
+    maxWidth: 400,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  validationHeader: {
+    padding: 24,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  validationTitle: {
+    fontSize: 22,
+    fontWeight: '600' as const,
+    color: Colors.accent.gold,
+    textAlign: 'center',
+    letterSpacing: 0.5,
+  },
+  validationContent: {
+    padding: 24,
+  },
+  validationMessage: {
+    fontSize: 15,
+    color: Colors.text.primary,
+    lineHeight: 24,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  validationHint: {
+    fontSize: 11,
+    color: Colors.text.muted,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginTop: 8,
+  },
+  validationFooter: {
+    padding: 24,
+    paddingTop: 16,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
   },
