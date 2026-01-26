@@ -113,6 +113,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isAssumedFamiliarity = principle.id === 'assumed-familiarity';
   const isPolarization = principle.id === 'polarization';
   const isSocialIntuition = principle.id === 'social-intuition';
+  const isVibeVsWords = principle.id === 'vibe-vs-words';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -626,6 +627,60 @@ When you have Social Intuition, you are playing "Social Jazz." You can break all
 
 Sovereign Thought: "The map is not the territory. To lead the tribe, you must first feel the heartbeat of the tribe."`;
 
+  // Custom detailed text for The Vibe vs. The Words
+  const vibeVsWordsText = `Welcome to the "Invisible" stage of Mastery. Principle 12: The Vibe vs. The Words is the realization that your mouth is the least important part of your communication.
+In the self-transformation framework, we recognize that humans are biological antennas. We are constantly broadcasting and receiving signals that have nothing to do with vocabulary. The "Vibe" is the emotional frequency you are emitting; the "Words" are just the carrier wave. When the two are in conflict, the Vibe always wins.
+
+The Philosophy of "Sub-Perceptual Communication"
+Most men believe that if they just find the "magic words," they will get the result. They treat social interaction like a computer code where If [Sentence A], then [Result B].
+The Master knows that social interaction is actually Resonance.
+• The Words: "I'm having a great time." (The Logic)
+• The Vibe: Shoulders are hunched, eyes are darting, voice is shaky. (The Reality)
+The world doesn't listen to your logic; it feels your reality. If your Vibe says "I am uncomfortable," no amount of "cool" words will save you. But if your Vibe says "I am the Source," you can literally talk about the weather and people will be captivated.
+
+Real-Life Conversational Examples: The "What" vs. The "How"
+Scenario 1: The "Boring" Topic
+You are talking about something mundane, like the fact that you just bought new socks.
+• The Low-Vibe Man (Logic-Focused):
+    * The Delivery: He speaks in a flat, monotone voice. He looks down. He is trying to be "factual."
+    * The Words: "Yeah, I got these socks today. They're cotton. They were on sale."
+    * The Result: He is a "Value Sucker." He is draining the energy of the room with his boring reality.
+• The High-Vibe Master (State-Focused):
+    * The Delivery: He is grinning. He speaks with passion, as if he's describing a trip to Mars. He uses dramatic pauses.
+    * The Words: "You guys... I have achieved peak adulthood. I bought these socks today, and I genuinely think they've changed my life. The arch support? It's basically a hug for my feet. I feel like I could run through a brick wall right now."
+    * The Result: He is a Value Provider. Because his Vibe is high-energy and self-entertained, the Words become hilarious and engaging.
+
+Scenario 2: The "Testing" Moment
+Someone asks you, "Why are you so confident?"
+• The Logic-Focused Man:
+    * The Words: "Well, I've been working on myself, reading books, and I realized that my value shouldn't come from others..."
+    * The Vibe: He sounds like he's reciting a textbook. He is "qualifying" himself.
+• The Vibe-Focused Master:
+    * The Words: "It's the socks. I'm telling you, it's all in the arch support."
+    * The Vibe: He says it with a wink and a relaxed lean. He doesn't explain the "why." His Vibe answers the question: "I am confident because I am comfortable not explaining myself."
+
+The Three Pillars of the Vibe
+1. The "Sub-Text"
+Every sentence has a hidden meaning.
+• Text: "What are you doing tonight?"
+• Sub-Text (Value Seeker): "I hope you're free so you can give me attention."
+• Sub-Text (Master): "I'm doing something cool, and I'm seeing if you're the kind of person who fits that vibe."Mastery is choosing your Sub-Text before you choose your Words.
+2. Vocal Tonality (The Music)
+Your voice is an instrument.
+• Upward Inflection: Ends sentences like a question? (Signals seeking approval).
+• Flat Inflection: Neutral. (Signals boredom).
+• Downward Inflection: Ends sentences like a command. (Signals Sovereignty).
+3. The "Look" (The Eye Contact)
+The Master uses "Sticky Eyes." He doesn't look away when things get intense. He projects his "Internal State" through his gaze. If you are feeling "Love" or "Power" or "Amusement" internally, it will leak out through your eyes regardless of what you say.
+
+The Mastery Insight: "The Silent Movie"
+If you were to watch a video of your social interactions with the sound turned off, what would the "story" be?
+• Would the story be: "A nervous guy trying to be liked"?
+• Or would it be: "A grounded man enjoying himself and leading the space"?
+A Master is a master of the Silent Movie. He knows that if the visual story (body language, presence, eye contact) is strong enough, the "dialogue" is just a formality.
+
+Sovereign Thought: "Speak only if it improves upon the silence, but project your vibe until the silence itself begins to speak for you."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -649,6 +704,8 @@ Sovereign Thought: "The map is not the territory. To lead the tribe, you must fi
     ? polarizationText.split('\n\n')
     : isSocialIntuition
     ? socialIntuitionText.split('\n\n')
+    : isVibeVsWords
+    ? vibeVsWordsText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -772,7 +829,7 @@ Sovereign Thought: "The map is not the territory. To lead the tribe, you must fi
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
