@@ -109,6 +109,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isStateTransfer = principle.id === 'state-transfer';
   const isSocialPressure = principle.id === 'social-pressure';
   const isValueProjection = principle.id === 'value-projection';
+  const isLawOfLeastEffort = principle.id === 'law-of-least-effort';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -443,6 +444,53 @@ People don't fall in love with "you"; they fall in love with how they feel when 
 
 Sovereign Thought: "The man who needs nothing is the only one who can give everything. And the man who gives everything is the only one who receives it all back."`;
 
+  // Custom detailed text for Law of Least Effort
+  const lawOfLeastEffortText = `Welcome to the most paradoxical principle in the system. Principle 08: The Law of Least Effort is the hallmark of the "Natural."
+In the self-transformation world, there is a massive difference between Hard Work and Trying Hard. You work hard on your fitness, your business, and your internal state before you enter the room. But once you are in the social arena, the man who is "trying" is the man who is losing. The Law of Least Effort states that the person who is the least invested in the social outcome—the one who is doing the least to "earn" approval—holds the most power.
+
+The Philosophy of "The Calibrated King"
+Think of social interaction as a game of tennis. If one player is sprinting, sweating, and screaming just to return a basic serve, while the other player is standing still, casually flicking their wrist to win the point, who has more "value"?
+Investment is a signal of status.
+• When you talk fast, move constantly, and over-explain yourself, you are signaling that you are invested in the other person's opinion. You are "working" for their validation.
+• When you move slowly, speak with pauses, and let others come to you, you are signaling that you are comfortable in your own reality. You are "The Prize."
+
+Real-Life Conversational Examples: High Effort vs. Least Effort
+Scenario 1: The "Storyteller"
+You are sharing an experience from your weekend with a group.
+• The High-Effort Man:
+    * The Behavior: He uses big, frantic gestures. He checks everyone's eyes to see if they are laughing. If someone interrupts, he gets flustered and tries to talk over them to "save" his story.
+    * The Result: Even if the story is good, the "vibe" is desperate. People feel like they are being performed at.
+• The Least-Effort Master:
+    * The Behavior: He leans back. He tells the story slowly, as if he's mostly telling it to amuse himself. If someone interrupts, he simply stops talking and listens, totally unphased. He might not even finish the story if the energy shifts.
+    * The Result: Because he isn't "trying" to be the center of attention, the group naturally leans in to hear him. His "effortlessness" makes the story more captivating.
+
+Scenario 2: The "Approach" and Body Language
+You see someone you want to meet at a lounge.
+• The High-Effort Approach:
+    * The Behavior: He "leans in" with his upper body while his feet stay back (the "Primate Lean"). He talks at a high volume and high speed. He stays in their space even if they aren't responding.
+    * The Result: It feels like a "sales pitch." The other person feels pressured to "buy" or "leave."
+• The Least-Effort Approach (The "Over-The-Shoulder"):
+    * The Behavior: He stands slightly turned away (Angling). He speaks at a normal, relaxed volume. He looks over his shoulder to deliver a line, then turns back to his drink or his friends.
+    * The Result: He has signaled that he is not fully invested in the interaction. He is "throwing the line out" and seeing if they bite. This triggers their curiosity to "chase" him.
+
+The Three Pillars of Effortlessness
+1. Sub-Communication over Communication
+90% of your value is communicated through what you don't say. Your stillness, your eye contact, and your "downward tonality" do the work for you. The less you use your mouth to prove you're cool, the more your presence proves it.
+2. The "Calibration" Check
+If you are putting in a "Level 10" effort and the other person is at a "Level 2," you are losing. The Law of Least Effort means you should always be at, or slightly below, the effort level of the person you are talking to. If they give you a one-word answer, give them a half-word answer or a smirk. Make them "work" to get you back to Level 10.
+3. Economy of Motion
+Avoid "Low-Value" movements. These are micro-reactions to social pressure:
+• Fidgeting with your drink or phone.
+• Nodding your head too much while they speak.
+• Laughing at your own jokes before they do.
+• Clearing your throat or saying "um/uh."
+
+The Mastery Insight: "The Waterfall"
+Imagine a waterfall. It doesn't "try" to fall. It doesn't "work" to be powerful. It just is. Because it is so purely itself, people travel from thousands of miles away just to stand in its presence.
+When you embody the Law of Least Effort, you stop being the hunter and start being the Destination. You aren't chasing the "vibe"; you are the static point of certainty that the vibe is built around.
+
+Sovereign Thought: "Power is the ability to walk away from any situation and be completely fine. The man who is willing to walk away is the only one who truly has power in the room."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -458,6 +506,8 @@ Sovereign Thought: "The man who needs nothing is the only one who can give every
     ? socialPressureText.split('\n\n')
     : isValueProjection
     ? valueProjectionText.split('\n\n')
+    : isLawOfLeastEffort
+    ? lawOfLeastEffortText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -581,7 +631,7 @@ Sovereign Thought: "The man who needs nothing is the only one who can give every
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
