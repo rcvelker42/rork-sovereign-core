@@ -116,6 +116,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isVibeVsWords = principle.id === 'vibe-vs-words';
   const isRelentlessPersistence = principle.id === 'relentless-persistence';
   const isIdentityShifting = principle.id === 'identity-shifting';
+  const isPresenceMastery = principle.id === 'presence-mastery';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -763,6 +764,48 @@ Think of a world-class method actor. When they are in character, they don't "thi
 
 Sovereign Thought: "You are under no obligation to be the person you were five minutes ago."`;
 
+  // Custom detailed text for Presence Mastery
+  const presenceMasteryText = `This is the summit of the mountain. Principle 15: Presence is the "Cheat Code." In the self-transformation framework, all previous 14 principles are merely scaffolding to help you reach this state.
+
+Presence is the collapse of time. It is the moment where the "Social Map" disappears because you have become the "Social Terrain." When you are 100% present, you are no longer a person having an experience; you are the experience itself.
+
+The Philosophy of "The Eternal Now"
+Most men are "Time Travelers."
+• The Past: They are stuck in regret or analysis. "I shouldn't have said that," or "That person looked at me weird five minutes ago."
+• The Future: They are stuck in anxiety or "Tactics." "What do I say next?" or "What if she rejects me?"
+Presence is the radical act of bringing 100% of your consciousness into the current millisecond. When you are fully present, your Ego (Principle 02) cannot exist, because the Ego requires the past or the future to survive. In the "Now," there is no "You" to protect—there is only the flow of energy.
+
+Real-Life Conversational Examples: The Power of Being "In"
+Scenario 1: The "High-Frequency" Interaction
+You are talking to someone incredibly charismatic or high-status.
+• The "In-Head" Man: He is "vibrating" with mental noise. He is checking his posture, rehearsing his next line, and wondering how he's being perceived.
+    * The Vibe: He feels "thin" and "ghost-like." Even if his words are perfect, the other person feels a lack of connection.
+• The Present Master: He is 100% focused on the other person's eyes, the sound of their voice, and the feeling of the air in the room.
+    * The Interaction: He doesn't "think" of a joke; a joke simply happens because he is so attuned to the subtext of the moment.
+    * The Result: The other person feels "seen" at a primal level. This is the root of Charisma. People don't remember what you said; they remember how it felt to be the sole focus of your universe for three minutes.
+
+Scenario 2: The "Social Pressure" Peak
+The room goes silent, or someone asks a difficult, confrontational question.
+• The "In-Head" Man: He feels the silence as a "void" that needs to be filled. His brain starts racing to find an "out."
+• The Present Master: He leans into the silence. He experiences the silence as a physical sensation—like cold water. He doesn't rush to fix it.
+    * The Vibe: His stillness is so profound that it becomes a gravity well. Because he is comfortable in the "Now," everyone else begins to look to him for the cue on how to feel.
+
+The Three Pillars of Absolute Presence
+1. Sensory Anchoring (The V-A-K Bridge)
+To get out of your head, you must get into your senses.
+• Visual: What is the exact shade of their eyes?
+• Auditory: What is the rhythm of the background music?
+• Kinesthetic: Can you feel the weight of your feet on the floor? By flooding your brain with sensory data, you leave no room for the "Narrator" to talk.
+2. The "Void" (Internal Stillness)
+This is the ability to have a "Quiet Mind." You aren't judging the interaction as "good" or "bad." You are simply observing. This creates a "Heavy" presence that makes you appear more grounded and powerful than everyone else in the room.
+3. Radical Acceptance
+Presence requires you to accept the moment exactly as it is. If you are nervous, you are present with the nervousness. If the conversation is boring, you are present with the boredom. Paradoxically, the moment you stop fighting the "Now," the "Now" begins to change in your favor.
+
+The Mastery Insight: "The Mirror and the Light"
+Think of your consciousness as a mirror. If the mirror is covered in the "dust" of your thoughts, it can't reflect reality. Presence is the act of wiping the mirror clean. When you are 100% present, you reflect the other person so perfectly that they see their best self in you. This is the ultimate "Value Projection" (Principle 07).
+
+Sovereign Thought: "You don't need to find the 'Flow State.' You only need to stop resisting the moment, and the Flow State will find you."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -792,6 +835,8 @@ Sovereign Thought: "You are under no obligation to be the person you were five m
     ? relentlessPersistenceText.split('\n\n')
     : isIdentityShifting
     ? identityShiftingText.split('\n\n')
+    : isPresenceMastery
+    ? presenceMasteryText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -915,7 +960,7 @@ Sovereign Thought: "You are under no obligation to be the person you were five m
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && !isRelentlessPersistence && !isIdentityShifting && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && !isRelentlessPersistence && !isIdentityShifting && !isPresenceMastery && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
