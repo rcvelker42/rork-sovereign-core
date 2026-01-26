@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -32,12 +32,14 @@ import {
   Magnet,
   Repeat,
   Focus,
+  BookOpen,
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
 import { getPrincipleById, TIER_NAMES, getPreviousPrincipleId } from '@/constants/principles';
 import { useSovereign } from '@/contexts/SovereignContext';
 import { GoldButton } from '@/components/GoldButton';
+import { DoctrineModal } from '@/components/DoctrineModal';
 
 const iconMap: Record<string, React.ComponentType<{ size: number; color: string }>> = {
   Scale,
@@ -71,6 +73,7 @@ export default function PrincipleDetailScreen() {
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
+  const [doctrineModalVisible, setDoctrineModalVisible] = useState(false);
 
   const principle = getPrincipleById(principleId || '');
 
@@ -107,6 +110,11 @@ export default function PrincipleDetailScreen() {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setDailyFocus(principle.id);
     router.push('/(tabs)/(dashboard)');
+  };
+
+  const handleStudyDoctrine = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setDoctrineModalVisible(true);
   };
 
   return (
@@ -159,6 +167,15 @@ export default function PrincipleDetailScreen() {
             </View>
           </View>
 
+          <View style={styles.studyDoctrineSection}>
+            <GoldButton
+              title="Study Doctrine"
+              onPress={handleStudyDoctrine}
+              variant="secondary"
+              style={styles.studyDoctrineButton}
+            />
+          </View>
+
           <View style={styles.missionSection}>
             <Text style={styles.sectionLabel}>THE MISSION</Text>
             <View style={styles.missionCard}>
@@ -198,6 +215,12 @@ export default function PrincipleDetailScreen() {
           </View>
         </Animated.View>
       </ScrollView>
+
+      <DoctrineModal
+        visible={doctrineModalVisible}
+        principle={principle}
+        onClose={() => setDoctrineModalVisible(false)}
+      />
     </>
   );
 }
@@ -252,7 +275,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   doctrineSection: {
+    marginBottom: 20,
+  },
+  studyDoctrineSection: {
     marginBottom: 28,
+  },
+  studyDoctrineButton: {
+    width: '100%',
   },
   sectionLabel: {
     fontSize: 11,
