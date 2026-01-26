@@ -186,7 +186,7 @@ export default function DashboardScreen() {
               
               <View style={styles.ringContainer}>
                 <ProgressRing
-                  progress={Math.min((stats.resilienceXP / 2500) * 100, 100)}
+                  progress={Math.min((stats.resilienceXP / 3000) * 100, 100)}
                   size={110}
                   strokeWidth={10}
                   value={stats.resilienceXP}

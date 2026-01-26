@@ -28,19 +28,19 @@ export const getStateByLevel = (level: number): SocialState => {
 };
 
 export const getStateByXP = (xp: number): SocialState => {
-  if (xp < 50) return SOCIAL_STATES[0];
-  if (xp < 120) return SOCIAL_STATES[1];
-  if (xp < 200) return SOCIAL_STATES[2];
-  if (xp < 300) return SOCIAL_STATES[3];
-  if (xp < 420) return SOCIAL_STATES[4];
-  if (xp < 560) return SOCIAL_STATES[5];
-  if (xp < 720) return SOCIAL_STATES[6];
-  if (xp < 900) return SOCIAL_STATES[7];
-  if (xp < 1100) return SOCIAL_STATES[8];
-  if (xp < 1320) return SOCIAL_STATES[9];
-  if (xp < 1560) return SOCIAL_STATES[10];
-  if (xp < 1820) return SOCIAL_STATES[11];
-  if (xp < 2100) return SOCIAL_STATES[12];
-  if (xp < 2400) return SOCIAL_STATES[13];
+  if (xp < 60) return SOCIAL_STATES[0];
+  if (xp < 144) return SOCIAL_STATES[1];
+  if (xp < 240) return SOCIAL_STATES[2];
+  if (xp < 360) return SOCIAL_STATES[3];
+  if (xp < 504) return SOCIAL_STATES[4];
+  if (xp < 672) return SOCIAL_STATES[5];
+  if (xp < 864) return SOCIAL_STATES[6];
+  if (xp < 1080) return SOCIAL_STATES[7];
+  if (xp < 1320) return SOCIAL_STATES[8];
+  if (xp < 1584) return SOCIAL_STATES[9];
+  if (xp < 1872) return SOCIAL_STATES[10];
+  if (xp < 2184) return SOCIAL_STATES[11];
+  if (xp < 2520) return SOCIAL_STATES[12];
+  if (xp < 2880) return SOCIAL_STATES[13];
   return SOCIAL_STATES[14];
 };

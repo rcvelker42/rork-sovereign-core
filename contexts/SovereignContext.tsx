@@ -78,14 +78,18 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         parsed.stats.dayCount = Math.max(1, diffDays);
         
-        // Handle presence decay every 6 hours
-        const SIX_HOURS_MS = 6 * 60 * 60 * 1000;
+        // Handle presence decay once per day (10 points per day)
+        const ONE_DAY_MS = 24 * 60 * 60 * 1000;
         const lastDecay = parsed.lastPresenceDecay ? new Date(parsed.lastPresenceDecay) : new Date(parsed.stats.startDate);
         const timeSinceLastDecay = now.getTime() - lastDecay.getTime();
         
-        if (timeSinceLastDecay >= SIX_HOURS_MS) {
-          const decayCount = Math.floor(timeSinceLastDecay / SIX_HOURS_MS);
-          const newPresenceScore = Math.max(0, parsed.stats.presenceScore - (decayCount * 20));
+        // Check if a new day has started (compare dates, not just time elapsed)
+        const lastDecayDate = new Date(lastDecay.getFullYear(), lastDecay.getMonth(), lastDecay.getDate());
+        const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const daysSinceLastDecay = Math.floor((currentDate.getTime() - lastDecayDate.getTime()) / ONE_DAY_MS);
+        
+        if (daysSinceLastDecay > 0) {
+          const newPresenceScore = Math.max(0, parsed.stats.presenceScore - (daysSinceLastDecay * 10));
           
           parsed.stats.presenceScore = newPresenceScore;
           parsed.lastPresenceDecay = now.toISOString();
