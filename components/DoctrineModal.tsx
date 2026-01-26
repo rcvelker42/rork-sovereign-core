@@ -115,6 +115,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isSocialIntuition = principle.id === 'social-intuition';
   const isVibeVsWords = principle.id === 'vibe-vs-words';
   const isRelentlessPersistence = principle.id === 'relentless-persistence';
+  const isIdentityShifting = principle.id === 'identity-shifting';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -721,6 +722,47 @@ When you are Relentless, you are the Water. You are fluid. You are constant. A "
 
 Sovereign Thought: "The world belongs to the man who can be rejected a thousand times and still walk into the next room with the same fire in his eyes."`;
 
+  // Custom detailed text for Identity Shifting
+  const identityShiftingText = `Welcome to the "Alchemist's" stage. Principle 14: Identity Shifting is where we stop treating these principles as "tools" and start treating them as "blood."
+
+In the self-transformation framework, most men suffer from Identity Lag. They have improved their skills, their fitness, and their bank accounts, but they still feel like the shy, awkward kid they were in high school. They are "acting" confident, but their core identity is still "The Outsider." Identity Shifting is the process of burning the old self-image and stepping into the reality of the Sovereign Man.
+
+The Philosophy of "The Narrative Architect"
+Your "Identity" is simply the story you tell yourself about who you are. This story dictates your Behavioral Ceiling.
+• If your story is "I'm a guy who's trying to get better," you will always be "trying."
+• If your story is "I am the Source of the vibe," you will simply be the vibe.
+Identity Shifting is the realization that "You" are not a fixed entity. You are a fluid collection of habits and beliefs. To change your life, you don't change your actions; you change the "I" that is performing the actions.
+
+Real-Life Conversational Examples: The Shift in "Being"
+
+Scenario 1: The "New Environment"
+You walk into a high-end gala, a celebrity party, or an elite boardroom.
+• The "Improving" Identity: He feels like an imposter. He thinks, "I hope I don't stand out for the wrong reasons. I need to remember my Non-Reactivity (Principle 04)." * The Vibe: He looks like he's trying to "pass." He is Seeking Value because he feels the environment is "higher" than him.
+• The Shifted Identity: He has decided that he belongs wherever he stands. He doesn't "try" to be Non-Reactive; he is Non-Reactive because why would a King be rattled by his own palace?
+    * The Vibe: He talks to the host as an equal. He teases the "High-Status" guests using Assumed Familiarity(Principle 09). He is the Source.
+
+Scenario 2: Dealing with Past "Failures"
+You run into someone from your past who used to see you as "the quiet guy" or "the nerd."
+• The "Static" Identity: He slips back into his old skin. He becomes polite, hesitant, and starts "qualifying" himself to prove he's changed.
+    * The Result: The old acquaintance still sees the "old him" because he is projecting that old frequency.
+• The Shifted Identity: He views his past self as a completely different person—a "character" in a movie he once watched. He doesn't feel the need to prove anything.
+    * The Interaction: He treats the acquaintance with a "Big Brother" energy. He might even tease them about "the old days" from a place of total detachment.
+    * The Result: The acquaintance is shocked. They feel the State Transfer (Principle 05) and are forced to accept his new, sovereign reality.
+
+The Three Pillars of Identity Shifting
+
+1. The "Acting 'As If'" Protocol
+This isn't "Fake it 'til you make it." It is "Embody it 'til you are it." Before you enter a room, ask: "How would the man I want to be walk through these doors? What would his breathing look like? What would he find funny?" Then, do exactly that.
+2. Environmental Scrubbing
+Your identity is often held in place by your surroundings. If you hang out with people who treat you like your "old self," you will stay that person. Identity Shifting often requires Polarization (Principle 10)—leaving behind the people and places that no longer match your new frequency.
+3. The "Evidence" Log
+The Ego (Principle 02) needs "proof" to believe a new story. This is why the Missions in this app are vital. Every time you hold eye contact during a "Social Pressure" moment, you are collecting evidence. Eventually, the evidence for your "Sovereignty" becomes so overwhelming that the old identity simply dissolves.
+
+The Mastery Insight: "The Actor and the Role"
+Think of a world-class method actor. When they are in character, they don't "think" about how the character would walk; they just walk that way because, in their mind, they are that person. You have been playing the role of "The Average Guy" for years. It's just a script you've memorized. Principle 14 is about throwing that script in the trash and writing a new one where you are the Lead, the Producer, and the Director.
+
+Sovereign Thought: "You are under no obligation to be the person you were five minutes ago."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -748,6 +790,8 @@ Sovereign Thought: "The world belongs to the man who can be rejected a thousand 
     ? vibeVsWordsText.split('\n\n')
     : isRelentlessPersistence
     ? relentlessPersistenceText.split('\n\n')
+    : isIdentityShifting
+    ? identityShiftingText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -871,7 +915,7 @@ Sovereign Thought: "The world belongs to the man who can be rejected a thousand 
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && !isRelentlessPersistence && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && !isLawOfLeastEffort && !isAssumedFamiliarity && !isPolarization && !isSocialIntuition && !isVibeVsWords && !isRelentlessPersistence && !isIdentityShifting && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
