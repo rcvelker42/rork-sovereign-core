@@ -146,7 +146,7 @@ export default function AwakeningScreen() {
       Animated.timing(textureAnim, {
         toValue: 1,
         duration: 400,
-        useNativeDriver: false,
+        useNativeDriver: true, // Changed to true - textureAnim is used for opacity which supports native driver
       }),
     ]);
     animation.start(() => {
