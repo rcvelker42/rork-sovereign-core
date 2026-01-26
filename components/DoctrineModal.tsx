@@ -103,6 +103,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
 
   const IconComponent = iconMap[principle.icon] || Scale;
   const isCoreConfidence = principle.id === 'core-confidence';
+  const isDeathOfEgo = principle.id === 'death-of-ego';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -146,9 +147,65 @@ You must reach a point where you accept your "flaws" so deeply that they can't b
 The Final Philosophy
 Core Confidence is the realization that the universe is a playground. Most people are playing a high-stakes game of "Don't Look Stupid." The man with Core Confidence is the only one actually playing the game. He realizes that "Dying" socially isn't real. You can't actually "lose" value because your value was never tied to the scoreboard in the first place.`;
 
+  // Custom detailed text for Death of the Ego
+  const deathOfEgoText = `To master Core Confidence, you must first dismantle the machinery that keeps it locked away: The Ego. In the self-transformation framework, the Ego is not "who you are." It is a defensive hallucination—a mental "bodyguard" you built as a child to protect yourself from the pain of social judgment.
+
+The problem? The bodyguard has become a prison guard. To become a "Natural," you don't need to add new skills; you need to subtract the Ego until there is nothing left to "reject."
+
+The Architecture of the Ego: The "Ghost" in the Machine
+The Ego is your Identity attachment. It is the voice that says, "I am a guy who is [smart / cool / successful / athletic / a nice guy]." Whenever you are in a social situation, the Ego is busy trying to "defend" that title.
+• The Filter: The Ego filters every action through the lens of: "How will this make me look?"
+• The Resistance: This creates a "stifling" sensation. You want to talk to that person, but your Ego says, "Wait, if they don't like you, it means you aren't [Cool/Attractive] anymore. Stay safe. Don't risk the title."
+
+The "Death" of the Ego
+"Death" in this context means dis-identification. You stop believing that your "image" is "you." When the Ego dies, "Rejection" ceases to exist. Why? Because there is no "self-image" left for the rejection to hit. It's like trying to punch a ghost—your hand just goes through the air.
+
+Real-Life Conversational Examples: Ego vs. Presence
+Scenario 1: The "Humble Brag" Trap
+You are at a networking event or a party, and someone asks, "So, what do you do?"
+• The Ego-Driven Response: You feel the need to impress. You say, "I'm a Senior Lead Developer at a top-tier tech firm, and I'm currently consulting on a massive project." * The Internal State: You are "leaning in." You are seeking validation. If they aren't impressed, your Ego feels "injured."
+• The Ego-Less Response: You don't care about the "title." You might say, "I solve puzzles for a living. It's mostly just staring at a screen until I have a breakthrough. What's your 'secret passion' that actually pays the bills?"
+    * The Internal State: You are playful. You aren't defending a "Professional" identity. You are The Source of the fun.
+
+Scenario 2: The Social "Bomb"
+You tell a joke in a group, and nobody laughs. Complete silence.
+• The Ego-Driven Response: Your face gets hot. You try to fix it. "Well, I guess you had to be there..." or you quickly change the subject to something "cool" to recover your status. You have just signaled that the group has power over your emotions.
+• The Ego-Less Response: You lean into the awkwardness. You might look around with an exaggerated, confused face and say, "Wow. That was spectacular. I've never seen a joke die that fast in my entire life. Does anyone have a defibrillator, or should we just call the time of death?"
+    * The Result: Because you aren't protecting your Ego, you turn a "failure" into a "win." You are Non-Reactive.
+
+The Three Stages of Ego Dissolution
+To reach the "Flow State," you must move through these three levels of "Death."
+
+Level 1: Identifying the "Voice"
+You start noticing the "narrator" in your head. When you feel social anxiety, you realize it's just the Ego being afraid.
+• Action: In the middle of an approach, mentally say, "There goes the Bodyguard again, trying to keep me safe. Thanks, but I've got this."
+
+Level 2: Intentional "Stupidity"
+You purposefully do things that "damage" your cool image. You realize that "looking stupid" is actually a superpower because it proves you aren't a slave to your Ego.
+• Example: Wearing a ridiculous "power" item (like a bright pink hat) and acting as if it's the most normal thing in the world.
+
+Level 3: The "Void" (Presence)
+The voice stops. You are no longer thinking about "The Self." You are just a vessel for the vibe. You are 100% focused on the other person and the environment. This is where True Magnetic Power lives.
+
+Comparison: The "Heavy" Ego vs. The "Light" Master
+Feature | The Ego-Driven Man | The Ego-Less Master
+Social Focus | "How am I doing?" | "How is the vibe?"
+Reaction to 'No' | Personal insult / Pain | Data / Feedback
+Body Language | Rigid / Protective | Loose / Expansive
+Conversation | Interview-style / Qualifying | Playful / Assumed Familiarity
+Power Source | External Approval | Internal Presence
+
+The Philosophy of "The Ghost"
+If you are "nothing," you can be "anything." The Ego is a static image. "I am a punk rocker," or "I am a businessman." This prevents you from being fluid.
+The man who has "killed his Ego" can talk to a billionaire, a homeless person, a supermodel, and a child with the exact same level of comfort. He doesn't have a "status" to lose, so he can enter any reality.
+
+Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You cannot be both at the same time.`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
+    : isDeathOfEgo
+    ? deathOfEgoText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -232,7 +289,7 @@ Core Confidence is the realization that the universe is a playground. Most peopl
               </View>
             </View>
 
-            {!isCoreConfidence && (
+            {!isCoreConfidence && !isDeathOfEgo && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
@@ -387,9 +444,9 @@ const styles = StyleSheet.create({
   doctrineTableRow: {
     fontSize: 14,
     color: Colors.text.secondary,
-    lineHeight: 22,
-    fontFamily: 'monospace',
-    marginVertical: 4,
+    lineHeight: 24,
+    marginVertical: 6,
+    paddingVertical: 4,
   },
   doctrineKeyTakeaway: {
     fontSize: 16,
