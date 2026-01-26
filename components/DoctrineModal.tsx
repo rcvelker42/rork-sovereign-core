@@ -270,6 +270,52 @@ Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You
                   // Check if paragraph is a key takeaway
                   const isKeyTakeaway = trimmed.startsWith('Key Takeaway:');
                   
+                  // Check if we're in a table section
+                  const prevIsTable = index > 0 && doctrineParagraphs[index - 1].trim().includes('|') && doctrineParagraphs[index - 1].trim().split('|').length >= 3;
+                  const nextIsTable = index < doctrineParagraphs.length - 1 && doctrineParagraphs[index + 1].trim().includes('|') && doctrineParagraphs[index + 1].trim().split('|').length >= 3;
+                  const isTableStart = isTableRow && !prevIsTable;
+                  const isTableEnd = isTableRow && !nextIsTable;
+                  const isHeader = isTableStart; // First row of table is header
+                  
+                  if (isTableRow) {
+                    const columns = trimmed.split('|').map(col => col.trim());
+                    
+                    return (
+                      <View 
+                        key={index}
+                        style={[
+                          styles.tableRow,
+                          isHeader && styles.tableHeaderRow,
+                          isTableStart && styles.tableFirstRow,
+                          isTableEnd && styles.tableLastRow,
+                          isTableStart && { marginTop: 16 },
+                        ]}
+                      >
+                        {columns.map((cell, cellIndex) => (
+                          <View 
+                            key={cellIndex}
+                            style={[
+                              styles.tableCell,
+                              cellIndex < columns.length - 1 && styles.tableCellBorder,
+                            ]}
+                          >
+                            <Text style={[
+                              styles.tableCellText,
+                              isHeader && styles.tableHeaderText,
+                            ]}>
+                              {cell}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    );
+                  }
+                  
+                  // Check if next paragraph is a table to adjust spacing
+                  const nextIsTable = index < doctrineParagraphs.length - 1 && 
+                    doctrineParagraphs[index + 1].trim().includes('|') && 
+                    doctrineParagraphs[index + 1].trim().split('|').length >= 3;
+                  
                   return (
                     <Text 
                       key={index} 
@@ -277,9 +323,8 @@ Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You
                         isHeading ? styles.doctrineHeading : styles.doctrineText,
                         isBullet && styles.doctrineBullet,
                         isNumbered && styles.doctrineNumbered,
-                        isTableRow && styles.doctrineTableRow,
                         isKeyTakeaway && styles.doctrineKeyTakeaway,
-                        index < doctrineParagraphs.length - 1 && styles.doctrineParagraph
+                        index < doctrineParagraphs.length - 1 && !nextIsTable && styles.doctrineParagraph
                       ]}
                     >
                       {paragraph}
@@ -447,6 +492,52 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginVertical: 6,
     paddingVertical: 4,
+  },
+  tableRow: {
+    flexDirection: 'row',
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.background.secondary,
+  },
+  tableFirstRow: {
+    borderTopWidth: 1,
+    borderTopLeftRadius: 6,
+    borderTopRightRadius: 6,
+  },
+  tableLastRow: {
+    borderBottomWidth: 1,
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6,
+    marginBottom: 20,
+  },
+  tableHeaderRow: {
+    backgroundColor: Colors.accent.goldDim,
+    borderTopWidth: 1,
+    borderTopLeftRadius: 6,
+    borderTopRightRadius: 6,
+  },
+  tableCell: {
+    flex: 1,
+    padding: 12,
+    justifyContent: 'center',
+  },
+  tableCellBorder: {
+    borderRightWidth: 1,
+    borderRightColor: Colors.border,
+  },
+  tableHeaderCell: {
+    backgroundColor: 'transparent',
+  },
+  tableCellText: {
+    fontSize: 13,
+    color: Colors.text.secondary,
+    lineHeight: 20,
+  },
+  tableHeaderText: {
+    fontWeight: '600' as const,
+    color: Colors.accent.gold,
+    fontSize: 13,
   },
   doctrineKeyTakeaway: {
     fontSize: 16,
