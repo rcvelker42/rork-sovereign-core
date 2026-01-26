@@ -8,22 +8,22 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Lock, Unlock } from 'lucide-react-native';
+import { Lock, Unlock, ChevronDown } from 'lucide-react-native';
 import { Colors } from '@/constants/colors';
 import { useSovereign } from '@/contexts/SovereignContext';
 import { 
-  principles, 
-  getPrinciplesByTier, 
-  TIER_NAMES, 
-  TIER_UNLOCK_REQUIREMENTS,
+  getPrinciplesInOrder,
+  TIER_NAMES,
   PrincipleTier,
 } from '@/constants/principles';
 import { PrincipleTile } from '@/components/PrincipleTile';
 
 export default function ArchiveScreen() {
   const router = useRouter();
-  const { isTierUnlocked, stats } = useSovereign();
+  const { isPrincipleUnlocked, isPrincipleCompleted, getNextUnlockedPrincipleId } = useSovereign();
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const orderedPrinciples = getPrinciplesInOrder();
+  const nextPrincipleId = getNextUnlockedPrincipleId();
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -37,44 +37,78 @@ export default function ArchiveScreen() {
     router.push(`/(tabs)/(archive)/${principleId}`);
   };
 
+  const getPrinciplesByTier = (tier: PrincipleTier) => {
+    return orderedPrinciples.filter(p => p.tier === tier);
+  };
+
+  const renderPrinciple = (principle: any, index: number, tierPrinciples: any[]) => {
+    const isUnlocked = isPrincipleUnlocked(principle.id);
+    const isCompleted = isPrincipleCompleted(principle.id);
+    const isNext = principle.id === nextPrincipleId;
+    const isLast = index === tierPrinciples.length - 1;
+
+    return (
+      <View key={principle.id} style={styles.principleRow}>
+        <View style={styles.principleContainer}>
+          <View style={styles.tileWrapper}>
+            <PrincipleTile
+              principle={principle}
+              isLocked={!isUnlocked}
+              onPress={() => handlePrinciplePress(principle.id)}
+              isNext={isNext}
+            />
+          </View>
+          {isNext && (
+            <View style={styles.nextIndicator}>
+              <Text style={styles.nextText}>NEXT</Text>
+            </View>
+          )}
+        </View>
+        {!isLast && (
+          <View style={styles.connectorContainer}>
+            <View style={[
+              styles.connectorLine,
+              isCompleted && styles.connectorLineCompleted,
+              isUnlocked && !isCompleted && styles.connectorLineUnlocked,
+            ]} />
+            <ChevronDown 
+              size={16} 
+              color={
+                isCompleted 
+                  ? Colors.accent.gold 
+                  : isUnlocked 
+                    ? Colors.text.muted 
+                    : Colors.tier.locked
+              } 
+            />
+          </View>
+        )}
+      </View>
+    );
+  };
+
   const renderTier = (tier: PrincipleTier) => {
     const tierPrinciples = getPrinciplesByTier(tier);
-    const isUnlocked = isTierUnlocked(tier);
-    const missionsNeeded = TIER_UNLOCK_REQUIREMENTS[tier];
-    const missionsRemaining = Math.max(0, missionsNeeded - stats.completedMissions);
+    const hasUnlocked = tierPrinciples.some(p => isPrincipleUnlocked(p.id));
 
     return (
       <View key={tier} style={styles.tierSection}>
         <View style={styles.tierHeader}>
           <View style={styles.tierTitleRow}>
-            {isUnlocked ? (
+            {hasUnlocked ? (
               <Unlock size={16} color={Colors.accent.gold} />
             ) : (
               <Lock size={16} color={Colors.text.muted} />
             )}
-            <Text style={[styles.tierTitle, !isUnlocked && styles.tierTitleLocked]}>
+            <Text style={[styles.tierTitle, !hasUnlocked && styles.tierTitleLocked]}>
               {TIER_NAMES[tier]}
             </Text>
           </View>
-          {!isUnlocked && (
-            <Text style={styles.tierLockText}>
-              {missionsRemaining} missions to unlock
-            </Text>
-          )}
         </View>
 
-        <View style={styles.tilesGrid}>
-          {tierPrinciples.map((principle, index) => (
-            <View key={principle.id} style={styles.tileWrapper}>
-              <PrincipleTile
-                principle={principle}
-                isLocked={!isUnlocked}
-                onPress={() => handlePrinciplePress(principle.id)}
-              />
-            </View>
-          ))}
-          {tierPrinciples.length % 2 !== 0 && (
-            <View style={styles.tileWrapper} />
+        <View style={styles.tierContent}>
+          {tierPrinciples.map((principle, index) => 
+            renderPrinciple(principle, index, tierPrinciples)
           )}
         </View>
       </View>
@@ -157,15 +191,52 @@ const styles = StyleSheet.create({
   tierTitleLocked: {
     color: Colors.text.muted,
   },
-  tierLockText: {
-    fontSize: 11,
-    color: Colors.text.muted,
+  tierContent: {
+    alignItems: 'center',
   },
-  tilesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  principleRow: {
+    alignItems: 'center',
+    marginBottom: 8,
+    width: '100%',
+  },
+  principleContainer: {
+    width: '100%',
+    alignItems: 'center',
+    position: 'relative',
   },
   tileWrapper: {
     width: '50%',
+    maxWidth: 200,
+  },
+  nextIndicator: {
+    position: 'absolute',
+    top: -8,
+    right: '25%',
+    backgroundColor: Colors.accent.gold,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 4,
+  },
+  nextText: {
+    fontSize: 10,
+    fontWeight: '700' as const,
+    color: Colors.background.primary,
+    letterSpacing: 1,
+  },
+  connectorContainer: {
+    alignItems: 'center',
+    marginVertical: 4,
+  },
+  connectorLine: {
+    width: 2,
+    height: 24,
+    backgroundColor: Colors.tier.locked,
+    marginBottom: 4,
+  },
+  connectorLineCompleted: {
+    backgroundColor: Colors.accent.gold,
+  },
+  connectorLineUnlocked: {
+    backgroundColor: Colors.text.muted,
   },
 });

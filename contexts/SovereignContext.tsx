@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import createContextHook from '@nkzw/create-context-hook';
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import { getPrincipleById, Principle, TIER_UNLOCK_REQUIREMENTS, PrincipleTier } from '@/constants/principles';
+import { getPrincipleById, Principle, TIER_UNLOCK_REQUIREMENTS, PrincipleTier, getPreviousPrincipleId, PRINCIPLE_ORDER } from '@/constants/principles';
 import { getStateByXP, SocialState } from '@/constants/states';
 
 export interface JournalEntry {
@@ -190,6 +190,33 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     return state.stats.completedMissions >= TIER_UNLOCK_REQUIREMENTS[tier];
   }, [state.stats.completedMissions]);
 
+  const completedPrincipleIds = useMemo(() => {
+    return new Set(state.journalEntries.map(entry => entry.principleId));
+  }, [state.journalEntries]);
+
+  const isPrincipleCompleted = useCallback((principleId: string): boolean => {
+    return completedPrincipleIds.has(principleId);
+  }, [completedPrincipleIds]);
+
+  const isPrincipleUnlocked = useCallback((principleId: string): boolean => {
+    const previousId = getPreviousPrincipleId(principleId);
+    if (previousId === null) {
+      // First principle is always unlocked
+      return true;
+    }
+    // Previous principle must be completed
+    return isPrincipleCompleted(previousId);
+  }, [isPrincipleCompleted]);
+
+  const getNextUnlockedPrincipleId = useCallback((): string | null => {
+    for (const principleId of PRINCIPLE_ORDER) {
+      if (!isPrincipleCompleted(principleId)) {
+        return principleId;
+      }
+    }
+    return null; // All principles completed
+  }, [isPrincipleCompleted]);
+
   const currentFocusPrinciple: Principle | null = useMemo(() => {
     if (!state.dailyFocus.principleId) return null;
     return getPrincipleById(state.dailyFocus.principleId) ?? null;
@@ -204,5 +231,9 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     setDailyFocus,
     completeMission,
     isTierUnlocked,
+    isPrincipleCompleted,
+    isPrincipleUnlocked,
+    getNextUnlockedPrincipleId,
+    completedPrincipleIds: Array.from(completedPrincipleIds),
   };
 });

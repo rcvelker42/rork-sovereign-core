@@ -64,9 +64,10 @@ interface PrincipleTileProps {
   principle: Principle;
   isLocked: boolean;
   onPress: () => void;
+  isNext?: boolean;
 }
 
-export function PrincipleTile({ principle, isLocked, onPress }: PrincipleTileProps) {
+export function PrincipleTile({ principle, isLocked, onPress, isNext = false }: PrincipleTileProps) {
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const IconComponent = iconMap[principle.icon] || Scale;
 

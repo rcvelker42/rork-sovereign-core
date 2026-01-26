@@ -208,10 +208,43 @@ export const principles: Principle[] = [
   },
 ];
 
+// Sequential order of principles (must complete in this order)
+export const PRINCIPLE_ORDER: string[] = [
+  'core-confidence',
+  'death-of-ego',
+  'outcome-independence',
+  'non-reactivity-foundation',
+  'state-transfer',
+  'social-pressure',
+  'value-projection',
+  'law-of-least-effort',
+  'assumed-familiarity',
+  'polarization',
+  'social-intuition',
+  'vibe-vs-words',
+  'relentless-persistence',
+  'identity-shifting',
+  'presence-mastery',
+];
+
 export const getPrinciplesByTier = (tier: PrincipleTier): Principle[] => {
   return principles.filter((p) => p.tier === tier);
 };
 
 export const getPrincipleById = (id: string): Principle | undefined => {
   return principles.find((p) => p.id === id);
+};
+
+export const getPrinciplesInOrder = (): Principle[] => {
+  return PRINCIPLE_ORDER.map(id => getPrincipleById(id)).filter((p): p is Principle => p !== undefined);
+};
+
+export const getPrincipleOrderIndex = (principleId: string): number => {
+  return PRINCIPLE_ORDER.indexOf(principleId);
+};
+
+export const getPreviousPrincipleId = (principleId: string): string | null => {
+  const index = PRINCIPLE_ORDER.indexOf(principleId);
+  if (index <= 0) return null;
+  return PRINCIPLE_ORDER[index - 1];
 };

@@ -35,7 +35,7 @@ import {
 } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
-import { getPrincipleById, TIER_NAMES } from '@/constants/principles';
+import { getPrincipleById, TIER_NAMES, getPreviousPrincipleId } from '@/constants/principles';
 import { useSovereign } from '@/contexts/SovereignContext';
 import { GoldButton } from '@/components/GoldButton';
 
@@ -67,7 +67,7 @@ const iconMap: Record<string, React.ComponentType<{ size: number; color: string 
 export default function PrincipleDetailScreen() {
   const { principleId } = useLocalSearchParams<{ principleId: string }>();
   const router = useRouter();
-  const { setDailyFocus, currentFocusPrinciple, isTierUnlocked } = useSovereign();
+  const { setDailyFocus, currentFocusPrinciple, isPrincipleUnlocked, isPrincipleCompleted } = useSovereign();
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
@@ -98,8 +98,10 @@ export default function PrincipleDetailScreen() {
   }
 
   const IconComponent = iconMap[principle.icon] || Scale;
-  const isLocked = !isTierUnlocked(principle.tier);
+  const isLocked = !isPrincipleUnlocked(principle.id);
   const isCurrentFocus = currentFocusPrinciple?.id === principle.id;
+  const previousPrincipleId = getPreviousPrincipleId(principle.id);
+  const previousPrinciple = previousPrincipleId ? getPrincipleById(previousPrincipleId) : null;
 
   const handleAcceptMission = () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -176,7 +178,9 @@ export default function PrincipleDetailScreen() {
             {isLocked ? (
               <View style={styles.lockedMessage}>
                 <Text style={styles.lockedText}>
-                  Complete more missions to unlock this tier
+                  {previousPrinciple 
+                    ? `Complete "${previousPrinciple.name}" to unlock this principle`
+                    : 'Complete the previous principle to unlock this one'}
                 </Text>
               </View>
             ) : isCurrentFocus ? (
