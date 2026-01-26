@@ -71,21 +71,31 @@ export function PrincipleTile({ principle, isLocked, onPress, isNext = false }: 
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const IconComponent = iconMap[principle.icon] || Scale;
 
+  const scaleAnimationRef = useRef<Animated.CompositeAnimation | null>(null);
+
   const handlePressIn = () => {
     if (isLocked) return;
-    Animated.spring(scaleAnim, {
+    if (scaleAnimationRef.current) {
+      scaleAnimationRef.current.stop();
+    }
+    scaleAnimationRef.current = Animated.spring(scaleAnim, {
       toValue: 0.95,
       useNativeDriver: true,
-    }).start();
+    });
+    scaleAnimationRef.current.start();
   };
 
   const handlePressOut = () => {
-    Animated.spring(scaleAnim, {
+    if (scaleAnimationRef.current) {
+      scaleAnimationRef.current.stop();
+    }
+    scaleAnimationRef.current = Animated.spring(scaleAnim, {
       toValue: 1,
       friction: 3,
       tension: 100,
       useNativeDriver: true,
-    }).start();
+    });
+    scaleAnimationRef.current.start();
   };
 
   const handlePress = () => {

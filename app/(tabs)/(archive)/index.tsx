@@ -26,11 +26,16 @@ export default function ArchiveScreen() {
   const nextPrincipleId = getNextUnlockedPrincipleId();
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
+    const animation = Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 500,
       useNativeDriver: true,
-    }).start();
+    });
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   const handlePrinciplePress = (principleId: string) => {

@@ -35,8 +35,10 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    let animation: Animated.CompositeAnimation | null = null;
+
     if (visible) {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 300,
@@ -48,9 +50,10 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
           friction: 11,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     } else {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 0,
           duration: 200,
@@ -61,8 +64,15 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
           duration: 300,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     }
+
+    return () => {
+      if (animation) {
+        animation.stop();
+      }
+    };
   }, [visible]);
 
   const handleAccept = () => {

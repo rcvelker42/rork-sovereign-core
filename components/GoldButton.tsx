@@ -29,20 +29,30 @@ export function GoldButton({
 }: GoldButtonProps) {
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
+  const scaleAnimationRef = useRef<Animated.CompositeAnimation | null>(null);
+
   const handlePressIn = () => {
-    Animated.spring(scaleAnim, {
+    if (scaleAnimationRef.current) {
+      scaleAnimationRef.current.stop();
+    }
+    scaleAnimationRef.current = Animated.spring(scaleAnim, {
       toValue: 0.96,
       useNativeDriver: true,
-    }).start();
+    });
+    scaleAnimationRef.current.start();
   };
 
   const handlePressOut = () => {
-    Animated.spring(scaleAnim, {
+    if (scaleAnimationRef.current) {
+      scaleAnimationRef.current.stop();
+    }
+    scaleAnimationRef.current = Animated.spring(scaleAnim, {
       toValue: 1,
       friction: 3,
       tension: 100,
       useNativeDriver: true,
-    }).start();
+    });
+    scaleAnimationRef.current.start();
   };
 
   const handlePress = () => {

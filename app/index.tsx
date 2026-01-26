@@ -42,8 +42,10 @@ export default function AwakeningScreen() {
       return;
     }
 
+    let animation: Animated.CompositeAnimation | null = null;
+
     if (currentStep === 'intro') {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 1200,
@@ -54,12 +56,13 @@ export default function AwakeningScreen() {
           duration: 1200,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     } else {
       // Fade in new content
       fadeAnim.setValue(0);
       slideAnim.setValue(30);
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 600,
@@ -70,18 +73,30 @@ export default function AwakeningScreen() {
           duration: 600,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     }
+
+    return () => {
+      if (animation) {
+        animation.stop();
+      }
+    };
   }, [currentStep, isLoading, hasOnboarded]);
 
   // Animate texture as user progresses
   useEffect(() => {
     const stepValue = getStepValue(currentStep);
-    Animated.timing(textureAnim, {
+    const animation = Animated.timing(textureAnim, {
       toValue: stepValue,
       duration: 1000,
       useNativeDriver: true, // opacity can use native driver
-    }).start();
+    });
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, [currentStep]);
 
   const getStepValue = (step: OnboardingStep): number => {
@@ -122,7 +137,7 @@ export default function AwakeningScreen() {
   const handleAcceptWeight = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     
-    Animated.parallel([
+    const animation = Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 0,
         duration: 600,
@@ -133,7 +148,8 @@ export default function AwakeningScreen() {
         duration: 400,
         useNativeDriver: false,
       }),
-    ]).start(() => {
+    ]);
+    animation.start(() => {
       completeOnboarding();
       router.replace('/(tabs)');
     });

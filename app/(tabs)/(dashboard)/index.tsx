@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -36,7 +36,7 @@ export default function DashboardScreen() {
   const slideAnim = useRef(new Animated.Value(20)).current;
 
   useEffect(() => {
-    Animated.parallel([
+    const animation = Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 600,
@@ -47,7 +47,12 @@ export default function DashboardScreen() {
         duration: 600,
         useNativeDriver: true,
       }),
-    ]).start();
+    ]);
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   const handleStudyDoctrine = () => {
@@ -75,12 +80,12 @@ export default function DashboardScreen() {
     setModalVisible(false);
   };
 
-  const getStatusName = () => {
+  const statusName = useMemo(() => {
     if (stats.completedMissions === 0) return 'The Awakening';
     if (stats.completedMissions < 5) return 'The Foundation';
     if (stats.completedMissions < 10) return 'The Bridge';
     return 'The Mastery';
-  };
+  }, [stats.completedMissions]);
 
   if (isLoading) {
     return (
@@ -109,7 +114,7 @@ export default function DashboardScreen() {
           <View style={styles.header}>
             <Text style={styles.greeting}>Day {stats.dayCount}</Text>
             <View style={styles.statusBadge}>
-              <Text style={styles.statusText}>{getStatusName()}</Text>
+              <Text style={styles.statusText}>{statusName}</Text>
             </View>
           </View>
 
@@ -126,11 +131,11 @@ export default function DashboardScreen() {
             {(currentFocusPrinciple || currentFocusGymMission) ? (
               <>
                 <Text style={styles.focusTitle}>
-                  {currentFocusPrinciple.name}
+                  {currentFocusPrinciple?.name || 'Unknown Principle'}
                   {currentFocusGymMission && ` - Mission ${currentFocusGymMission.missionNumber}`}
                 </Text>
                 <Text style={styles.focusMission} numberOfLines={2}>
-                  {currentFocusGymMission?.title || currentFocusPrinciple.mission.title}
+                  {currentFocusGymMission?.title || currentFocusPrinciple?.mission.title || 'No mission selected'}
                 </Text>
                 
                 <View style={styles.focusActions}>

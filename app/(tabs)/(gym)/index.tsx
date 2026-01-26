@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -38,11 +38,16 @@ export default function GymScreen() {
   const [missionModalVisible, setMissionModalVisible] = useState(false);
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
+    const animation = Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 500,
       useNativeDriver: true,
-    }).start();
+    });
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   const getPrinciplesByTier = (tier: PrincipleTier) => {
@@ -69,6 +74,28 @@ export default function GymScreen() {
     setGymMissionFocus(mission.id, mission.principleId);
     router.push('/(tabs)/(dashboard)');
   };
+
+  const selectedMissionLockReason = useMemo(() => {
+    if (!selectedMission) return undefined;
+    
+    if (selectedMission.missionNumber === 2 && !isPrincipleCompleted(selectedMission.principleId)) {
+      return 'Complete the principle in Archive first';
+    }
+    
+    if (selectedMission.missionNumber === 3) {
+      const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
+      const mission2 = gymMissions.find(m => m.missionNumber === 2);
+      return mission2 && !isGymMissionCompleted(mission2.id) ? 'Complete Mission 2 first' : undefined;
+    }
+    
+    if (selectedMission.missionNumber === 4) {
+      const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
+      const mission3 = gymMissions.find(m => m.missionNumber === 3);
+      return mission3 && !isGymMissionCompleted(mission3.id) ? 'Complete Mission 3 first' : undefined;
+    }
+    
+    return undefined;
+  }, [selectedMission, isPrincipleCompleted, isGymMissionCompleted]);
 
   const renderGymMission = (mission: GymMission, principle: any) => {
     const isMissionUnlocked = isGymMissionUnlocked(mission.id, principle.id);
@@ -206,23 +233,7 @@ export default function GymScreen() {
             onClose={handleCloseModal}
             onAccept={handleAcceptMission}
             isUnlocked={isGymMissionUnlocked(selectedMission.id, selectedMission.principleId)}
-            lockReason={
-              selectedMission.missionNumber === 2 && !isPrincipleCompleted(selectedMission.principleId)
-                ? 'Complete the principle in Archive first'
-                : selectedMission.missionNumber === 3
-                ? (() => {
-                    const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
-                    const mission2 = gymMissions.find(m => m.missionNumber === 2);
-                    return mission2 && !isGymMissionCompleted(mission2.id) ? 'Complete Mission 2 first' : undefined;
-                  })()
-                : selectedMission.missionNumber === 4
-                ? (() => {
-                    const gymMissions = getGymMissionsForPrinciple(selectedMission.principleId);
-                    const mission3 = gymMissions.find(m => m.missionNumber === 3);
-                    return mission3 && !isGymMissionCompleted(mission3.id) ? 'Complete Mission 3 first' : undefined;
-                  })()
-                : undefined
-            }
+            lockReason={selectedMissionLockReason}
           />
         )}
       </Animated.View>

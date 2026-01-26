@@ -75,10 +75,10 @@ export default function PrincipleDetailScreen() {
   const slideAnim = useRef(new Animated.Value(30)).current;
   const [doctrineModalVisible, setDoctrineModalVisible] = useState(false);
 
-  const principle = getPrincipleById(principleId || '');
+  const principle = principleId ? getPrincipleById(principleId) : undefined;
 
   useEffect(() => {
-    Animated.parallel([
+    const animation = Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 500,
@@ -89,7 +89,12 @@ export default function PrincipleDetailScreen() {
         duration: 500,
         useNativeDriver: true,
       }),
-    ]).start();
+    ]);
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   if (!principle) {

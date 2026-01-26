@@ -16,15 +16,23 @@ export default function LedgerScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
+    const animation = Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 500,
       useNativeDriver: true,
-    }).start();
+    });
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return 'Invalid Date';
+    }
     return date.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',

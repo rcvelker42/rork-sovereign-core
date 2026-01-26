@@ -38,8 +38,10 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
   const validationFadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    let animation: Animated.CompositeAnimation | null = null;
+
     if (visible) {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 300,
@@ -51,9 +53,10 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
           friction: 11,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     } else {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 0,
           duration: 200,
@@ -64,12 +67,19 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
           duration: 300,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
       setReflection('');
       setStateValue(5);
       setShowValidationModal(false);
       validationFadeAnim.setValue(0);
     }
+
+    return () => {
+      if (animation) {
+        animation.stop();
+      }
+    };
   }, [visible]);
 
   const countWords = (text: string): number => {
@@ -86,11 +96,12 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
     if (wordCount < 20) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
       setShowValidationModal(true);
-      Animated.timing(validationFadeAnim, {
+      const validationAnimation = Animated.timing(validationFadeAnim, {
         toValue: 1,
         duration: 300,
         useNativeDriver: true,
-      }).start();
+      });
+      validationAnimation.start();
       return;
     }
     
@@ -99,17 +110,19 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
   };
 
   const handleCloseValidation = () => {
-    Animated.timing(validationFadeAnim, {
+    const validationAnimation = Animated.timing(validationFadeAnim, {
       toValue: 0,
       duration: 200,
       useNativeDriver: true,
-    }).start(() => {
+    });
+    validationAnimation.start(() => {
       setShowValidationModal(false);
     });
   };
 
   const handleSliderChange = (value: number) => {
-    setStateValue(value);
+    const clampedValue = Math.max(1, Math.min(10, value));
+    setStateValue(clampedValue);
     Haptics.selectionAsync();
   };
 
@@ -157,6 +170,7 @@ export function MissionModal({ visible, principle, gymMission, onClose, onComple
                   style={styles.textInput}
                   multiline
                   numberOfLines={4}
+                  maxLength={1000}
                   placeholder="Record your observations..."
                   placeholderTextColor={Colors.text.muted}
                   value={reflection}

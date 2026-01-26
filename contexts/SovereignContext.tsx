@@ -72,7 +72,33 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
       const now = new Date();
       
       if (stored) {
-        const parsed = JSON.parse(stored) as SovereignState;
+        let parsed: SovereignState;
+        try {
+          parsed = JSON.parse(stored) as SovereignState;
+        } catch (error) {
+          console.error('Failed to parse stored state, resetting to default:', error);
+          // If parsing fails, reset to default state
+          const newState = { ...defaultState, lastPresenceDecay: now.toISOString() };
+          try {
+            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+          } catch (saveError) {
+            console.error('Failed to save default state:', saveError);
+          }
+          return newState;
+        }
+
+        // Validate parsed state has required fields
+        if (!parsed.stats || !parsed.stats.startDate) {
+          console.error('Invalid state structure, resetting to default');
+          const newState = { ...defaultState, lastPresenceDecay: now.toISOString() };
+          try {
+            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+          } catch (saveError) {
+            console.error('Failed to save default state:', saveError);
+          }
+          return newState;
+        }
+
         const startDate = new Date(parsed.stats.startDate);
         const diffTime = Math.abs(now.getTime() - startDate.getTime());
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -95,11 +121,19 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
           parsed.lastPresenceDecay = now.toISOString();
           
           // Save the updated state
-          await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+          try {
+            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+          } catch (saveError) {
+            console.error('Failed to save updated state:', saveError);
+          }
         } else if (!parsed.lastPresenceDecay) {
           // Initialize lastPresenceDecay if it doesn't exist
           parsed.lastPresenceDecay = now.toISOString();
-          await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+          try {
+            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+          } catch (saveError) {
+            console.error('Failed to save state with lastPresenceDecay:', saveError);
+          }
         }
         
         return parsed;
@@ -107,15 +141,24 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
       
       // For new state, initialize lastPresenceDecay
       const newState = { ...defaultState, lastPresenceDecay: now.toISOString() };
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+      try {
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+      } catch (saveError) {
+        console.error('Failed to save initial state:', saveError);
+      }
       return newState;
     },
   });
 
   const saveMutation = useMutation({
     mutationFn: async (newState: SovereignState) => {
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
-      return newState;
+      try {
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        return newState;
+      } catch (error) {
+        console.error('Failed to save state to AsyncStorage:', error);
+        throw error; // Re-throw to let React Query handle it
+      }
     },
     onSuccess: (newState) => {
       queryClient.setQueryData(['sovereign_state'], newState);
@@ -129,10 +172,12 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
   }, [stateQuery.data]);
 
   const updateState = useCallback((updates: Partial<SovereignState>) => {
-    const newState = { ...state, ...updates };
-    setState(newState);
-    saveMutation.mutate(newState);
-  }, [state, saveMutation]);
+    setState(prevState => {
+      const newState = { ...prevState, ...updates };
+      saveMutation.mutate(newState);
+      return newState;
+    });
+  }, [saveMutation]);
 
   const completeOnboarding = useCallback(() => {
     updateState({ hasOnboarded: true });
@@ -159,8 +204,25 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
   }, [updateState]);
 
   const completeMission = useCallback((principleId: string, reflection: string, stateValue: number, gymMissionId?: string) => {
+    // Input validation
+    if (!reflection.trim()) {
+      console.error('Reflection cannot be empty');
+      return;
+    }
+    if (stateValue < 1 || stateValue > 10) {
+      console.error('State value must be between 1 and 10');
+      return;
+    }
+    if (!principleId) {
+      console.error('Principle ID is required');
+      return;
+    }
+
     const principle = getPrincipleById(principleId);
-    if (!principle) return;
+    if (!principle) {
+      console.error(`Principle not found: ${principleId}`);
+      return;
+    }
 
     // Get XP from gym mission if provided, otherwise use principle's mission XP
     let xpEarned = principle.mission.xpReward;
@@ -292,7 +354,9 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
     }
     if (state.dailyFocus.gymMissionId) {
       // Extract principleId from gymMissionId (format: principleId-gym-2)
-      const principleId = state.dailyFocus.gymMissionId.split('-gym-')[0];
+      const parts = state.dailyFocus.gymMissionId.split('-gym-');
+      if (parts.length < 2) return null;
+      const principleId = parts[0];
       return getPrincipleById(principleId) ?? null;
     }
     return null;
@@ -300,7 +364,9 @@ export const [SovereignProvider, useSovereign] = createContextHook(() => {
 
   const currentFocusGymMission = useMemo(() => {
     if (!state.dailyFocus.gymMissionId) return null;
-    const principleId = state.dailyFocus.gymMissionId.split('-gym-')[0];
+    const parts = state.dailyFocus.gymMissionId.split('-gym-');
+    if (parts.length < 2) return null;
+    const principleId = parts[0];
     const missions = getGymMissionsForPrinciple(principleId);
     return missions.find(m => m.id === state.dailyFocus.gymMissionId) ?? null;
   }, [state.dailyFocus.gymMissionId]);

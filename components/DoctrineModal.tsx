@@ -64,8 +64,10 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    let animation: Animated.CompositeAnimation | null = null;
+
     if (visible) {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 300,
@@ -77,9 +79,10 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
           friction: 11,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     } else {
-      Animated.parallel([
+      animation = Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 0,
           duration: 200,
@@ -90,8 +93,15 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
           duration: 300,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]);
+      animation.start();
     }
+
+    return () => {
+      if (animation) {
+        animation.stop();
+      }
+    };
   }, [visible]);
 
   const handleClose = () => {

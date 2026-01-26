@@ -28,19 +28,20 @@ export const getStateByLevel = (level: number): SocialState => {
 };
 
 export const getStateByXP = (xp: number): SocialState => {
-  if (xp < 60) return SOCIAL_STATES[0];
-  if (xp < 144) return SOCIAL_STATES[1];
-  if (xp < 240) return SOCIAL_STATES[2];
-  if (xp < 360) return SOCIAL_STATES[3];
-  if (xp < 504) return SOCIAL_STATES[4];
-  if (xp < 672) return SOCIAL_STATES[5];
-  if (xp < 864) return SOCIAL_STATES[6];
-  if (xp < 1080) return SOCIAL_STATES[7];
-  if (xp < 1320) return SOCIAL_STATES[8];
-  if (xp < 1584) return SOCIAL_STATES[9];
-  if (xp < 1872) return SOCIAL_STATES[10];
-  if (xp < 2184) return SOCIAL_STATES[11];
-  if (xp < 2520) return SOCIAL_STATES[12];
-  if (xp < 2880) return SOCIAL_STATES[13];
+  const clampedXP = Math.max(0, xp);
+  if (clampedXP < 60) return SOCIAL_STATES[0];
+  if (clampedXP < 144) return SOCIAL_STATES[1];
+  if (clampedXP < 240) return SOCIAL_STATES[2];
+  if (clampedXP < 360) return SOCIAL_STATES[3];
+  if (clampedXP < 504) return SOCIAL_STATES[4];
+  if (clampedXP < 672) return SOCIAL_STATES[5];
+  if (clampedXP < 864) return SOCIAL_STATES[6];
+  if (clampedXP < 1080) return SOCIAL_STATES[7];
+  if (clampedXP < 1320) return SOCIAL_STATES[8];
+  if (clampedXP < 1584) return SOCIAL_STATES[9];
+  if (clampedXP < 1872) return SOCIAL_STATES[10];
+  if (clampedXP < 2184) return SOCIAL_STATES[11];
+  if (clampedXP < 2520) return SOCIAL_STATES[12];
+  if (clampedXP < 2880) return SOCIAL_STATES[13];
   return SOCIAL_STATES[14];
 };

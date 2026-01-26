@@ -25,10 +25,17 @@ export function ProgressRing({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
   
   const glowAnim = useRef(new Animated.Value(0)).current;
+  const animationRef = useRef<Animated.CompositeAnimation | null>(null);
   
   useEffect(() => {
+    // Stop any existing animation
+    if (animationRef.current) {
+      animationRef.current.stop();
+      animationRef.current = null;
+    }
+
     if (shouldGlow) {
-      Animated.loop(
+      animationRef.current = Animated.loop(
         Animated.sequence([
           Animated.timing(glowAnim, {
             toValue: 1,
@@ -41,11 +48,20 @@ export function ProgressRing({
             useNativeDriver: true,
           }),
         ])
-      ).start();
+      );
+      animationRef.current.start();
     } else {
       glowAnim.setValue(0);
     }
-  }, [shouldGlow, glowAnim]);
+
+    // Cleanup function
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.stop();
+        animationRef.current = null;
+      }
+    };
+  }, [shouldGlow]);
   
   const glowOpacity = glowAnim.interpolate({
     inputRange: [0, 1],
