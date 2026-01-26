@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SovereignProvider } from '@/contexts/SovereignContext';
+import { PurchasesProvider } from '@/contexts/PurchasesContext';
 import { Colors } from '@/constants/colors';
 
 SplashScreen.preventAutoHideAsync();
@@ -34,10 +35,12 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <SovereignProvider>
-          <StatusBar style="light" />
-          <RootLayoutNav />
-        </SovereignProvider>
+        <PurchasesProvider>
+            <SovereignProvider>
+              <StatusBar style="light" />
+              <RootLayoutNav />
+            </SovereignProvider>
+          </PurchasesProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
   );

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BookOpen, PenLine, ChevronRight } from 'lucide-react-native';
+import { BookOpen, PenLine, ChevronRight, RotateCcw } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
 import { useSovereign } from '@/contexts/SovereignContext';
@@ -18,6 +18,7 @@ import { StatCard } from '@/components/StatCard';
 import { GoldButton } from '@/components/GoldButton';
 import { MissionModal } from '@/components/MissionModal';
 import { DoctrineModal } from '@/components/DoctrineModal';
+import { usePurchases } from '@/contexts/PurchasesContext';
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function DashboardScreen() {
   
   const [modalVisible, setModalVisible] = useState(false);
   const [doctrineModalVisible, setDoctrineModalVisible] = useState(false);
+  const { restorePurchases, isRestoring, isPremium } = usePurchases();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(20)).current;
 
@@ -233,6 +235,22 @@ export default function DashboardScreen() {
             </View>
             <ChevronRight size={20} color={Colors.text.muted} />
           </TouchableOpacity>
+
+          {!isPremium && (
+            <TouchableOpacity 
+              style={styles.restoreButton}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                restorePurchases();
+              }}
+              disabled={isRestoring}
+            >
+              <RotateCcw size={16} color={Colors.text.muted} />
+              <Text style={styles.restoreButtonText}>
+                {isRestoring ? 'Restoring...' : 'Restore Purchases'}
+              </Text>
+            </TouchableOpacity>
+          )}
         </Animated.View>
       </ScrollView>
 
@@ -436,5 +454,18 @@ const styles = StyleSheet.create({
   journalPromptSubtitle: {
     fontSize: 13,
     color: Colors.text.muted,
+  },
+  restoreButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    marginTop: 8,
+    gap: 8,
+  },
+  restoreButtonText: {
+    fontSize: 14,
+    color: Colors.text.muted,
+    textDecorationLine: 'underline',
   },
 });

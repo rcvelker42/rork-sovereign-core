@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Dumbbell, ChevronRight } from 'lucide-react-native';
+import { Dumbbell, ChevronRight, Crown } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
 import { useSovereign } from '@/contexts/SovereignContext';
@@ -22,6 +22,8 @@ import {
 import { getGymMissionsForPrinciple, GymMission } from '@/constants/gymMissions';
 import { Lock } from 'lucide-react-native';
 import { GymMissionModal } from '@/components/GymMissionModal';
+import { usePurchases } from '@/contexts/PurchasesContext';
+import { PaywallModal } from '@/components/PaywallModal';
 
 export default function GymScreen() {
   const { 
@@ -36,6 +38,8 @@ export default function GymScreen() {
   const orderedPrinciples = getPrinciplesInOrder();
   const [selectedMission, setSelectedMission] = useState<GymMission | null>(null);
   const [missionModalVisible, setMissionModalVisible] = useState(false);
+  const [paywallVisible, setPaywallVisible] = useState(false);
+  const { isPremium } = usePurchases();
 
   useEffect(() => {
     const animation = Animated.timing(fadeAnim, {
@@ -190,21 +194,47 @@ export default function GymScreen() {
     );
   };
 
+  const isTierPaywalled = (tier: PrincipleTier): boolean => {
+    return (tier === 2 || tier === 3) && !isPremium;
+  };
+
   const renderTier = (tier: PrincipleTier) => {
     const tierPrinciples = getPrinciplesByTier(tier);
     const hasUnlocked = tierPrinciples.some(p => isPrincipleUnlocked(p.id));
+    const isPaywalled = isTierPaywalled(tier);
 
     return (
       <View key={tier} style={styles.tierSection}>
         <View style={styles.tierHeader}>
-          <Dumbbell size={16} color={hasUnlocked ? Colors.accent.gold : Colors.text.muted} />
-          <Text style={[styles.tierTitle, !hasUnlocked && styles.tierTitleLocked]}>
+          {isPaywalled ? (
+            <Crown size={16} color={Colors.accent.gold} />
+          ) : (
+            <Dumbbell size={16} color={hasUnlocked ? Colors.accent.gold : Colors.text.muted} />
+          )}
+          <Text style={[styles.tierTitle, !hasUnlocked && !isPaywalled && styles.tierTitleLocked]}>
             {TIER_NAMES[tier]}
           </Text>
+          {isPaywalled && (
+            <View style={styles.premiumBadge}>
+              <Text style={styles.premiumBadgeText}>PREMIUM</Text>
+            </View>
+          )}
         </View>
-        <View style={styles.principlesContainer}>
-          {tierPrinciples.map(renderPrinciple)}
-        </View>
+        {isPaywalled ? (
+          <TouchableOpacity 
+            style={styles.paywallOverlay}
+            onPress={() => setPaywallVisible(true)}
+            activeOpacity={0.8}
+          >
+            <Crown size={32} color={Colors.accent.gold} />
+            <Text style={styles.paywallText}>Unlock Advanced Training</Text>
+            <Text style={styles.paywallSubtext}>Premium subscription required</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.principlesContainer}>
+            {tierPrinciples.map(renderPrinciple)}
+          </View>
+        )}
       </View>
     );
   };
@@ -236,6 +266,11 @@ export default function GymScreen() {
             lockReason={selectedMissionLockReason}
           />
         )}
+
+        <PaywallModal
+          visible={paywallVisible}
+          onClose={() => setPaywallVisible(false)}
+        />
       </Animated.View>
     </SafeAreaView>
   );
@@ -396,6 +431,39 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: Colors.text.muted,
     fontStyle: 'italic',
+    marginTop: 4,
+  },
+  premiumBadge: {
+    backgroundColor: Colors.accent.goldDim,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 4,
+    marginLeft: 8,
+  },
+  premiumBadgeText: {
+    fontSize: 9,
+    fontWeight: '700' as const,
+    color: Colors.accent.gold,
+    letterSpacing: 1,
+  },
+  paywallOverlay: {
+    backgroundColor: Colors.background.card,
+    borderRadius: 12,
+    padding: 32,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.accent.goldDim,
+    marginBottom: 16,
+  },
+  paywallText: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    color: Colors.text.primary,
+    marginTop: 12,
+  },
+  paywallSubtext: {
+    fontSize: 13,
+    color: Colors.text.muted,
     marginTop: 4,
   },
 });

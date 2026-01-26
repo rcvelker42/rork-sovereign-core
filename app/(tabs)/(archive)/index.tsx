@@ -1,14 +1,15 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Animated,
+  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Lock, Unlock, ChevronDown } from 'lucide-react-native';
+import { Lock, Unlock, ChevronDown, Crown } from 'lucide-react-native';
 import { Colors } from '@/constants/colors';
 import { useSovereign } from '@/contexts/SovereignContext';
 import { 
@@ -17,10 +18,14 @@ import {
   PrincipleTier,
 } from '@/constants/principles';
 import { PrincipleTile } from '@/components/PrincipleTile';
+import { usePurchases } from '@/contexts/PurchasesContext';
+import { PaywallModal } from '@/components/PaywallModal';
 
 export default function ArchiveScreen() {
   const router = useRouter();
   const { isPrincipleUnlocked, isPrincipleCompleted, getNextUnlockedPrincipleId } = useSovereign();
+  const { isPremium } = usePurchases();
+  const [paywallVisible, setPaywallVisible] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const orderedPrinciples = getPrinciplesInOrder();
   const nextPrincipleId = getNextUnlockedPrincipleId();
@@ -92,30 +97,60 @@ export default function ArchiveScreen() {
     );
   };
 
+  const isTierPaywalled = (tier: PrincipleTier): boolean => {
+    return tier === 3 && !isPremium;
+  };
+
+  const handleTierPress = (tier: PrincipleTier) => {
+    if (isTierPaywalled(tier)) {
+      setPaywallVisible(true);
+    }
+  };
+
   const renderTier = (tier: PrincipleTier) => {
     const tierPrinciples = getPrinciplesByTier(tier);
     const hasUnlocked = tierPrinciples.some(p => isPrincipleUnlocked(p.id));
+    const isPaywalled = isTierPaywalled(tier);
 
     return (
       <View key={tier} style={styles.tierSection}>
         <View style={styles.tierHeader}>
           <View style={styles.tierTitleRow}>
-            {hasUnlocked ? (
+            {isPaywalled ? (
+              <Crown size={16} color={Colors.accent.gold} />
+            ) : hasUnlocked ? (
               <Unlock size={16} color={Colors.accent.gold} />
             ) : (
               <Lock size={16} color={Colors.text.muted} />
             )}
-            <Text style={[styles.tierTitle, !hasUnlocked && styles.tierTitleLocked]}>
+            <Text style={[styles.tierTitle, !hasUnlocked && !isPaywalled && styles.tierTitleLocked]}>
               {TIER_NAMES[tier]}
             </Text>
+            {isPaywalled && (
+              <View style={styles.premiumBadge}>
+                <Text style={styles.premiumBadgeText}>PREMIUM</Text>
+              </View>
+            )}
           </View>
         </View>
 
-        <View style={styles.tierContent}>
-          {tierPrinciples.map((principle, index) => 
-            renderPrinciple(principle, index, tierPrinciples)
-          )}
-        </View>
+        {isPaywalled ? (
+          <TouchableOpacity 
+            style={styles.paywallOverlay}
+            onPress={() => handleTierPress(tier)}
+            activeOpacity={0.8}
+          >
+            <Crown size={32} color={Colors.accent.gold} />
+            <Text style={styles.paywallText}>Unlock The Mastery</Text>
+            <Text style={styles.paywallSubtext}>Premium subscription required</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.tierContent}>
+            {tierPrinciples.map((principle, index) => 
+              renderPrinciple(principle, index, tierPrinciples)
+            )}
+          </View>
+        )}
       </View>
     );
   };
@@ -135,6 +170,11 @@ export default function ArchiveScreen() {
         >
           {([1, 2, 3] as PrincipleTier[]).map(renderTier)}
         </ScrollView>
+
+        <PaywallModal
+          visible={paywallVisible}
+          onClose={() => setPaywallVisible(false)}
+        />
       </Animated.View>
     </SafeAreaView>
   );
@@ -243,5 +283,37 @@ const styles = StyleSheet.create({
   },
   connectorLineUnlocked: {
     backgroundColor: Colors.text.muted,
+  },
+  premiumBadge: {
+    backgroundColor: Colors.accent.goldDim,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 4,
+    marginLeft: 8,
+  },
+  premiumBadgeText: {
+    fontSize: 9,
+    fontWeight: '700' as const,
+    color: Colors.accent.gold,
+    letterSpacing: 1,
+  },
+  paywallOverlay: {
+    backgroundColor: Colors.background.card,
+    borderRadius: 12,
+    padding: 32,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.accent.goldDim,
+  },
+  paywallText: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    color: Colors.text.primary,
+    marginTop: 12,
+  },
+  paywallSubtext: {
+    fontSize: 13,
+    color: Colors.text.muted,
+    marginTop: 4,
   },
 });
