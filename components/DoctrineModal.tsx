@@ -108,6 +108,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isNonReactivity = principle.id === 'non-reactivity-foundation';
   const isStateTransfer = principle.id === 'state-transfer';
   const isSocialPressure = principle.id === 'social-pressure';
+  const isValueProjection = principle.id === 'value-projection';
 
   // Custom detailed text for Core Confidence
   const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
@@ -396,6 +397,52 @@ Social pressure is like a hurricane. Most men are being blown around by the wind
 
 Sovereign Thought: "Pressure is a privilege. It is the universe's way of asking you if you are who you say you are. Every time you don't crack, you become more real."`;
 
+  // Custom detailed text for Value Projection
+  const valueProjectionText = `Welcome to the core of social magnetism. If Phase 1 was about becoming "The Rock" (Internal), Principle 07: Value Projection is about becoming "The Sun" (External).
+In the self transformation framework, every social interaction is an exchange of Value. Most men fail because they walk into the world as Value Seekers—they are looking for a laugh, a smile, or a "yes" to feel good. The Master walks in as a Value Provider. He projects energy, emotion, and reality so powerfully that people feel better just by standing near him.
+
+The Philosophy of "The Source"
+Value isn't just money, looks, or status. In the moment-to-moment reality of a conversation, Value is Emotion.
+• The Value Seeker: He is a "Social Vampire." He asks questions to get information, tells jokes to get a laugh, and acts nice to get approval. He is pulling energy in.
+• The Value Provider: He is the "Source." He shares his observations because they amuse him. He gives compliments because he genuinely appreciates something. He is pushing energy out.
+People can subconsciously sense "leech" energy. It feels heavy and draining. Conversely, "Source" energy feels light, expansive, and addictive. When you project value without needing anything back, you become the most valuable person in the room by default.
+
+Real-Life Conversational Examples: Giving vs. Taking
+Scenario 1: The "Interview" vs. The "Offering"
+You meet someone for the first time at a party.
+• The Value Seeker (The Interviewer):
+    * Him: "So, what do you do for work?" (Seeking information to fill silence).
+    * Her: "I'm in marketing."
+    * Him: "Oh, cool. Do you like it?" (Seeking more info).
+    * The Result: The conversation feels like a chore. She is "working" to provide him with content.
+• The Value Provider (The Offering):
+    * Him: "You have a very 'I just quit my corporate job to start a travel blog' vibe. I'm guessing marketing, but with a secret plan to move to Bali."
+    * Her: (Laughs) "Close! I am in marketing, but the Bali plan is definitely on the vision board."
+    * The Result: He gave her an emotion (amusement) and a creative "frame" to play with. He projected value first.
+
+Scenario 2: The "Approval" vs. The "Appreciation"
+You want to tell someone they look good.
+• The Value Seeker (The Compliment Fisher):
+    * Him: "You look really pretty tonight." (Looking at her eyes to see if she likes the compliment).
+    * The Result: It feels "heavy." She now feels pressured to say "thank you" or return the compliment.
+• The Value Provider (The Artist):
+    * Him: (While walking past or mid-conversation) "That jacket is incredible. It's got a very 'villain in a 1920s spy movie' feel. I love it." (Then he immediately continues talking about something else).
+    * The Result: He gave her a "gift" of a compliment and didn't wait around to collect the "thank you." This is Outcome Independence mixed with Value Projection.
+
+The Three Pillars of Value Projection
+1. Assumption of Value
+You must operate under the assumption that your presence is the prize. You aren't "intruding" on someone's time; you are "interrupting" their boredom. If you don't believe your energy is a gift, they won't either.
+2. Self-Entertainment
+The easiest way to project value is to entertain yourself. If you are laughing at your own jokes and enjoying your own thoughts, you are producing fun. Because humans are mirrors (State Transfer), they will start to catch the fun you are already having.
+3. The "Giving" Mindset
+Before every interaction, ask yourself: "How can I make this person's minute better?" Maybe it's a joke, a genuine observation, or just a burst of high-intensity presence. When you focus on giving a great experience, your social anxiety disappears because you're no longer worried about your own performance.
+
+The Mastery Insight: "The Empty Cup"
+Most men are like a cup that is half-empty, trying to find someone to fill it up. The Master is a cup that is so full it is overflowing. He has so much internal validation and "Core Confidence" that he can't help but spill it onto everyone he meets.
+People don't fall in love with "you"; they fall in love with how they feel when they are with you. If you are a constant source of high-value emotions, the world will beat a path to your door.
+
+Sovereign Thought: "The man who needs nothing is the only one who can give everything. And the man who gives everything is the only one who receives it all back."`;
+
   // Split doctrine into paragraphs for better readability
   const doctrineParagraphs = isCoreConfidence 
     ? coreConfidenceText.split('\n\n')
@@ -409,6 +456,8 @@ Sovereign Thought: "Pressure is a privilege. It is the universe's way of asking 
     ? stateTransferText.split('\n\n')
     : isSocialPressure
     ? socialPressureText.split('\n\n')
+    : isValueProjection
+    ? valueProjectionText.split('\n\n')
     : principle.doctrine.split('\n\n');
 
   return (
@@ -532,7 +581,7 @@ Sovereign Thought: "Pressure is a privilege. It is the universe's way of asking 
               </View>
             </View>
 
-            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && (
+            {!isCoreConfidence && !isDeathOfEgo && !isOutcomeIndependence && !isNonReactivity && !isStateTransfer && !isSocialPressure && !isValueProjection && (
               <>
                 <View style={styles.missionPreview}>
                   <Text style={styles.sectionLabel}>TODAY'S MISSION</Text>
