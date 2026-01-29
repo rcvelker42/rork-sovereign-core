@@ -169,7 +169,7 @@ export default function AwakeningScreen() {
             </View>
             <Text style={styles.title}>SOVEREIGN</Text>
             <View style={styles.divider} />
-            <Text style={styles.subtitle}>🏛️ The Awakening: A Cross-Examination</Text>
+            <Text style={styles.subtitle}>The Awakening: A Cross-Examination</Text>
             <Text style={styles.introText}>
               {"\"The first step to sovereignty is admitting you are currently a subject.\""}
             </Text>
@@ -265,7 +265,7 @@ export default function AwakeningScreen() {
           <View style={styles.contentContainer}>
             <Text style={styles.sectionTitle}>II. The Stakes</Text>
             <Text style={styles.quoteText}>
-              {"\"A man who fears the 'No' is a man who has already rejected himself.\""}
+              {"\"One who fears the 'No' has already rejected themselves.\""}
             </Text>
             <View style={styles.buttonContainer}>
               <GoldButton 
@@ -281,7 +281,7 @@ export default function AwakeningScreen() {
           <View style={styles.contentContainer}>
             <Text style={styles.sectionTitle}>II. The Stakes</Text>
             <Text style={styles.promptText}>
-              {"Imagine yourself five years from now if you change nothing. If you continue to seek permission, wait for the \"right time,\" and hide in your comfort zone... does that man's life look like a Masterpiece or a Tragedy?"}
+              {"Imagine yourself five years from now if you change nothing. If you continue to seek permission, wait for the \"right time,\" and hide in your comfort zone... does that person's life look like a Masterpiece or a Tragedy?"}
             </Text>
             <View style={styles.optionsContainer}>
               <TouchableOpacity
@@ -360,7 +360,7 @@ export default function AwakeningScreen() {
               {"\"Words are cheap. Presence is everything.\""}
             </Text>
             <Text style={styles.pactText}>
-              {"Do you commit to prioritizing Action over Theory, and will you vow to never \"lie\" to your Ledger, knowing that the only person you truly cheat is the man you are meant to become?"}
+              {"Do you commit to prioritizing Action over Theory, and will you vow to never \"lie\" to your Ledger, knowing that the only person you truly cheat is the person you are meant to become?"}
             </Text>
             <View style={styles.acceptButtonContainer}>
               <TouchableOpacity

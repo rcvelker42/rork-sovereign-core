@@ -43,7 +43,7 @@ export const principles: Principle[] = [
     name: 'The Death of the Ego',
     tier: 1,
     icon: 'Skull',
-    doctrine: 'Your "Ego" is the mental bodyguard that is actually a prison guard. It tries to protect you from "looking stupid" or "getting rejected." But in the social world, the man who is willing to look stupid is the only one who is truly free.\n\nTo find your power, you must "kill" the version of you that cares about its own image. When you stop protecting your ego, you become "outcome independent" by default.',
+    doctrine: 'Your "Ego" is the mental bodyguard that is actually a prison guard. It tries to protect you from "looking stupid" or "getting rejected." But in the social world, the one who is willing to look stupid is the only one who is truly free.\n\nTo find your power, you must "kill" the version of you that cares about its own image. When you stop protecting your ego, you become "outcome independent" by default.',
     mission: {
       title: 'The Public Humiliation Drill',
       description: 'Go to a crowded area (a mall or a busy street). Lie down on the ground for exactly 30 seconds. Do nothing. Don\'t check your phone. Just feel the "Social Pressure" and the judgment of others. Realize that after 30 seconds, you are still alive, the world hasn\'t ended, and your ego\'s "protection" was a lie.',
@@ -55,7 +55,7 @@ export const principles: Principle[] = [
     name: 'Outcome Independence',
     tier: 1,
     icon: 'Infinity',
-    doctrine: 'The "vibe" of a man who needs something is repulsive. If you need a girl to like you, a crowd to cheer for you, or a stranger to be nice to you, you have given them all the power.\n\nOutcome Independence is the ability to walk into any situation and be "OK" regardless of what happens. You aren\'t "trying" to get a result; you are simply "offering" your presence. If they take it, great. If they don\'t, it doesn\'t change your internal state.',
+    doctrine: 'The "vibe" of someone who needs something is repulsive. If you need someone to like you, a crowd to cheer for you, or a stranger to be nice to you, you have given them all the power.\n\nOutcome Independence is the ability to walk into any situation and be "OK" regardless of what happens. You aren\'t "trying" to get a result; you are simply "offering" your presence. If they take it, great. If they don\'t, it doesn\'t change your internal state.',
     mission: {
       title: 'The Intentional Rejection',
       description: 'Go out and ask 3 people for something you know they will say "no" to (e.g., "Can I have five dollars?" or "Can I have a bite of your sandwich?"). Your goal is to get the "No" and keep a smile on your face. The goal isn\'t the sandwich; the goal is to remain unphased by the "No."',
@@ -67,7 +67,7 @@ export const principles: Principle[] = [
     name: 'Non-Reactivity',
     tier: 1,
     icon: 'Shield',
-    doctrine: 'The world will constantly "test" your reality. Someone might insult you, a girl might give you a cold look, or a situation might go wrong. A "Reactive" man snaps, gets angry, or tries to explain himself. He is a leaf in the wind.\n\nA Non-Reactive man is the "Unshakable Rock." You acknowledge the external stimulus, but you do not let it penetrate your internal world. You choose your response rather than having a knee-jerk reaction.',
+    doctrine: 'The world will constantly "test" your reality. Someone might insult you, a stranger might give you a cold look, or a situation might go wrong. A "Reactive" person snaps, gets angry, or tries to explain themselves. They are a leaf in the wind.\n\nA Non-Reactive person is the "Unshakable Rock." You acknowledge the external stimulus, but you do not let it penetrate your internal world. You choose your response rather than having a knee-jerk reaction.',
     mission: {
       title: 'The Silent Response',
       description: 'The next time someone says something slightly "edgy" or challenging to you, or if you feel a surge of social anxiety, wait 3 full seconds before responding. Do not fidget. Just hold eye contact and breathe. Experience the gap between the stimulus and your response.',
@@ -91,7 +91,7 @@ export const principles: Principle[] = [
     name: 'Social Pressure is a Tool',
     tier: 2,
     icon: 'Dumbbell',
-    doctrine: 'Most men run from social pressure. They feel a "stifling" sensation in their chest when the room goes quiet or when they stand out. The Master does the opposite: he leans into it.\n\nSocial pressure is like a physical weight in a gym. If you hide from it, you stay weak. If you embrace it, you develop a "heavy" presence that commands respect. When you can sit comfortably in high-pressure moments (like a long pause in conversation), you prove that your reality is stronger than the collective anxiety of the room.',
+    doctrine: 'Most people run from social pressure. They feel a "stifling" sensation in their chest when the room goes quiet or when they stand out. The Master does the opposite: they lean into it.\n\nSocial pressure is like a physical weight in a gym. If you hide from it, you stay weak. If you embrace it, you develop a "heavy" presence that commands respect. When you can sit comfortably in high-pressure moments (like a long pause in conversation), you prove that your reality is stronger than the collective anxiety of the room.',
     mission: {
       title: 'The Intentional Pause',
       description: 'In your next conversation, after the other person finishes a sentence, wait 3-5 seconds before responding. Do not look away. Maintain a relaxed, slight smile. Feel the "pressure" build in the silence. Do not break it until the other person either speaks again or the time is up. Own the silence.',
@@ -103,7 +103,7 @@ export const principles: Principle[] = [
     name: 'Value Projection',
     tier: 2,
     icon: 'Sun',
-    doctrine: 'Social dynamics is an exchange of "Value." Value isn\'t just money or looks; it\'s Energy, Emotion, and Reality. Most men approach others as "Value Seekers"—they want a laugh, a phone number, or approval.\n\nA "Value Provider" walks into a room and gives. He gives good vibes, he gives presence, he gives a "release" from the boredom of everyday life. When you project value without needing anything back, people are naturally drawn to you like a moth to a flame.',
+    doctrine: 'Social dynamics is an exchange of "Value." Value isn\'t just money or looks; it\'s Energy, Emotion, and Reality. Most people approach others as "Value Seekers"—they want a laugh, a phone number, or approval.\n\nA "Value Provider" walks into a room and gives. They give good vibes, they give presence, they give a "release" from the boredom of everyday life. When you project value without needing anything back, people are naturally drawn to you like a moth to a flame.',
     mission: {
       title: 'The Compliment Machine',
       description: 'Give three genuine compliments to three different strangers today. The catch: you must keep walking immediately after delivering the compliment. Do not wait for a "thank you" or a conversation. Give the value, and keep your "outcome independence" by moving on.',
@@ -127,7 +127,7 @@ export const principles: Principle[] = [
     name: 'Assumed Familiarity',
     tier: 2,
     icon: 'Link',
-    doctrine: 'Most men treat strangers with a "formal" barrier. They use polite, stiff language that screams "I don\'t know you." This creates distance and awkwardness.\n\nAssumed Familiarity is the "vibe" that you\'ve known this person for ten years. You skip the "interview" questions (What\'s your name? What do you do?) and jump straight into the middle of a "brother/sister" or "old friend" dynamic. This breaks through social masks instantly and creates an immediate bond.',
+    doctrine: 'Most people treat strangers with a "formal" barrier. They use polite, stiff language that screams "I don\'t know you." This creates distance and awkwardness.\n\nAssumed Familiarity is the "vibe" that you\'ve known this person for ten years. You skip the "interview" questions (What\'s your name? What do you do?) and jump straight into the middle of an "old friend" dynamic. This breaks through social masks instantly and creates an immediate bond.',
     mission: {
       title: 'The Mid-Conversation Jump',
       description: 'Approach someone and start a conversation as if you are continuing a joke you started five minutes ago. Skip the "Hi, how are you?" and go straight to: "You wouldn\'t believe what just happened..." or "I was just thinking about [Topic] and you look like someone who would have an opinion on this."',
@@ -139,7 +139,7 @@ export const principles: Principle[] = [
     name: 'Polarization',
     tier: 2,
     icon: 'Magnet',
-    doctrine: '"Nice guys" try to be liked by everyone, and as a result, they are loved by no one. They are "lukewarm." The goal of the RSD system is to be Polarizing.\n\nWhen you are unapologetically yourself, some people will hate you, but the people who like you will love you. Polarization is the filter that weeds out the people who don\'t vibe with your reality and attracts your "tribe." If you aren\'t occasionally offending the "wrong" people, you aren\'t being real enough.',
+    doctrine: '"People pleasers" try to be liked by everyone, and as a result, they are loved by no one. They are "lukewarm." The goal of the system is to be Polarizing.\n\nWhen you are unapologetically yourself, some people will hate you, but the people who like you will love you. Polarization is the filter that weeds out the people who don\'t vibe with your reality and attracts your "tribe." If you aren\'t occasionally offending the "wrong" people, you aren\'t being real enough.',
     mission: {
       title: 'The Unpopular Opinion',
       description: 'In a group setting, share a genuine opinion you have that you know might be slightly controversial or "edgy" (keep it playful, not political/hateful). Do not apologize for it or back down if someone disagrees. State it, own it, and see who "leans in" to the conversation because of your honesty.',
@@ -163,7 +163,7 @@ export const principles: Principle[] = [
     name: 'The Vibe vs. The Words',
     tier: 3,
     icon: 'Waves',
-    doctrine: 'A beginner asks, "What do I say next?" A Master knows it doesn\'t matter. 90% of communication is the "Vibe." The Vibe is the sub-perceptual energy you project—your comfort, your humor, and your presence.\n\nIf your vibe is "I am a high-value man having a great time," you can literally talk about the ingredients of a cereal box and people will be mesmerized. When the "Internal State" is perfect, the "External Words" are just background noise to the feeling you\'re giving people.',
+    doctrine: 'A beginner asks, "What do I say next?" A Master knows it doesn\'t matter. 90% of communication is the "Vibe." The Vibe is the sub-perceptual energy you project—your comfort, your humor, and your presence.\n\nIf your vibe is "I am a high-value person having a great time," you can literally talk about the ingredients of a cereal box and people will be mesmerized. When the "Internal State" is perfect, the "External Words" are just background noise to the feeling you\'re giving people.',
     mission: {
       title: 'The Nonsense Conversation',
       description: 'Have a 2-minute conversation with someone where you talk about something completely mundane or even nonsensical (like the history of your socks). Focus 100% on your State Transfer and Eye Contact. If they stay engaged and smile, you\'ve proven that your "Vibe" is doing the heavy lifting, not your "Lines."',
@@ -187,10 +187,10 @@ export const principles: Principle[] = [
     name: 'Identity Shifting',
     tier: 3,
     icon: 'Crown',
-    doctrine: 'Most men are trying to "act" confident. Mastery is about Identity Shifting. You stop being "a guy trying to be cool" and you become "The Man."\n\nThis is the "Self-Transformational" part of the system. You rewrite your internal narrative. You don\'t go to the party; you are the party. You don\'t seek success; success is an inevitable byproduct of who you have become. Your identity is now grounded in your "Core Confidence."',
+    doctrine: 'Most people are trying to "act" confident. Mastery is about Identity Shifting. You stop being "someone trying to be cool" and you become "The One."\n\nThis is the "Self-Transformational" part of the system. You rewrite your internal narrative. You don\'t go to the party; you are the party. You don\'t seek success; success is an inevitable byproduct of who you have become. Your identity is now grounded in your "Core Confidence."',
     mission: {
       title: 'The Alter Ego Night',
-      description: 'Go to a place where nobody knows you. For that night, embody the "Future Version" of yourself—the man who has already achieved all his goals. Walk like him, talk like him, and assume everyone already likes him. Notice how much easier it is to "be" that man when you stop carrying your old history with you.',
+      description: 'Go to a place where nobody knows you. For that night, embody the "Future Version" of yourself—the person who has already achieved all their goals. Walk like them, talk like them, and assume everyone already likes them. Notice how much easier it is to "be" that person when you stop carrying your old history with you.',
       xpReward: 65,
     },
   },

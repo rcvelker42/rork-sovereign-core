@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BookOpen, PenLine, ChevronRight, RotateCcw } from 'lucide-react-native';
+import { BookOpen, PenLine, ChevronRight, RotateCcw, Shield, HelpCircle } from 'lucide-react-native';
+import * as WebBrowser from 'expo-web-browser';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
 import { useSovereign } from '@/contexts/SovereignContext';
@@ -251,6 +252,26 @@ export default function DashboardScreen() {
               </Text>
             </TouchableOpacity>
           )}
+
+          <View style={styles.footerLinks}>
+            <TouchableOpacity 
+              style={styles.footerLink}
+              onPress={() => WebBrowser.openBrowserAsync('https://sites.google.com/view/thesovereignapp/home')}
+            >
+              <Shield size={14} color={Colors.text.muted} />
+              <Text style={styles.footerLinkText}>Privacy Policy</Text>
+            </TouchableOpacity>
+            
+            <View style={styles.footerDivider} />
+            
+            <TouchableOpacity 
+              style={styles.footerLink}
+              onPress={() => WebBrowser.openBrowserAsync('https://sites.google.com/view/thesovereignapp/support')}
+            >
+              <HelpCircle size={14} color={Colors.text.muted} />
+              <Text style={styles.footerLinkText}>Support</Text>
+            </TouchableOpacity>
+          </View>
         </Animated.View>
       </ScrollView>
 
@@ -467,5 +488,28 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.text.muted,
     textDecorationLine: 'underline',
+  },
+  footerLinks: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 16,
+    marginTop: 8,
+  },
+  footerLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  footerLinkText: {
+    fontSize: 13,
+    color: Colors.text.muted,
+  },
+  footerDivider: {
+    width: 1,
+    height: 16,
+    backgroundColor: Colors.border,
   },
 });

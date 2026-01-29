@@ -129,7 +129,7 @@ export function DoctrineModal({ visible, principle, onClose }: DoctrineModalProp
   const isPresenceMastery = principle.id === 'presence-mastery';
 
   // Custom detailed text for Core Confidence
-  const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most men walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
+  const coreConfidenceText = `To understand Core Confidence, you have to stop thinking about "feeling good" and start thinking about Biological Reality. Most people walk through life as "Social Chameleons." They scan the environment, detect the "temperature" of the room, and then adjust their internal state to match. If the room is cold, they freeze. If the room is hot, they sweat. Situational Confidence is a survival mechanism; Core Confidence is a leadership mechanism.
 
 The Anatomy of the Social Mirror
 Most people operate on a Feedback Loop. They look into the "Social Mirror" (the faces of others, their bank account, their job title) to see if they are "allowed" to feel powerful.
@@ -137,23 +137,23 @@ Most people operate on a Feedback Loop. They look into the "Social Mirror" (the 
 • Core Confidence is Irrational: "I am high value because I decided I am, even if I'm taking the bus."
 
 The "Lease" vs. The "Ownership"
-When you rely on the situation, you are leasing your confidence from the environment. The environment is the landlord, and he can evict you at any moment. When you have Core Confidence, you own the land. You can burn the house down and you're still the owner of the dirt.
+When you rely on the situation, you are leasing your confidence from the environment. The environment is the landlord, and they can evict you at any moment. When you have Core Confidence, you own the land. You can burn the house down and you're still the owner of the dirt.
 
 Scenario 1: The Nightlife "Ghost Town"
 Imagine walking into a bar that is completely dead. There are three people there, and they look bored.
-• The Situational Man: He walks in, feels the "low energy," and immediately shrinks. He checks his phone, looks for an exit, and feels "awkward" just standing there. His state is a mirror of the room's boredom.
-• The Core Man: He walks in and realizes he is the party. He doesn't need a crowd to "give" him permission to have fun. He talks to the bartender with the same intensity he'd use at a sold-out stadium. He is the Source of the energy.
-Key Takeaway: The Situational Man waits for the "vibe" to happen. The Core Man is the vibe.
+• The Situational Self: They walk in, feel the "low energy," and immediately shrink. They check their phone, look for an exit, and feel "awkward" just standing there. Their state is a mirror of the room's boredom.
+• The Core Self: They walk in and realize they are the party. They don't need a crowd to "give" them permission to have fun. They talk to the bartender with the same intensity they'd use at a sold-out stadium. They are the Source of the energy.
+Key Takeaway: The Situational Self waits for the "vibe" to happen. The Core Self is the vibe.
 
 Scenario 2: The Workplace Power Play
-You're in a meeting with a high-level executive or a "Alpha" boss who is intentionally trying to intimidate you.
-• The Situational Man: He feels his status dropping. He begins to speak faster, his voice gets higher, and he starts "qualifying" himself (listing his credentials to prove he belongs). He is looking for the boss to nod so he can feel "safe."
-• The Core Man: He realizes that titles are just social costumes. He stays in "The Flow." He isn't trying to prove he's smart; he's just present. If the boss tries to "alpha" him, he finds it amusing—like a child trying to act tough. He doesn't react because his value isn't on the table for discussion.
+You're in a meeting with a high-level executive or an "Alpha" boss who is intentionally trying to intimidate you.
+• The Situational Self: They feel their status dropping. They begin to speak faster, their voice gets higher, and they start "qualifying" themselves (listing their credentials to prove they belong). They are looking for the boss to nod so they can feel "safe."
+• The Core Self: They realize that titles are just social costumes. They stay in "The Flow." They aren't trying to prove they're smart; they're just present. If the boss tries to "alpha" them, they find it amusing—like a child trying to act tough. They don't react because their value isn't on the table for discussion.
 
 Scenario 3: The "High-Value" Interaction
-You are talking to a woman who is "conventionally" more attractive than anyone you've ever dated.
-• The Situational Man: He is "in his head" calculating his chances. He thinks, "I need to say the perfect thing to keep her interested." Every time she smiles, he feels a rush. Every time she looks away, he feels a "micro-rejection." He is a servant to her attention.
-• The Core Man: He assumes Investment Entitlement. He feels that his presence is a gift. He isn't wondering if she likes him; he's wondering if he likes her. He treats her like a normal human being because he doesn't see her beauty as a "status" that makes her superior to him.
+You are talking to someone who is "conventionally" more attractive than anyone you've ever dated.
+• The Situational Self: They are "in their head" calculating their chances. They think, "I need to say the perfect thing to keep them interested." Every time the other person smiles, they feel a rush. Every time they look away, they feel a "micro-rejection." They are a servant to their attention.
+• The Core Self: They assume Investment Entitlement. They feel that their presence is a gift. They aren't wondering if the other person likes them; they're wondering if they like the other person. They treat them like a normal human being because they don't see their beauty as a "status" that makes them superior.
 
 How to Cultivate "The Source"
 Core Confidence isn't a "thought"—it's a muscle. You build it by intentionally breaking the link between "Results" and "State."
@@ -162,13 +162,13 @@ Core Confidence isn't a "thought"—it's a muscle. You build it by intentionally
 Before you enter any room, decide what your state is. Don't wait to see who is there. Blast your favorite music, laugh to yourself, or do a "Power Pose" in the elevator. Enter the room at a 10, and see how long you can hold it even if people give you "weird" looks.
 
 2. Failure as "Data Mining"
-To the Situational Man, failure is an identity. "I failed, therefore I am a failure." To the Core Man, failure is just feedback. "That line didn't work. Interesting. Let's try a different angle."
+To the Situational Self, failure is an identity. "I failed, therefore I am a failure." To the Core Self, failure is just feedback. "That line didn't work. Interesting. Let's try a different angle."
 
 3. Radical Self-Acceptance
 You must reach a point where you accept your "flaws" so deeply that they can't be used against you. If you're short, own it. If you're broke, own it. When you stop "hiding" the things that make you feel low-value, the world loses its leverage over your ego.
 
 The Final Philosophy
-Core Confidence is the realization that the universe is a playground. Most people are playing a high-stakes game of "Don't Look Stupid." The man with Core Confidence is the only one actually playing the game. He realizes that "Dying" socially isn't real. You can't actually "lose" value because your value was never tied to the scoreboard in the first place.`;
+Core Confidence is the realization that the universe is a playground. Most people are playing a high-stakes game of "Don't Look Stupid." The person with Core Confidence is the only one actually playing the game. They realize that "Dying" socially isn't real. You can't actually "lose" value because your value was never tied to the scoreboard in the first place.`;
 
   // Custom detailed text for Death of the Ego
   const deathOfEgoText = `To master Core Confidence, you must first dismantle the machinery that keeps it locked away: The Ego. In the self-transformation framework, the Ego is not "who you are." It is a defensive hallucination—a mental "bodyguard" you built as a child to protect yourself from the pain of social judgment.
@@ -176,7 +176,7 @@ Core Confidence is the realization that the universe is a playground. Most peopl
 The problem? The bodyguard has become a prison guard. To become a "Natural," you don't need to add new skills; you need to subtract the Ego until there is nothing left to "reject."
 
 The Architecture of the Ego: The "Ghost" in the Machine
-The Ego is your Identity attachment. It is the voice that says, "I am a guy who is [smart / cool / successful / athletic / a nice guy]." Whenever you are in a social situation, the Ego is busy trying to "defend" that title.
+The Ego is your Identity attachment. It is the voice that says, "I am someone who is [smart / cool / successful / athletic / nice]." Whenever you are in a social situation, the Ego is busy trying to "defend" that title.
 • The Filter: The Ego filters every action through the lens of: "How will this make me look?"
 • The Resistance: This creates a "stifling" sensation. You want to talk to that person, but your Ego says, "Wait, if they don't like you, it means you aren't [Cool/Attractive] anymore. Stay safe. Don't risk the title."
 
@@ -212,7 +212,7 @@ The voice stops. You are no longer thinking about "The Self." You are just a ves
 
 The Philosophy of "The Ghost"
 If you are "nothing," you can be "anything." The Ego is a static image. "I am a punk rocker," or "I am a businessman." This prevents you from being fluid.
-The man who has "killed his Ego" can talk to a billionaire, a homeless person, a supermodel, and a child with the exact same level of comfort. He doesn't have a "status" to lose, so he can enter any reality.
+The person who has "killed their Ego" can talk to a billionaire, a homeless person, a supermodel, and a child with the exact same level of comfort. They don't have a "status" to lose, so they can enter any reality.
 
 Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You cannot be both at the same time.`;
 
@@ -221,26 +221,26 @@ Mastery Insight: The Ego wants to be "Right." The Master wants to be "Real." You
 If Core Confidence is your engine and Ego Death is removing the brakes, Outcome Independence (OI) is the fuel that allows you to drive anywhere without worrying about the destination. It is the refusal to let a specific result dictate your emotional state.
 
 The Philosophy of "The Detached Master"
-Most men enter a social interaction with a "Goal."
-• "I want her to like me."
+Most people enter a social interaction with a "Goal."
+• "I want them to like me."
 • "I want to get this job."
-• "I want to be the funniest guy in this group."
+• "I want to be the funniest person in this group."
 The moment you have a goal that requires someone else's permission, you have created Neediness. Neediness is a high-frequency "buzz" that people can detect instantly. It makes you stifled, reactive, and manipulative.
 Outcome Independence is the radical shift where the "Process" becomes the "Reward." You aren't talking to someone to get something; you are talking to them to express something. You are playing the game for the sake of the game, not the scoreboard.
 
 Real-Life Conversational Examples: The Power of "Detachment"
 Scenario 1: The "Direct" Approach
 You see someone you find attractive and walk over.
-• The Outcome-Dependent Man: He is terrified. He thinks, "If she says 'no,' I've failed." He approaches tentatively.
-    * The Interaction: * Him: "Hey, I thought you looked nice..." (Watching her face like a hawk for a smile).
-        * Her: "Thanks, but I'm actually waiting for someone."
-        * Him: (Visible slump in posture) "Oh, okay. Sorry to bother you."
-    * The Reality: He let her "No" kill his "State."
-• The Outcome-Independent Master: He thinks, "I'm going to go share my energy with her. If she's cool, we'll vibe. If not, I'm still the same man."
-    * The Interaction: * Him: "I had to come over because your energy is hilarious. You look like you're plotting a heist."
-        * Her: "I'm actually waiting for my boyfriend."
-        * Him: (Grinning, totally unphased) "Excellent. Does he know about the heist, or is he the getaway driver? Because you definitely need a getaway driver."
-    * The Result: Because he didn't "flee" when the result wasn't perfect, he often breaks through the initial shield. He is "Gaming the Moment," not the "Goal."
+• The Outcome-Dependent Person: They are terrified. They think, "If they say 'no,' I've failed." They approach tentatively.
+    * The Interaction: * Them: "Hey, I thought you looked nice..." (Watching their face like a hawk for a smile).
+        * Other: "Thanks, but I'm actually waiting for someone."
+        * Them: (Visible slump in posture) "Oh, okay. Sorry to bother you."
+    * The Reality: They let the "No" kill their "State."
+• The Outcome-Independent Master: They think, "I'm going to go share my energy with them. If they're cool, we'll vibe. If not, I'm still the same person."
+    * The Interaction: * Them: "I had to come over because your energy is hilarious. You look like you're plotting a heist."
+        * Other: "I'm actually waiting for someone."
+        * Them: (Grinning, totally unphased) "Excellent. Do they know about the heist, or are they the getaway driver? Because you definitely need a getaway driver."
+    * The Result: Because they didn't "flee" when the result wasn't perfect, they often break through the initial shield. They are "Gaming the Moment," not the "Goal."
 
 The Three Pillars of OI
 1. The "Take It or Leave It" Vibe
@@ -248,54 +248,54 @@ This is the sub-perceptual message you send in every interaction. It says: "I am
 2. The "Next" Mentality
 OI is built on the foundation of Abundance. If you think there is only one girl, one job, or one chance to be cool, you will be outcome-dependent. When you realize the world is an infinite stream of opportunities, a single "No" is as insignificant as a single raincloud in a sunny month.
 3. Entertainment Value
-The Master is his own primary audience. He tells jokes because he thinks they are funny. He dances because he likes the song. If other people join in, it's just a "bonus."
+The Master is their own primary audience. They tell jokes because they think they are funny. They dance because they like the song. If other people join in, it's just a "bonus."
 
 Scenario 2: The "High-Stakes" Negotiation
 You are asking for a raise or pitching a project.
-• The Outcome-Dependent Professional: He is rehearsed and stiff. He is "pleading" with his eyes. He needs the "Yes" to pay his rent or feel successful. If the boss says "Maybe," he gets defensive or desperate.
-• The Outcome-Independent Professional: He knows his value. He presents the data clearly.
+• The Outcome-Dependent Professional: They are rehearsed and stiff. They are "pleading" with their eyes. They need the "Yes" to pay their rent or feel successful. If the boss says "Maybe," they get defensive or desperate.
+• The Outcome-Independent Professional: They know their value. They present the data clearly.
     * The Vibe: "Here is what I bring to the table. This is the value. If you want it, here is the price. If not, I know three other firms that will jump at this." * The Result: Ironically, this "willingness to walk away" is the most powerful negotiating tool in existence.
 
 OI vs. Apathy (The Critical Distinction)
-A common mistake young men make is thinking Outcome Independence means "acting like you don't care" or being "bored." That is Apathy, and it's low-value.
+A common mistake people make is thinking Outcome Independence means "acting like you don't care" or being "bored." That is Apathy, and it's low-value.
 
 The Mastery Insight: "The Poker Game"
-Think of OI like a world-class poker player. He can play a hand perfectly—mathematically and psychologically—and still lose the pot because of a bad river card.
-• The Outcome-Dependent player gets "tilted" (angry and emotional) because he lost the money.
-• The Outcome-Independent player smiles because he played the hand correctly. He knows that if he keeps playing correctly, he will win in the long run.
+Think of OI like a world-class poker player. They can play a hand perfectly—mathematically and psychologically—and still lose the pot because of a bad river card.
+• The Outcome-Dependent player gets "tilted" (angry and emotional) because they lost the money.
+• The Outcome-Independent player smiles because they played the hand correctly. They know that if they keep playing correctly, they will win in the long run.
 Sovereign Thought: "I am the captain of my effort, but I am merely a spectator of the result."`;
 
   // Custom detailed text for Non-Reactivity
   const nonReactivityText = `Non-Reactivity is the "Iron Shield" of the self-transformation system. If Phase 1 was building the engine and Phase 3 was detaching from the destination, Phase 4 is about becoming The Unshakable Rock while the storm of reality rages around you.
-The world is constantly "testing" you. People, environments, and even your own mind will try to pull you out of your "Core" and into a state of "Reaction." The man who reacts is the man who is controlled. The man who remains non-reactive is the man who leads.
+The world is constantly "testing" you. People, environments, and even your own mind will try to pull you out of your "Core" and into a state of "Reaction." The person who reacts is the person who is controlled. The person who remains non-reactive is the one who leads.
 
 The Philosophy of the "Unshakable Rock"
-Most men are "Reactive." They are like a billiard ball—when something hits them, they move in the direction they were pushed.
+Most people are "Reactive." They are like a billiard ball—when something hits them, they move in the direction they were pushed.
 • If someone insults them, they get angry (Reaction).
 • If a girl is cold to them, they get stifled (Reaction).
 • If a situation gets chaotic, they get frantic (Reaction).
 Non-Reactivity is not about being a robot or being "numb." It is about having a buffer zone between a stimulus and your response. It is the ability to perceive a "threat" or a "test" and choose to remain in your own reality.
 
 Real-Life Conversational Examples: Passing the "Shit Test"
-In social dynamics, people (especially high-value women and competitive men) will "test" your reality to see if it's real or just a mask. We call these "Shit Tests."
+In social dynamics, people will "test" your reality to see if it's real or just a mask. We call these "Shit Tests."
 
 Scenario 1: The "Status" Test
-You are talking to a girl, and she says something designed to knock you off balance, like: "You're kind of a dork, aren't you?"
-• The Reactive Response: He tries to defend himself or "qualify" his value.
-    * Him: "No, I'm not! I actually have a really cool job and I go to the gym..."
-    * The Result: He has "reacted" to her frame. He is now beneath her, begging for her to take back the "dork" label.
-• The Non-Reactive Master: He doesn't even acknowledge the "insult" as a threat. He absorbs it and stays in his vibe.
-    * Him: (Smirking, leaning in) "Total dork. Actually, I'm the king of the dorks. You should see my spreadsheet collection, it's remarkably erotic."
-    * The Result: By not being "hurt" or "defensive," he proves his reality is stronger than her words. He is the Source.
+You are talking to someone, and they say something designed to knock you off balance, like: "You're kind of a dork, aren't you?"
+• The Reactive Response: They try to defend themselves or "qualify" their value.
+    * Them: "No, I'm not! I actually have a really cool job and I go to the gym..."
+    * The Result: They have "reacted" to the other person's frame. They are now beneath them, begging for them to take back the "dork" label.
+• The Non-Reactive Master: They don't even acknowledge the "insult" as a threat. They absorb it and stay in their vibe.
+    * Them: (Smirking, leaning in) "Total dork. Actually, I'm the royalty of dorks. You should see my spreadsheet collection, it's remarkably erotic."
+    * The Result: By not being "hurt" or "defensive," they prove their reality is stronger than the other person's words. They are the Source.
 
-Scenario 2: The "Heckler" or Aggressive Male
-You're in a group, and another guy tries to "alpha" you by making a joke at your expense: "Nice shirt, man. Did your mom pick that out for you?"
-• The Reactive Response: He gets aggressive or awkward.
-    * Him: "What's that supposed to mean? Your shirt is ugly too."
-    * The Result: He has been pulled into a low-value "dog fight." He looks insecure.
-• The Non-Reactive Master: He uses "The Pause." He looks at the guy for a second, lets the silence hang (Social Pressure), and then gives a dry, amused chuckle.
-    * Him: "Wow. 1995 called, they want their comeback back. You're doing great, man. Keep it up." (Then he turns back to the original conversation as if the guy is invisible).
-    * The Result: He has signaled that the guy's "attack" didn't even register as a threat. He remains Sovereign.
+Scenario 2: The "Heckler" or Aggressive Person
+You're in a group, and someone tries to "alpha" you by making a joke at your expense: "Nice shirt. Did your mom pick that out for you?"
+• The Reactive Response: They get aggressive or awkward.
+    * Them: "What's that supposed to mean? Your shirt is ugly too."
+    * The Result: They have been pulled into a low-value "dog fight." They look insecure.
+• The Non-Reactive Master: They use "The Pause." They look at the person for a second, let the silence hang (Social Pressure), and then give a dry, amused chuckle.
+    * Them: "Wow. 1995 called, they want their comeback back. You're doing great. Keep it up." (Then they turn back to the original conversation as if the person is invisible).
+    * The Result: They have signaled that the person's "attack" didn't even register as a threat. They remain Sovereign.
 
 The Three Levels of Non-Reactivity
 
@@ -304,22 +304,22 @@ The first sign of "Reaction" is fidgeting. When you feel social pressure, your b
 • The Master's Tool: "The Statue." When tension rises, you become more still. You breathe deeper. You own the space.
 
 Level 2: The 3-Second Gap
-Never respond instantly to a challenge. A "Reactive" man snaps back. A "Sovereign" man takes a beat. That 3-second pause proves that you are processing the information, not being triggered by it.
+Never respond instantly to a challenge. A "Reactive" person snaps back. A "Sovereign" person takes a beat. That 3-second pause proves that you are processing the information, not being triggered by it.
 
 Level 3: Reframing
 This is the ultimate mastery. You don't just "ignore" the stimulus; you re-purpose it. If someone is mean to you, you treat it like they are just being "cute" or "feisty." You decide what their behavior means in your reality.
 
 Scenario 3: The "Crisis" at Work
 A major project fails, and everyone is panicking in the meeting.
-• The Reactive Employee: He starts pointing fingers, talking fast, and sweating. He is "vibrating" at the same frequency as the problem.
-• The Non-Reactive Leader: He is the calmest person in the room. He listens to the chaos, waits for the "noise" to die down, and then speaks slowly: "Okay. The data changed. Here is the new path. Let's move."
-* The Result: Because he didn't "react" to the panic, the group naturally looks to him for leadership.
+• The Reactive Employee: They start pointing fingers, talking fast, and sweating. They are "vibrating" at the same frequency as the problem.
+• The Non-Reactive Leader: They are the calmest person in the room. They listen to the chaos, wait for the "noise" to die down, and then speak slowly: "Okay. The data changed. Here is the new path. Let's move."
+* The Result: Because they didn't "react" to the panic, the group naturally looks to them for leadership.
 
 Non-Reactivity vs. "Being a Doormat"
 A common misconception is that Non-Reactivity means letting people walk all over you. It is the exact opposite.
 
 The Mastery Insight: "The Ocean and the Waves"
-Think of yourself as the Ocean. A "reaction" is a wave on the surface. People can throw rocks into the ocean, and it might make a splash, but the depths of the ocean remain cold, dark, and still. The "Situational Man" is a puddle—you step in it, and the whole thing is disturbed. The "Core Man" is the Pacific—he absorbs everything and remains himself.
+Think of yourself as the Ocean. A "reaction" is a wave on the surface. People can throw rocks into the ocean, and it might make a splash, but the depths of the ocean remain cold, dark, and still. The "Situational Self" is a puddle—you step in it, and the whole thing is disturbed. The "Core Self" is the Pacific—they absorb everything and remain themselves.
 
 Sovereign Thought: "You cannot control the storm, but you can control the ship. And if the ship is heavy enough, the storm doesn't even matter."`;
 
@@ -329,22 +329,22 @@ This is the biological reality of human interaction: we are social mirrors. Neur
 
 The Philosophy of "The Thermostat"
 Most people are Social Thermometers. They walk into a room, measure the temperature (the "vibe"), and then adjust their own state to fit in. If the room is awkward, they become awkward. If the room is professional, they become stiff.
-The Master is a Social Thermostat. He sets the temperature. He decides, "I am having a 10/10 time right now," and he holds that state so purely and with such certainty that the people around him have no choice but to adjust to him.
+The Master is a Social Thermostat. They set the temperature. They decide, "I am having a 10/10 time right now," and they hold that state so purely and with such certainty that the people around them have no choice but to adjust to them.
 
 Real-Life Conversational Examples: Leading the Vibe
 Scenario 1: The "Cold" Group at a Party
 You walk into a kitchen where three people are standing around in silence, looking at their phones. The "vibe" is a 2/10.
-• The Situational Man: He feels the awkwardness and "catches" it. He walks in quietly, gets a drink, and says in a low, hesitant voice: "Hey guys... busy night, huh?" He has just reflected their 2/10 state.
-• The State Transfer Master: He walks in with a 9/10 energy. He's already smiling because he was just laughing at a thought in his head.
-    * Him: (Big energy, warm smile) "Okay, stop. This kitchen is way too serious for a Friday. Who's the leader of this secret meeting? I need to know who to talk to about the music."
-    * The Result: Because his energy is higher and more certain than their boredom, they "wake up." They start to smile. He has transferred his "fun" state into them.
+• The Situational Self: They feel the awkwardness and "catch" it. They walk in quietly, get a drink, and say in a low, hesitant voice: "Hey guys... busy night, huh?" They have just reflected their 2/10 state.
+• The State Transfer Master: They walk in with a 9/10 energy. They're already smiling because they were just laughing at a thought in their head.
+    * Them: (Big energy, warm smile) "Okay, stop. This kitchen is way too serious for a Friday. Who's the leader of this secret meeting? I need to know who to talk to about the music."
+    * The Result: Because their energy is higher and more certain than the group's boredom, they "wake up." They start to smile. The Master has transferred their "fun" state into them.
 
 Scenario 2: The "High-Pressure" Sales or Date
 You are asking for a commitment, whether it's a "yes" on a contract or a "yes" to a second date.
-• The Reactive Man: He is nervous. His hands might shake slightly, his voice is thin. He is projecting uncertainty.
-    * The State Transfer: The other person picks up on his anxiety and starts to feel anxious themselves. They think, "I feel uneasy about this," and they say "No" because of the feeling, not the facts.
-• The State Transfer Master: He feels total conviction. He is relaxed, leaning back, and speaking with a deep, resonant tone.
-    * The State Transfer: The other person feels his certainty. They feel "safe" in his reality. They catch his "relaxed confidence" and say "Yes" because it feels like the natural thing to do.
+• The Reactive Person: They are nervous. Their hands might shake slightly, their voice is thin. They are projecting uncertainty.
+    * The State Transfer: The other person picks up on their anxiety and starts to feel anxious themselves. They think, "I feel uneasy about this," and they say "No" because of the feeling, not the facts.
+• The State Transfer Master: They feel total conviction. They are relaxed, leaning back, and speaking with a deep, resonant tone.
+    * The State Transfer: The other person feels their certainty. They feel "safe" in their reality. They catch their "relaxed confidence" and say "Yes" because it feels like the natural thing to do.
 
 The Three Mechanics of State Transfer
 1. Conviction (The Root)
@@ -358,25 +358,25 @@ Eye contact is the "fiber-optic cable" of state transfer. When you look someone 
 
 Scenario 3: Dealing with a Negative Coworker
 A colleague comes to your desk to complain about a project. They are stressed and "vibrating" at a low frequency.
-• The Reactive Man: He listens, nods, and starts to feel stressed too. He says, "Yeah, you're right, this is a mess. I'm worried too." Now they are both in a low state.
-• The State Transfer Master: He remains "Non-Reactive" but then projects optimism. He laughs slightly at the absurdity of the problem.
-    * Him: "Man, they really threw us a curveball today. It's almost impressive how much they messed this up. Let's grab a coffee, figure out the first move, and crush it. We've handled worse."
-    * The Result: The coworker feels a "weight" lift. They have caught his "problem-solver" state.
+• The Reactive Person: They listen, nod, and start to feel stressed too. They say, "Yeah, you're right, this is a mess. I'm worried too." Now they are both in a low state.
+• The State Transfer Master: They remain "Non-Reactive" but then project optimism. They laugh slightly at the absurdity of the problem.
+    * Them: "Wow, they really threw us a curveball today. It's almost impressive how much they messed this up. Let's grab a coffee, figure out the first move, and crush it. We've handled worse."
+    * The Result: The coworker feels a "weight" lift. They have caught the Master's "problem-solver" state.
 
 State Transfer vs. "Being Loud and Annoying"
 A common mistake is thinking State Transfer means being the loudest person in the room. True state transfer is about depth, not volume.
 
 The Mastery Insight: "The Source of the Vibe"
-"He who has the most fun, wins." Why? Because fun is the highest social value. Everyone wants to feel good. If you are the man who is consistently feeling the best, you become the Sun. Everyone else becomes the Planets orbiting around you, trying to catch some of your light.
+"The one who has the most fun, wins." Why? Because fun is the highest social value. Everyone wants to feel good. If you are the person who is consistently feeling the best, you become the Sun. Everyone else becomes the Planets orbiting around you, trying to catch some of your light.
 
 Sovereign Thought: "I don't go to the party to find the fun. I am the fun. Wherever I go, the party follows."`;
 
   // Custom detailed text for Social Pressure is a Tool
-  const socialPressureText = `Principle 06: Social Pressure is a Tool is the point where most men stop. They can be confident in their bedroom or with their friends, but the moment "Social Pressure" hits—the weight of being watched, judged, or challenged—they "stifle." In the self transformation framework, we don't avoid this weight; we bench-press it.
+  const socialPressureText = `Principle 06: Social Pressure is a Tool is the point where most people stop. They can be confident in their bedroom or with their friends, but the moment "Social Pressure" hits—the weight of being watched, judged, or challenged—they "stifle." In the self transformation framework, we don't avoid this weight; we bench-press it.
 
 The Philosophy of "The Heavy Presence"
-Most men view social pressure as a negative force. It's that tightness in your chest when you're about to approach a stranger, or the awkward itch you feel when a conversation goes silent. You've been conditioned since birth to "diffuse" this pressure—to make a joke, look away, or apologize to make the discomfort go away.
-The Master does the exact opposite. He realizes that social pressure is actually Social Value in its rawest form. The person who can sit comfortably in the highest amount of pressure without cracking is, by definition, the highest-value person in the room.
+Most people view social pressure as a negative force. It's that tightness in your chest when you're about to approach a stranger, or the awkward itch you feel when a conversation goes silent. You've been conditioned since birth to "diffuse" this pressure—to make a joke, look away, or apologize to make the discomfort go away.
+The Master does the exact opposite. They realize that social pressure is actually Social Value in its rawest form. The person who can sit comfortably in the highest amount of pressure without cracking is, by definition, the highest-value person in the room.
 
 The "Stifle" vs. The "Flow"
 • The Stifle: This is the biological "shut down" of your personality. Your voice gets higher, your movements get jerky, and you stop saying what you actually think. You are trying to be "safe."
@@ -387,20 +387,20 @@ To master this, you must learn to hold the tension rather than diffusing it.
 
 Scenario 1: The "Pregnant Pause"
 You are talking to someone, and the natural "thread" of the conversation dies.
-• The Reactive Man: He panics. He feels the silence like a physical weight. He quickly blabs out a boring question just to stop the "awkwardness."
-    * Him: "So, uh... do you live around here? Or... I mean, it's a nice place, right?"
-    * The Result: He has signaled that he is uncomfortable. He has "lost" to the pressure.
-• The Master: He leans back, maintains relaxed eye contact, and lets the silence hang for 5, 10, even 15 seconds. He might even smirk slightly as if he's enjoying a private joke.
+• The Reactive Person: They panic. They feel the silence like a physical weight. They quickly blab out a boring question just to stop the "awkwardness."
+    * Them: "So, uh... do you live around here? Or... I mean, it's a nice place, right?"
+    * The Result: They have signaled that they are uncomfortable. They have "lost" to the pressure.
+• The Master: They lean back, maintain relaxed eye contact, and let the silence hang for 5, 10, even 15 seconds. They might even smirk slightly as if they're enjoying a private joke.
     * The Result: The other person begins to feel the pressure. They will eventually speak just to diffuse it, often revealing more about themselves or trying to impress the Master. By doing nothing, the Master has gained the lead.
 
 Scenario 2: The "Testing" Question
 Someone asks you a challenging or slightly rude question, like: "Why are you talking to us?" or "You think you're pretty smooth, don't you?"
-• The Stifled Man: He tries to answer logically or apologize.
-    * Him: "Oh, I just thought you guys looked cool, I'm not trying to be smooth, sorry..."
-    * The Result: He has been crushed by the social pressure of the "confrontation."
-• The Master: He uses the pressure. He repeats the question back slowly, or just looks at them with an amused, "Is that the best you've got?" expression.
-    * Him: (Slowly, calmly) "Smooth? No. I'm actually quite rough around the edges. But you... you're very suspicious. I like that. It's like talking to a tiny, angry detective."
-    * The Result: He took their "pressure" and turned it into a playful "frame."
+• The Stifled Person: They try to answer logically or apologize.
+    * Them: "Oh, I just thought you guys looked cool, I'm not trying to be smooth, sorry..."
+    * The Result: They have been crushed by the social pressure of the "confrontation."
+• The Master: They use the pressure. They repeat the question back slowly, or just look at them with an amused, "Is that the best you've got?" expression.
+    * Them: (Slowly, calmly) "Smooth? No. I'm actually quite rough around the edges. But you... you're very suspicious. I like that. It's like talking to a tiny, angry detective."
+    * The Result: They took their "pressure" and turned it into a playful "frame."
 
 How to Turn Pressure into Power
 1. The "Lock-In"
@@ -411,41 +411,41 @@ Social pressure makes you move and talk faster. To counter this, consciously mov
 "Cringe" is just the Ego's way of saying "I'm afraid of being judged." When you feel that "cringe" sensation, it's a compass. Go toward it. The more you do the things that make you feel socially exposed, the more "Heavy" and unshakeable your reality becomes.
 
 The Mastery Insight: "The Eye of the Storm"
-Social pressure is like a hurricane. Most men are being blown around by the winds of other people's opinions. The Master lives in the Eye of the Storm. Everything around him might be chaotic, high-pressure, or intense, but he is the calm center. Because he is the only one not moving, everyone else eventually gravitates toward him for stability.
+Social pressure is like a hurricane. Most people are being blown around by the winds of other people's opinions. The Master lives in the Eye of the Storm. Everything around them might be chaotic, high-pressure, or intense, but they are the calm center. Because they are the only one not moving, everyone else eventually gravitates toward them for stability.
 
 Sovereign Thought: "Pressure is a privilege. It is the universe's way of asking you if you are who you say you are. Every time you don't crack, you become more real."`;
 
   // Custom detailed text for Value Projection
   const valueProjectionText = `Welcome to the core of social magnetism. If Phase 1 was about becoming "The Rock" (Internal), Principle 07: Value Projection is about becoming "The Sun" (External).
-In the self transformation framework, every social interaction is an exchange of Value. Most men fail because they walk into the world as Value Seekers—they are looking for a laugh, a smile, or a "yes" to feel good. The Master walks in as a Value Provider. He projects energy, emotion, and reality so powerfully that people feel better just by standing near him.
+In the self transformation framework, every social interaction is an exchange of Value. Most people fail because they walk into the world as Value Seekers—they are looking for a laugh, a smile, or a "yes" to feel good. The Master walks in as a Value Provider. They project energy, emotion, and reality so powerfully that people feel better just by standing near them.
 
 The Philosophy of "The Source"
 Value isn't just money, looks, or status. In the moment-to-moment reality of a conversation, Value is Emotion.
-• The Value Seeker: He is a "Social Vampire." He asks questions to get information, tells jokes to get a laugh, and acts nice to get approval. He is pulling energy in.
-• The Value Provider: He is the "Source." He shares his observations because they amuse him. He gives compliments because he genuinely appreciates something. He is pushing energy out.
+• The Value Seeker: They are a "Social Vampire." They ask questions to get information, tell jokes to get a laugh, and act nice to get approval. They are pulling energy in.
+• The Value Provider: They are the "Source." They share their observations because they amuse them. They give compliments because they genuinely appreciate something. They are pushing energy out.
 People can subconsciously sense "leech" energy. It feels heavy and draining. Conversely, "Source" energy feels light, expansive, and addictive. When you project value without needing anything back, you become the most valuable person in the room by default.
 
 Real-Life Conversational Examples: Giving vs. Taking
 Scenario 1: The "Interview" vs. The "Offering"
 You meet someone for the first time at a party.
 • The Value Seeker (The Interviewer):
-    * Him: "So, what do you do for work?" (Seeking information to fill silence).
-    * Her: "I'm in marketing."
-    * Him: "Oh, cool. Do you like it?" (Seeking more info).
-    * The Result: The conversation feels like a chore. She is "working" to provide him with content.
+    * Them: "So, what do you do for work?" (Seeking information to fill silence).
+    * Other: "I'm in marketing."
+    * Them: "Oh, cool. Do you like it?" (Seeking more info).
+    * The Result: The conversation feels like a chore. The other person is "working" to provide them with content.
 • The Value Provider (The Offering):
-    * Him: "You have a very 'I just quit my corporate job to start a travel blog' vibe. I'm guessing marketing, but with a secret plan to move to Bali."
-    * Her: (Laughs) "Close! I am in marketing, but the Bali plan is definitely on the vision board."
-    * The Result: He gave her an emotion (amusement) and a creative "frame" to play with. He projected value first.
+    * Them: "You have a very 'I just quit my corporate job to start a travel blog' vibe. I'm guessing marketing, but with a secret plan to move to Bali."
+    * Other: (Laughs) "Close! I am in marketing, but the Bali plan is definitely on the vision board."
+    * The Result: They gave the other person an emotion (amusement) and a creative "frame" to play with. They projected value first.
 
 Scenario 2: The "Approval" vs. The "Appreciation"
 You want to tell someone they look good.
 • The Value Seeker (The Compliment Fisher):
-    * Him: "You look really pretty tonight." (Looking at her eyes to see if she likes the compliment).
-    * The Result: It feels "heavy." She now feels pressured to say "thank you" or return the compliment.
+    * Them: "You look really great tonight." (Looking at their eyes to see if they like the compliment).
+    * The Result: It feels "heavy." The other person now feels pressured to say "thank you" or return the compliment.
 • The Value Provider (The Artist):
-    * Him: (While walking past or mid-conversation) "That jacket is incredible. It's got a very 'villain in a 1920s spy movie' feel. I love it." (Then he immediately continues talking about something else).
-    * The Result: He gave her a "gift" of a compliment and didn't wait around to collect the "thank you." This is Outcome Independence mixed with Value Projection.
+    * Them: (While walking past or mid-conversation) "That jacket is incredible. It's got a very 'villain in a 1920s spy movie' feel. I love it." (Then they immediately continue talking about something else).
+    * The Result: They gave a "gift" of a compliment and didn't wait around to collect the "thank you." This is Outcome Independence mixed with Value Projection.
 
 The Three Pillars of Value Projection
 1. Assumption of Value
@@ -456,14 +456,14 @@ The easiest way to project value is to entertain yourself. If you are laughing a
 Before every interaction, ask yourself: "How can I make this person's minute better?" Maybe it's a joke, a genuine observation, or just a burst of high-intensity presence. When you focus on giving a great experience, your social anxiety disappears because you're no longer worried about your own performance.
 
 The Mastery Insight: "The Empty Cup"
-Most men are like a cup that is half-empty, trying to find someone to fill it up. The Master is a cup that is so full it is overflowing. He has so much internal validation and "Core Confidence" that he can't help but spill it onto everyone he meets.
+Most people are like a cup that is half-empty, trying to find someone to fill it up. The Master is a cup that is so full it is overflowing. They have so much internal validation and "Core Confidence" that they can't help but spill it onto everyone they meet.
 People don't fall in love with "you"; they fall in love with how they feel when they are with you. If you are a constant source of high-value emotions, the world will beat a path to your door.
 
-Sovereign Thought: "The man who needs nothing is the only one who can give everything. And the man who gives everything is the only one who receives it all back."`;
+Sovereign Thought: "The one who needs nothing is the only one who can give everything. And the one who gives everything is the only one who receives it all back."`;
 
   // Custom detailed text for Law of Least Effort
   const lawOfLeastEffortText = `Welcome to the most paradoxical principle in the system. Principle 08: The Law of Least Effort is the hallmark of the "Natural."
-In the self-transformation world, there is a massive difference between Hard Work and Trying Hard. You work hard on your fitness, your business, and your internal state before you enter the room. But once you are in the social arena, the man who is "trying" is the man who is losing. The Law of Least Effort states that the person who is the least invested in the social outcome—the one who is doing the least to "earn" approval—holds the most power.
+In the self-transformation world, there is a massive difference between Hard Work and Trying Hard. You work hard on your fitness, your business, and your internal state before you enter the room. But once you are in the social arena, the person who is "trying" is the one who is losing. The Law of Least Effort states that the person who is the least invested in the social outcome—the one who is doing the least to "earn" approval—holds the most power.
 
 The Philosophy of "The Calibrated King"
 Think of social interaction as a game of tennis. If one player is sprinting, sweating, and screaming just to return a basic serve, while the other player is standing still, casually flicking their wrist to win the point, who has more "value"?
@@ -474,21 +474,21 @@ Investment is a signal of status.
 Real-Life Conversational Examples: High Effort vs. Least Effort
 Scenario 1: The "Storyteller"
 You are sharing an experience from your weekend with a group.
-• The High-Effort Man:
-    * The Behavior: He uses big, frantic gestures. He checks everyone's eyes to see if they are laughing. If someone interrupts, he gets flustered and tries to talk over them to "save" his story.
+• The High-Effort Person:
+    * The Behavior: They use big, frantic gestures. They check everyone's eyes to see if they are laughing. If someone interrupts, they get flustered and try to talk over them to "save" their story.
     * The Result: Even if the story is good, the "vibe" is desperate. People feel like they are being performed at.
 • The Least-Effort Master:
-    * The Behavior: He leans back. He tells the story slowly, as if he's mostly telling it to amuse himself. If someone interrupts, he simply stops talking and listens, totally unphased. He might not even finish the story if the energy shifts.
-    * The Result: Because he isn't "trying" to be the center of attention, the group naturally leans in to hear him. His "effortlessness" makes the story more captivating.
+    * The Behavior: They lean back. They tell the story slowly, as if they're mostly telling it to amuse themselves. If someone interrupts, they simply stop talking and listen, totally unphased. They might not even finish the story if the energy shifts.
+    * The Result: Because they aren't "trying" to be the center of attention, the group naturally leans in to hear them. Their "effortlessness" makes the story more captivating.
 
 Scenario 2: The "Approach" and Body Language
 You see someone you want to meet at a lounge.
 • The High-Effort Approach:
-    * The Behavior: He "leans in" with his upper body while his feet stay back (the "Primate Lean"). He talks at a high volume and high speed. He stays in their space even if they aren't responding.
+    * The Behavior: They "lean in" with their upper body while their feet stay back (the "Primate Lean"). They talk at a high volume and high speed. They stay in the person's space even if they aren't responding.
     * The Result: It feels like a "sales pitch." The other person feels pressured to "buy" or "leave."
 • The Least-Effort Approach (The "Over-The-Shoulder"):
-    * The Behavior: He stands slightly turned away (Angling). He speaks at a normal, relaxed volume. He looks over his shoulder to deliver a line, then turns back to his drink or his friends.
-    * The Result: He has signaled that he is not fully invested in the interaction. He is "throwing the line out" and seeing if they bite. This triggers their curiosity to "chase" him.
+    * The Behavior: They stand slightly turned away (Angling). They speak at a normal, relaxed volume. They look over their shoulder to deliver a line, then turn back to their drink or their friends.
+    * The Result: They have signaled that they are not fully invested in the interaction. They are "throwing the line out" and seeing if the other person bites. This triggers their curiosity to "chase" them.
 
 The Three Pillars of Effortlessness
 1. Sub-Communication over Communication
@@ -506,11 +506,11 @@ The Mastery Insight: "The Waterfall"
 Imagine a waterfall. It doesn't "try" to fall. It doesn't "work" to be powerful. It just is. Because it is so purely itself, people travel from thousands of miles away just to stand in its presence.
 When you embody the Law of Least Effort, you stop being the hunter and start being the Destination. You aren't chasing the "vibe"; you are the static point of certainty that the vibe is built around.
 
-Sovereign Thought: "Power is the ability to walk away from any situation and be completely fine. The man who is willing to walk away is the only one who truly has power in the room."`;
+Sovereign Thought: "Power is the ability to walk away from any situation and be completely fine. The one who is willing to walk away is the only one who truly has power in the room."`;
 
   // Custom detailed text for Assumed Familiarity
   const assumedFamiliarityText = `Assumed Familiarity is the "Fast-Forward" button of human relationships. In the self-transformation framework, this principle allows you to bypass the awkward "stranger phase" and jump directly into the deep, comfortable, and playful dynamic of old friends.
-Most men approach strangers with a "Formal Barrier." They use polite, cautious, and "interview-style" language. This signals that they are outsiders looking for permission to enter. The Master operates from the reality that everyone is already his friend; they just haven't met yet.
+Most people approach strangers with a "Formal Barrier." They use polite, cautious, and "interview-style" language. This signals that they are outsiders looking for permission to enter. The Master operates from the reality that everyone is already their friend; they just haven't met yet.
 
 The Philosophy of "The Inner Circle"
 When you talk to your best friend, you don't ask, "Excuse me, how is your afternoon going? Is it okay if I share a story?"You just start talking. You tease them, you interrupt them, you use "inside jokes," and you assume they understand your vibe.
@@ -523,22 +523,22 @@ Real-Life Conversational Examples: Breaking the Formal Barrier
 Scenario 1: The "Cold" Opening
 You see someone standing at a coffee shop or a bookstore.
 • The Formal Approach (Stranger Frame):
-    * Him: "Hi, excuse me. I'm sorry to bother you, but I just wanted to say I like your shoes. Where did you get them?"
-    * The Result: This creates a "Buyer/Seller" dynamic. She is now forced to be a "polite stranger." The wall stays up.
+    * Them: "Hi, excuse me. I'm sorry to bother you, but I just wanted to say I like your shoes. Where did you get them?"
+    * The Result: This creates a "Buyer/Seller" dynamic. The other person is now forced to be a "polite stranger." The wall stays up.
 • The Assumed Familiarity Approach (Friend Frame):
-    * Him: (Walking up as if continuing a conversation) "Okay, you have to be honest with me. Are those shoes part of a secret plan to be the most noticeable person in the building, or did you just wake up feeling particularly heroic today?"
-    * The Result: He has skipped the "Hi, how are you?" and jumped straight into a playful, "teasing" dynamic. Because he sounds like an old friend, her brain subconsciously lowers its defenses.
+    * Them: (Walking up as if continuing a conversation) "Okay, you have to be honest with me. Are those shoes part of a secret plan to be the most noticeable person in the building, or did you just wake up feeling particularly heroic today?"
+    * The Result: They have skipped the "Hi, how are you?" and jumped straight into a playful, "teasing" dynamic. Because they sound like an old friend, the other person's brain subconsciously lowers its defenses.
 
 Scenario 2: Skipping the "Interview"
 You've been talking for 2 minutes and want to know what they do.
 • The Stranger Frame:
-    * Him: "So, what do you do for a living?"
-    * Her: "I'm a teacher."
-    * Him: "Oh, that's nice. What grade do you teach?"
+    * Them: "So, what do you do for a living?"
+    * Other: "I'm a teacher."
+    * Them: "Oh, that's nice. What grade do you teach?"
     * The Result: Boring. It feels like a job interview.
 • The Familiar Frame (Cold Reading):
-    * Him: "Wait, don't tell me. Let me guess. You have this very 'I can control a room of chaotic children' energy. You're definitely a teacher, but like... the cool one that let us eat candy in class."
-    * The Result: Even if he's wrong, he's created a "vibe." He is "assuming" he knows her, which creates instant intimacy and allows for much deeper "State Transfer."
+    * Them: "Wait, don't tell me. Let me guess. You have this very 'I can control a room of chaotic children' energy. You're definitely a teacher, but like... the cool one that let us eat candy in class."
+    * The Result: Even if they're wrong, they've created a "vibe." They are "assuming" they know this person, which creates instant intimacy and allows for much deeper "State Transfer."
 
 The Three Pillars of Assumed Familiarity
 1. The "Mid-Sentence" Entry
@@ -556,7 +556,7 @@ Sovereign Thought: "A stranger is just a friend you haven't teased yet."`;
 
   // Custom detailed text for Polarization
   const polarizationText = `Principle 10: Polarization is the "Great Filter" of social dynamics. If Phase 2 has been about building a bridge to the world, Polarization is about deciding who is worthy of crossing it.
-In the self-transformation system, the biggest mistake a young man can make is trying to be "liked by everyone." When you try to be everything to everyone, you become nothing to anyone. You become "beige"—boring, safe, and invisible. Polarization is the act of being so unapologetically yourself that you force the world to take a side: they either love you or they leave you.
+In the self-transformation system, the biggest mistake anyone can make is trying to be "liked by everyone." When you try to be everything to everyone, you become nothing to anyone. You become "beige"—boring, safe, and invisible. Polarization is the act of being so unapologetically yourself that you force the world to take a side: they either love you or they leave you.
 
 The Philosophy of "The Magnet"
 Think of a magnet. A magnet doesn't just attract; it also repels. If it didn't have a repulsive pole, it wouldn't have an attractive one. It would just be a piece of inert metal.
@@ -568,28 +568,28 @@ Real-Life Conversational Examples: The Courage to be Disliked
 Scenario 1: The "Polite" vs. The "Polarizing" Opinion
 You're in a group talking about a popular movie or a local trend.
 • The Beige Approach (Neutral):
-    * Him: "Yeah, it was okay. I mean, some parts were good, some were slow. What did you guys think?" (Seeking the group's consensus before committing to a feeling).
-    * The Result: He is "safe." No one disagrees with him, but no one remembers him either. He has zero "edge."
+    * Them: "Yeah, it was okay. I mean, some parts were good, some were slow. What did you guys think?" (Seeking the group's consensus before committing to a feeling).
+    * The Result: They are "safe." No one disagrees with them, but no one remembers them either. They have zero "edge."
 • The Polarizing Approach (The Stake in the Ground):
-    * Him: "I'm going to be honest—I hated it. It felt like it was written by an AI trying to satisfy a focus group. I actually almost walked out to go get a taco instead. Tacos have more soul than that film."
-    * The Result: He has polarized the room. Some will say, "Finally, someone said it!" (High Attraction). Others will argue with him. Even the argument provides Social Pressure (Principle 06), which he can use to show his "Non-Reactivity."
+    * Them: "I'm going to be honest—I hated it. It felt like it was written by an AI trying to satisfy a focus group. I actually almost walked out to go get a taco instead. Tacos have more soul than that film."
+    * The Result: They have polarized the room. Some will say, "Finally, someone said it!" (High Attraction). Others will argue with them. Even the argument provides Social Pressure (Principle 06), which they can use to show their "Non-Reactivity."
 
 Scenario 2: The "Naughty/Nice" Dynamic
 You are talking to someone you find attractive, and they mention something they are proud of, like being a "perfectionist" or a "straight-A student."
 • The Beige Approach (Validating):
-    * Him: "That's really impressive. You must work very hard. I admire that."
-    * The Result: He is "qualifying" her. He is the "nice guy." There is no tension, no spark, and no polarization.
+    * Them: "That's really impressive. You must work very hard. I admire that."
+    * The Result: They are "qualifying" the other person. They are the "nice one." There is no tension, no spark, and no polarization.
 • The Polarizing Approach (Playful Conflict):
-    * Him: (Smirking) "Oh no. You're one of those. A high-achiever. I bet your color-coded planners are terrifying. We are definitely going to be enemies. I'm the guy who loses his keys twice a day—you'd find me exhausting."
-    * The Result: He has "polarized" the interaction. He isn't just another fan; he is a Challenge. He is "Non-Reactive" to her status and "Assumes Familiarity" by teasing her.
+    * Them: (Smirking) "Oh no. You're one of those. A high-achiever. I bet your color-coded planners are terrifying. We are definitely going to be enemies. I'm the person who loses their keys twice a day—you'd find me exhausting."
+    * The Result: They have "polarized" the interaction. They aren't just another fan; they are a Challenge. They are "Non-Reactive" to the other person's status and "Assume Familiarity" by teasing them.
 
 The Three Pillars of Polarization
 1. Honest Expression
 Stop filtering your thoughts through the "Will they like this?" lens. Start filtering them through the "Is this true to me?" lens. If you think a song is terrible, say it. If you love a nerdy hobby, own it. The more specific you are, the more magnetic you become.
 2. The "Willingness to Lose"
-Polarization requires Outcome Independence (Principle 03). You must be genuinely okay with someone walking away from the conversation. The Master knows that if he loses 5 people who don't "get" him, he's making space for the 1 person who will truly "get" him.
+Polarization requires Outcome Independence (Principle 03). You must be genuinely okay with someone walking away from the conversation. The Master knows that if they lose 5 people who don't "get" them, they're making space for the 1 person who will truly "get" them.
 3. Leading the Frame
-When you polarize, you are setting the "Frame" (the context) of the interaction. You aren't asking for permission to be yourself; you are presenting yourself as a finished product. People respect a man who has boundaries and a defined "flavor."
+When you polarize, you are setting the "Frame" (the context) of the interaction. You aren't asking for permission to be yourself; you are presenting yourself as a finished product. People respect someone who has boundaries and a defined "flavor."
 
 The Mastery Insight: "The Lighthouse Effect"
 A lighthouse doesn't run around the shore looking for boats to save. It just stays in one spot and shines as brightly as it can. The boats that need the light find it; the boats that don't, stay away.
@@ -603,7 +603,7 @@ Sovereign Thought: "If you aren't being rejected by the people who don't fit you
 Principle 11: Social Intuition is the transition from Technical Competence to Unconscious Flow. In the self-transformation framework, this is where you stop following a "map" and start feeling the "terrain." It is the ability to read the invisible energy of a room, detect the subtext behind words, and calibrate your actions with surgical precision.
 
 The Philosophy of "The Social X-Ray"
-Most men are "Socially Blind." They only hear the words being spoken. If someone says, "I'm fine," they believe them. If a room is quiet, they assume everyone is bored. They are trapped in the "Literal."
+Most people are "Socially Blind." They only hear the words being spoken. If someone says, "I'm fine," they believe them. If a room is quiet, they assume everyone is bored. They are trapped in the "Literal."
 Social Intuition is about seeing the "Matrix." You realize that human communication is 90% sub-perceptual. You begin to see:
 • The Power Dynamics: Who is the "Alpha" in the group? Who is looking to whom for approval?
 • The Emotional Undercurrents: Is this person actually enjoying the conversation, or are they just being polite?
@@ -615,16 +615,16 @@ Real-Life Conversational Examples: The Power of Calibration
 Calibration is the "knob" on your social intuition. It's the difference between being "bold" and being "creepy," or being "funny" and being "annoying."
 Scenario 1: Reading the "Hard No" vs. the "Playful No"
 You use Polarization (Principle 10) by teasing someone about their drink. They roll their eyes and say, "You're so annoying."
-• Low Intuition: He takes it literally. He gets defensive or apologizes, killing the vibe. Or, he ignores it and keeps teasing even harder, becoming actually annoying.
-• High Intuition (The Master): He reads the micro-expressions. He sees the slight smirk, the "twinkle" in the eye, and the fact that they haven't moved away.
-    * The Response: He leans in and whispers, "You love it. You've been waiting all night for someone to call you out on that terrible cocktail."
-    * The Result: He calibrated his response to the energy, not the words.
+• Low Intuition: They take it literally. They get defensive or apologize, killing the vibe. Or, they ignore it and keep teasing even harder, becoming actually annoying.
+• High Intuition (The Master): They read the micro-expressions. They see the slight smirk, the "twinkle" in the eye, and the fact that the other person hasn't moved away.
+    * The Response: They lean in and whisper, "You love it. You've been waiting all night for someone to call you out on that terrible cocktail."
+    * The Result: They calibrated their response to the energy, not the words.
 
 Scenario 2: Entering a "High-Status" Group
 You walk into a VIP area or a private party where the energy is exclusive and guarded.
-• Low Intuition: He enters with "High Energy" (Principle 05) because he thinks he needs to "bring the party." He ends up looking like a clown who doesn't belong. He "clashes" with the environment.
-• High Intuition (The Master): He enters and observes. He matches the "Base Frequency" of the room first. He speaks at their volume. He mirrors their posture. Once he is "in sync," he then slowly starts to lead the state upward.
-    * The Result: Because he calibrated to the room's starting point, the group accepts him as "one of them" almost instantly.
+• Low Intuition: They enter with "High Energy" (Principle 05) because they think they need to "bring the party." They end up looking like a clown who doesn't belong. They "clash" with the environment.
+• High Intuition (The Master): They enter and observe. They match the "Base Frequency" of the room first. They speak at the group's volume. They mirror their posture. Once they are "in sync," they then slowly start to lead the state upward.
+    * The Result: Because they calibrated to the room's starting point, the group accepts them as "one of them" almost instantly.
 
 The Three Pillars of Social Intuition
 1. The Observational "Pause"
@@ -645,7 +645,7 @@ Sovereign Thought: "The map is not the territory. To lead the tribe, you must fi
 In the self-transformation framework, we recognize that humans are biological antennas. We are constantly broadcasting and receiving signals that have nothing to do with vocabulary. The "Vibe" is the emotional frequency you are emitting; the "Words" are just the carrier wave. When the two are in conflict, the Vibe always wins.
 
 The Philosophy of "Sub-Perceptual Communication"
-Most men believe that if they just find the "magic words," they will get the result. They treat social interaction like a computer code where If [Sentence A], then [Result B].
+Most people believe that if they just find the "magic words," they will get the result. They treat social interaction like a computer code where If [Sentence A], then [Result B].
 The Master knows that social interaction is actually Resonance.
 • The Words: "I'm having a great time." (The Logic)
 • The Vibe: Shoulders are hunched, eyes are darting, voice is shaky. (The Reality)
@@ -654,7 +654,7 @@ The world doesn't listen to your logic; it feels your reality. If your Vibe says
 Real-Life Conversational Examples: The "What" vs. The "How"
 Scenario 1: The "Boring" Topic
 You are talking about something mundane, like the fact that you just bought new socks.
-• The Low-Vibe Man (Logic-Focused):
+• The Low-Vibe Person (Logic-Focused):
     * The Delivery: He speaks in a flat, monotone voice. He looks down. He is trying to be "factual."
     * The Words: "Yeah, I got these socks today. They're cotton. They were on sale."
     * The Result: He is a "Value Sucker." He is draining the energy of the room with his boring reality.
@@ -665,9 +665,9 @@ You are talking about something mundane, like the fact that you just bought new 
 
 Scenario 2: The "Testing" Moment
 Someone asks you, "Why are you so confident?"
-• The Logic-Focused Man:
+• The Logic-Focused Person:
     * The Words: "Well, I've been working on myself, reading books, and I realized that my value shouldn't come from others..."
-    * The Vibe: He sounds like he's reciting a textbook. He is "qualifying" himself.
+    * The Vibe: They sound like they're reciting a textbook. They are "qualifying" themselves.
 • The Vibe-Focused Master:
     * The Words: "It's the socks. I'm telling you, it's all in the arch support."
     * The Vibe: He says it with a wink and a relaxed lean. He doesn't explain the "why." His Vibe answers the question: "I am confident because I am comfortable not explaining myself."
@@ -689,7 +689,7 @@ The Master uses "Sticky Eyes." He doesn't look away when things get intense. He 
 The Mastery Insight: "The Silent Movie"
 If you were to watch a video of your social interactions with the sound turned off, what would the "story" be?
 • Would the story be: "A nervous guy trying to be liked"?
-• Or would it be: "A grounded man enjoying himself and leading the space"?
+• Or would it be: "A grounded person enjoying themselves and leading the space"?
 A Master is a master of the Silent Movie. He knows that if the visual story (body language, presence, eye contact) is strong enough, the "dialogue" is just a formality.
 
 Sovereign Thought: "Speak only if it improves upon the silence, but project your vibe until the silence itself begins to speak for you."`;
@@ -697,27 +697,27 @@ Sovereign Thought: "Speak only if it improves upon the silence, but project your
   // Custom detailed text for Relentless Persistence
   const relentlessPersistenceText = `Welcome to the "grindstone" of the system. If the previous principles were about the "art" of the interaction, Principle 13: Relentless Persistence is about the Mathematics of Success.
 
-In the self-transformation framework, we don't view "rejection" as a stop sign; we view it as a filter. Most men quit at the first sign of friction. The Master knows that the "gold" is usually buried just past the point where everyone else gives up. This isn't about being "creepy" or "pushy"—it's about having such a powerful Outcome Independence(Principle 03) that a "No" doesn't even register as a reason to stop having a good time.
+In the self-transformation framework, we don't view "rejection" as a stop sign; we view it as a filter. Most people quit at the first sign of friction. The Master knows that the "gold" is usually buried just past the point where everyone else gives up. This isn't about being "creepy" or "pushy"—it's about having such a powerful Outcome Independence(Principle 03) that a "No" doesn't even register as a reason to stop having a good time.
 
 The Philosophy of "The Infinite Game"
-Most men play a Finite Game. They have a specific amount of "social energy," and every "No" drains their battery. When the battery hits zero, they go home, feeling defeated.
-The Master plays an Infinite Game. He realizes that as long as he is still in the room and still in a "High State," he hasn't lost. Persistence is simply the refusal to accept a low-value reality. If someone is being cold or "testing" you, they are offering you a low-value reality. Relentless Persistence is the act of staying in your high-value reality until theirs eventually collapses and merges with yours.
+Most people play a Finite Game. They have a specific amount of "social energy," and every "No" drains their battery. When the battery hits zero, they go home, feeling defeated.
+The Master plays an Infinite Game. They realize that as long as they are still in the room and still in a "High State," they haven't lost. Persistence is simply the refusal to accept a low-value reality. If someone is being cold or "testing" you, they are offering you a low-value reality. Relentless Persistence is the act of staying in your high-value reality until theirs eventually collapses and merges with yours.
 
 Real-Life Conversational Examples: The "Non-Reactive" Push
 Persistence in this system is "Soft." It's not about arguing; it's about re-engaging with a smile.
-Scenario 1: The "I have a boyfriend" or "I'm busy"
+Scenario 1: The "I'm not interested" or "I'm busy"
 You approach a group or an individual, and within 30 seconds, they give you a standard "blow-off" line.
-• The Reactive Man: He takes the "No" as a command. He says, "Oh, sorry," and walks away with his head down. His state is crushed.
-• The Relentless Master: He treats the "No" like a weather report—it's just information, not an ending.
-    * The Interaction: * Her: "I actually have a boyfriend."
-        * Him: (Unphased, grinning) "Of course you do. A girl like you? If you didn't have a boyfriend, I'd assume there was something deeply wrong with the world. Does he know you're out here looking this suspicious, or is he the trusting type?"
-    * The Result: He didn't "accept" the rejection. He bypassed the logic and stayed in the Vibe (Principle 12). Often, the "No" was just a test of his Core Confidence (Principle 01).
+• The Reactive Person: They take the "No" as a command. They say, "Oh, sorry," and walk away with their head down. Their state is crushed.
+• The Relentless Master: They treat the "No" like a weather report—it's just information, not an ending.
+    * The Interaction: * Other: "I'm actually waiting for someone."
+        * Them: (Unphased, grinning) "Of course you are. Someone this interesting? If you weren't waiting for anyone, I'd assume there was something deeply wrong with the world. Do they know you're out here looking this suspicious, or are they the trusting type?"
+    * The Result: They didn't "accept" the rejection. They bypassed the logic and stayed in the Vibe (Principle 12). Often, the "No" was just a test of their Core Confidence (Principle 01).
 
 Scenario 2: The "Social Wall" (The Cold Group)
 You walk into a group that is huddled together, and they don't open up to let you in.
-• The Stifled Man: He stands on the outside for 5 seconds, feels the "Social Pressure" (Principle 06), and leaves.
-• The Relentless Master: He stays. He doesn't need them to "invite" him. He talks to the person closest to him, then turns to the next. If they give him one-word answers, he tells a story to himself (Self-Entertainment).
-    * The Result: Eventually, the group realizes he isn't going anywhere and he isn't "seeking" anything. Their defenses drop because his Non-Reactivity is higher than their "Exclusivity."
+• The Stifled Person: They stand on the outside for 5 seconds, feel the "Social Pressure" (Principle 06), and leave.
+• The Relentless Master: They stay. They don't need them to "invite" them in. They talk to the person closest to them, then turn to the next. If they give one-word answers, they tell a story to themselves (Self-Entertainment).
+    * The Result: Eventually, the group realizes they aren't going anywhere and they aren't "seeking" anything. Their defenses drop because the Master's Non-Reactivity is higher than their "Exclusivity."
 
 The Three Pillars of Relentless Persistence
 1. The "Three-Strike" Rule
@@ -731,12 +731,12 @@ The Mastery Insight: "Water vs. Rock"
 Think of Persistence like water hitting a rock. The water doesn't "fight" the rock. It doesn't get angry that the rock is there. It just keeps flowing. Eventually, the water finds a crack, or it simply flows around it.
 When you are Relentless, you are the Water. You are fluid. You are constant. A "No" is just a rock in your stream. You don't stop; you just find a different way to flow.
 
-Sovereign Thought: "The world belongs to the man who can be rejected a thousand times and still walk into the next room with the same fire in his eyes."`;
+Sovereign Thought: "The world belongs to the one who can be rejected a thousand times and still walk into the next room with the same fire in their eyes."`;
 
   // Custom detailed text for Identity Shifting
   const identityShiftingText = `Welcome to the "Alchemist's" stage. Principle 14: Identity Shifting is where we stop treating these principles as "tools" and start treating them as "blood."
 
-In the self-transformation framework, most men suffer from Identity Lag. They have improved their skills, their fitness, and their bank accounts, but they still feel like the shy, awkward kid they were in high school. They are "acting" confident, but their core identity is still "The Outsider." Identity Shifting is the process of burning the old self-image and stepping into the reality of the Sovereign Man.
+In the self-transformation framework, most people suffer from Identity Lag. They have improved their skills, their fitness, and their bank accounts, but they still feel like the shy, awkward kid they were in high school. They are "acting" confident, but their core identity is still "The Outsider." Identity Shifting is the process of burning the old self-image and stepping into the reality of the Sovereign Self.
 
 The Philosophy of "The Narrative Architect"
 Your "Identity" is simply the story you tell yourself about who you are. This story dictates your Behavioral Ceiling.
@@ -748,29 +748,29 @@ Real-Life Conversational Examples: The Shift in "Being"
 
 Scenario 1: The "New Environment"
 You walk into a high-end gala, a celebrity party, or an elite boardroom.
-• The "Improving" Identity: He feels like an imposter. He thinks, "I hope I don't stand out for the wrong reasons. I need to remember my Non-Reactivity (Principle 04)." * The Vibe: He looks like he's trying to "pass." He is Seeking Value because he feels the environment is "higher" than him.
-• The Shifted Identity: He has decided that he belongs wherever he stands. He doesn't "try" to be Non-Reactive; he is Non-Reactive because why would a King be rattled by his own palace?
-    * The Vibe: He talks to the host as an equal. He teases the "High-Status" guests using Assumed Familiarity(Principle 09). He is the Source.
+• The "Improving" Identity: They feel like an imposter. They think, "I hope I don't stand out for the wrong reasons. I need to remember my Non-Reactivity (Principle 04)." * The Vibe: They look like they're trying to "pass." They are Seeking Value because they feel the environment is "higher" than them.
+• The Shifted Identity: They have decided that they belong wherever they stand. They don't "try" to be Non-Reactive; they are Non-Reactive because why would royalty be rattled by their own palace?
+    * The Vibe: They talk to the host as an equal. They tease the "High-Status" guests using Assumed Familiarity(Principle 09). They are the Source.
 
 Scenario 2: Dealing with Past "Failures"
-You run into someone from your past who used to see you as "the quiet guy" or "the nerd."
-• The "Static" Identity: He slips back into his old skin. He becomes polite, hesitant, and starts "qualifying" himself to prove he's changed.
-    * The Result: The old acquaintance still sees the "old him" because he is projecting that old frequency.
-• The Shifted Identity: He views his past self as a completely different person—a "character" in a movie he once watched. He doesn't feel the need to prove anything.
-    * The Interaction: He treats the acquaintance with a "Big Brother" energy. He might even tease them about "the old days" from a place of total detachment.
-    * The Result: The acquaintance is shocked. They feel the State Transfer (Principle 05) and are forced to accept his new, sovereign reality.
+You run into someone from your past who used to see you as "the quiet one" or "the nerd."
+• The "Static" Identity: They slip back into their old skin. They become polite, hesitant, and start "qualifying" themselves to prove they've changed.
+    * The Result: The old acquaintance still sees the "old them" because they are projecting that old frequency.
+• The Shifted Identity: They view their past self as a completely different person—a "character" in a movie they once watched. They don't feel the need to prove anything.
+    * The Interaction: They treat the acquaintance with a "Mentor" energy. They might even tease them about "the old days" from a place of total detachment.
+    * The Result: The acquaintance is shocked. They feel the State Transfer (Principle 05) and are forced to accept the Master's new, sovereign reality.
 
 The Three Pillars of Identity Shifting
 
 1. The "Acting 'As If'" Protocol
-This isn't "Fake it 'til you make it." It is "Embody it 'til you are it." Before you enter a room, ask: "How would the man I want to be walk through these doors? What would his breathing look like? What would he find funny?" Then, do exactly that.
+This isn't "Fake it 'til you make it." It is "Embody it 'til you are it." Before you enter a room, ask: "How would the person I want to be walk through these doors? What would their breathing look like? What would they find funny?" Then, do exactly that.
 2. Environmental Scrubbing
 Your identity is often held in place by your surroundings. If you hang out with people who treat you like your "old self," you will stay that person. Identity Shifting often requires Polarization (Principle 10)—leaving behind the people and places that no longer match your new frequency.
 3. The "Evidence" Log
 The Ego (Principle 02) needs "proof" to believe a new story. This is why the Missions in this app are vital. Every time you hold eye contact during a "Social Pressure" moment, you are collecting evidence. Eventually, the evidence for your "Sovereignty" becomes so overwhelming that the old identity simply dissolves.
 
 The Mastery Insight: "The Actor and the Role"
-Think of a world-class method actor. When they are in character, they don't "think" about how the character would walk; they just walk that way because, in their mind, they are that person. You have been playing the role of "The Average Guy" for years. It's just a script you've memorized. Principle 14 is about throwing that script in the trash and writing a new one where you are the Lead, the Producer, and the Director.
+Think of a world-class method actor. When they are in character, they don't "think" about how the character would walk; they just walk that way because, in their mind, they are that person. You have been playing the role of "The Average Person" for years. It's just a script you've memorized. Principle 14 is about throwing that script in the trash and writing a new one where you are the Lead, the Producer, and the Director.
 
 Sovereign Thought: "You are under no obligation to be the person you were five minutes ago."`;
 
@@ -780,7 +780,7 @@ Sovereign Thought: "You are under no obligation to be the person you were five m
 Presence is the collapse of time. It is the moment where the "Social Map" disappears because you have become the "Social Terrain." When you are 100% present, you are no longer a person having an experience; you are the experience itself.
 
 The Philosophy of "The Eternal Now"
-Most men are "Time Travelers."
+Most people are "Time Travelers."
 • The Past: They are stuck in regret or analysis. "I shouldn't have said that," or "That person looked at me weird five minutes ago."
 • The Future: They are stuck in anxiety or "Tactics." "What do I say next?" or "What if she rejects me?"
 Presence is the radical act of bringing 100% of your consciousness into the current millisecond. When you are fully present, your Ego (Principle 02) cannot exist, because the Ego requires the past or the future to survive. In the "Now," there is no "You" to protect—there is only the flow of energy.
@@ -788,17 +788,17 @@ Presence is the radical act of bringing 100% of your consciousness into the curr
 Real-Life Conversational Examples: The Power of Being "In"
 Scenario 1: The "High-Frequency" Interaction
 You are talking to someone incredibly charismatic or high-status.
-• The "In-Head" Man: He is "vibrating" with mental noise. He is checking his posture, rehearsing his next line, and wondering how he's being perceived.
-    * The Vibe: He feels "thin" and "ghost-like." Even if his words are perfect, the other person feels a lack of connection.
-• The Present Master: He is 100% focused on the other person's eyes, the sound of their voice, and the feeling of the air in the room.
-    * The Interaction: He doesn't "think" of a joke; a joke simply happens because he is so attuned to the subtext of the moment.
+• The "In-Head" Person: They are "vibrating" with mental noise. They are checking their posture, rehearsing their next line, and wondering how they're being perceived.
+    * The Vibe: They feel "thin" and "ghost-like." Even if their words are perfect, the other person feels a lack of connection.
+• The Present Master: They are 100% focused on the other person's eyes, the sound of their voice, and the feeling of the air in the room.
+    * The Interaction: They don't "think" of a joke; a joke simply happens because they are so attuned to the subtext of the moment.
     * The Result: The other person feels "seen" at a primal level. This is the root of Charisma. People don't remember what you said; they remember how it felt to be the sole focus of your universe for three minutes.
 
 Scenario 2: The "Social Pressure" Peak
 The room goes silent, or someone asks a difficult, confrontational question.
-• The "In-Head" Man: He feels the silence as a "void" that needs to be filled. His brain starts racing to find an "out."
-• The Present Master: He leans into the silence. He experiences the silence as a physical sensation—like cold water. He doesn't rush to fix it.
-    * The Vibe: His stillness is so profound that it becomes a gravity well. Because he is comfortable in the "Now," everyone else begins to look to him for the cue on how to feel.
+• The "In-Head" Person: They feel the silence as a "void" that needs to be filled. Their brain starts racing to find an "out."
+• The Present Master: They lean into the silence. They experience the silence as a physical sensation—like cold water. They don't rush to fix it.
+    * The Vibe: Their stillness is so profound that it becomes a gravity well. Because they are comfortable in the "Now," everyone else begins to look to them for the cue on how to feel.
 
 The Three Pillars of Absolute Presence
 1. Sensory Anchoring (The V-A-K Bridge)

@@ -38,7 +38,7 @@ const gymMission2Content: Record<string, { title: string; description: string; x
   },
   'social-pressure': {
     title: 'The Center of the Universe',
-    description: 'Go to a public square or a busy park, stand in the center, and slowly do a full 360-degree turn over the course of one minute. Move with the grace of a king surveying his lands. Feel every eye on you. Do not check your phone or rush the movement. Own the space.',
+    description: 'Go to a public square or a busy park, stand in the center, and slowly do a full 360-degree turn over the course of one minute. Move with the grace of royalty surveying their lands. Feel every eye on you. Do not check your phone or rush the movement. Own the space.',
     xpReward: 40,
   },
   'value-projection': {
@@ -210,7 +210,7 @@ const gymMission4Content: Record<string, { title: string; description: string; x
     xpReward: 40,
   },
   'assumed-familiarity': {
-    title: 'The Long-Lost Brother',
+    title: 'The Long-Lost Friend',
     description: 'Approach a total stranger as if they are your best friend from childhood. Use an "Inside Joke" that doesn\'t exist. "I can\'t believe you\'re still wearing that watch after the incident in 2018." See how long you can maintain the "Familiar" frame before they realize they\'ve never met you.',
     xpReward: 45,
   },
