@@ -100,7 +100,7 @@ export function PaywallModal({ visible, onClose, onSuccess }: PaywallModalProps)
     pkg => pkg.identifier === '$rc_monthly'
   );
 
-  const priceString = monthlyPackage?.product.priceString || '$0.99';
+  const priceString = monthlyPackage?.product.priceString || '$2.99';
 
   return (
     <Modal
