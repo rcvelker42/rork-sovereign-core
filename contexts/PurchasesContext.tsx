@@ -9,14 +9,20 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import createContextHook from '@nkzw/create-context-hook';
 
 function getRCToken() {
-  if (__DEV__ || Platform.OS === 'web') {
-    return process.env.EXPO_PUBLIC_REVENUECAT_TEST_API_KEY;
+  // Skip RevenueCat on web (not supported)
+  if (Platform.OS === 'web') {
+    return null;
   }
-  return Platform.select({
+  
+  // Always use platform-specific keys for native apps (regardless of __DEV__)
+  const platformKey = Platform.select({
     ios: process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY,
     android: process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY,
-    default: process.env.EXPO_PUBLIC_REVENUECAT_TEST_API_KEY,
+    default: null,
   });
+  
+  // Fallback to test key if platform key is missing
+  return platformKey || process.env.EXPO_PUBLIC_REVENUECAT_TEST_API_KEY || null;
 }
 
 const rcToken = getRCToken();
