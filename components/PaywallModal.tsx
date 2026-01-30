@@ -12,7 +12,7 @@ import {
 import { X, Crown, Shield, Zap, Lock } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
-import { usePurchases } from '@/contexts/PurchasesContext';
+import { usePurchases, rcDebugInfo } from '@/contexts/PurchasesContext';
 import { GoldButton } from '@/components/GoldButton';
 
 interface PaywallModalProps {
@@ -198,8 +198,11 @@ export function PaywallModal({ visible, onClose, onSuccess }: PaywallModalProps)
 
             {/* Debug info - remove after testing */}
             <View style={{ backgroundColor: '#1a1a1a', padding: 10, borderRadius: 8, marginBottom: 16 }}>
+              <Text style={{ color: '#ff6b6b', fontSize: 10, fontFamily: 'monospace', marginBottom: 4 }}>
+                SDK: token={rcDebugInfo.hasToken ? 'YES' : 'NO'} | key={rcDebugInfo.maskedKey} | configured={rcDebugInfo.configureSuccess ? 'YES' : 'NO'}
+              </Text>
               <Text style={{ color: '#888', fontSize: 10, fontFamily: 'monospace' }}>
-                DEBUG: offering={debugInfo.hasOffering ? 'YES' : 'NO'} | packages={debugInfo.packageCount} | ids=[{debugInfo.packageIds}] | monthly={debugInfo.foundMonthly ? 'YES' : 'NO'} | loading={debugInfo.isLoading ? 'YES' : 'NO'}
+                OFFER: found={debugInfo.hasOffering ? 'YES' : 'NO'} | pkgs={debugInfo.packageCount} | monthly={debugInfo.foundMonthly ? 'YES' : 'NO'}
               </Text>
             </View>
 

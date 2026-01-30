@@ -26,9 +26,32 @@ function getRCToken() {
 }
 
 const rcToken = getRCToken();
+
+// Debug: Log API key status (masked for security)
+const maskedKey = rcToken ? `${rcToken.slice(0, 6)}...${rcToken.slice(-4)}` : 'NULL';
+console.log('[RC Debug] Platform:', Platform.OS);
+console.log('[RC Debug] API Key:', maskedKey);
+
+let configureSuccess = false;
 if (rcToken) {
-  Purchases.configure({ apiKey: rcToken });
+  try {
+    Purchases.configure({ apiKey: rcToken });
+    configureSuccess = true;
+    console.log('[RC Debug] Configure: SUCCESS');
+  } catch (e) {
+    console.log('[RC Debug] Configure: FAILED', e);
+  }
+} else {
+  console.log('[RC Debug] Configure: SKIPPED (no token)');
 }
+
+// Export debug info for UI display
+export const rcDebugInfo = {
+  hasToken: !!rcToken,
+  maskedKey,
+  configureSuccess,
+  platform: Platform.OS,
+};
 
 export const [PurchasesProvider, usePurchases] = createContextHook(() => {
   const queryClient = useQueryClient();
