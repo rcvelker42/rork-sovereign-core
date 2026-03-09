@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BookOpen, PenLine, ChevronRight, RotateCcw, Shield, HelpCircle } from 'lucide-react-native';
+import { BookOpen, PenLine, ChevronRight, RotateCcw, Shield, HelpCircle, FileText } from 'lucide-react-native';
 import * as WebBrowser from 'expo-web-browser';
 import * as Haptics from 'expo-haptics';
 import { Colors } from '@/constants/colors';
@@ -266,6 +266,26 @@ export default function DashboardScreen() {
             
             <TouchableOpacity 
               style={styles.footerLink}
+              onPress={() => WebBrowser.openBrowserAsync('https://www.apple.com/legal/internet-services/itunes/')}
+            >
+              <FileText size={14} color={Colors.text.muted} />
+              <Text style={styles.footerLinkText}>Apple Terms</Text>
+            </TouchableOpacity>
+            
+            <View style={styles.footerDivider} />
+            
+            <TouchableOpacity 
+              style={styles.footerLink}
+              onPress={() => WebBrowser.openBrowserAsync('https://sites.google.com/view/thesovereignapp/terms-of-use')}
+            >
+              <FileText size={14} color={Colors.text.muted} />
+              <Text style={styles.footerLinkText}>Terms of Use</Text>
+            </TouchableOpacity>
+            
+            <View style={styles.footerDivider} />
+            
+            <TouchableOpacity 
+              style={styles.footerLink}
               onPress={() => WebBrowser.openBrowserAsync('https://sites.google.com/view/thesovereignapp/support')}
             >
               <HelpCircle size={14} color={Colors.text.muted} />
@@ -491,6 +511,7 @@ const styles = StyleSheet.create({
   },
   footerLinks: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 16,
