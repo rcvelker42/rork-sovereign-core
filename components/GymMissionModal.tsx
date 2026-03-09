@@ -104,7 +104,11 @@ export function GymMissionModal({ visible, mission, principle, onClose, onAccept
           >
             <View style={styles.header}>
               <Text style={styles.title}>Gym Mission</Text>
-              <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <TouchableOpacity
+                onPress={onClose}
+                style={styles.closeButton}
+                hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              >
                 <X size={24} color={Colors.text.secondary} />
               </TouchableOpacity>
             </View>
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   closeButton: {
-    padding: 4,
+    padding: 10,
   },
   content: {
     padding: 24,
